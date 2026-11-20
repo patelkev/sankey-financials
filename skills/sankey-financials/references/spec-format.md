@@ -39,6 +39,11 @@ Line items may also have `full` (long name for tooltips), `note` (tooltip text) 
  "notes":{"net_income":"optional tooltip"}}
 ```
 
+No cost of revenue (banks, insurers, many service firms): omit `cogs` or set it to `[0, 0]`. The chart then
+skips the gross-profit step and revenue flows straight into operating income and operating expenses;
+put a bank's provision for credit losses in `opex`. `revenue_label` renames the first box
+(e.g. `"Net revenue"`).
+
 Signs: `opex` items are expenses as positive numbers; a **gain** inside opex is negative.
 `nonop` items keep the filing's sign: income positive, expense negative. `tax` is positive for an
 expense, negative for a benefit. View items must sum to revenue; a negative view item (a hedging loss)

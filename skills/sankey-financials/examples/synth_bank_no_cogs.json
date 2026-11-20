@@ -1,0 +1,41 @@
+{
+ "flow": "income",
+ "company": "JPMorgan Chase",
+ "ticker": "JPM",
+ "period": "Q3 2025",
+ "dates": "Jul 1 to Sep 30, 2025",
+ "basis": "GAAP",
+ "source": "Approximate JPMorgan Q3 2025 figures rounded from memory; regression spec for the no-COGS layout, not for analysis",
+ "revenue": [
+  46430,
+  42654
+ ],
+ "opex": [
+  {
+   "l": "Provision for credit losses",
+   "v": 3403,
+   "p": 3111
+  },
+  {
+   "l": "Noninterest expense",
+   "v": 24250,
+   "p": 22565
+  }
+ ],
+ "operating_income": [
+  18777,
+  16978
+ ],
+ "nonop": [],
+ "tax": [
+  4384,
+  4080
+ ],
+ "net_income": [
+  14393,
+  12898
+ ],
+ "revenue_label": "Net revenue",
+ "end": "2025-09-30",
+ "prior_end": "2024-09-30"
+}

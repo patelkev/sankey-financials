@@ -45,7 +45,7 @@ CUR = '$'  # set by make() from spec['currency']
 def money(v):
     a, c = abs(v), CUR
     s = (f'{c}{a/1e6:.2f}T' if a >= 1e6 else f'{c}{a/1000:.2f}B' if a >= 1000 else f'{c}{a:.1f}M' if a >= 1
-         else f'{c}{a*1000:.0f}K')
+         else f'{c}{a*1000:.0f}K' if a > 0 else f'{c}0')
     return ('-' if v < 0 else '') + s
 
 
@@ -110,8 +110,10 @@ class G:
 
     def __init__(self):
         self.nodes, self.links, self.used = [], [], set()
+        self.shift = 0  # 1 drops column 2 (income statement without cost of revenue)
 
     def node(self, c, t, l, v, p=None, full=None, note=None, key=None):
+        c = c - self.shift if c >= 2 else c
         nid = slug(key or l, self.used)
         n = {'id': nid, 'c': c, 't': t, 'l': l, 'v': round(v, 4), 'p': None if p is None else round(p, 4)}
         if full: n['full'] = full
@@ -120,7 +122,7 @@ class G:
         return nid
 
     def link(self, a, b, v):
-        if v > 1e-9:
+        if v > 1e-9 and a != b:
             self.links.append([a, b, round(v, 4)])
 
 
@@ -160,7 +162,10 @@ def views_out(spec, used):
 def income(spec):
     g = G()
     rev, rev_p = pair(spec['revenue'])
-    cogs, cogs_p = pair(spec['cogs'])
+    cogs, cogs_p = pair(spec.get('cogs', [0, 0]))
+    # Banks, insurers and many service firms report no cost of revenue: skip the gross-profit step.
+    nocogs = cogs == 0 and not cogs_p
+    if nocogs: g.shift = 1
     opex = grouped(spec.get('opex', []))
     nonop = grouped(spec.get('nonop', []))
     tax, tax_p = pair(spec.get('tax', [0, 0]))
@@ -185,8 +190,8 @@ def income(spec):
     check('Operating income', oi, pair(spec['operating_income'])[0])
     check_prior('Operating income', oi_p, pair(spec['operating_income'])[1])
 
-    R = g.node(1, 'rev', 'Revenue', rev, rev_p, key='rev')
-    GP = g.node(2, 'profit', 'Gross profit', gp, gp_p, key='gp')
+    R = g.node(1, 'rev', spec.get('revenue_label', 'Revenue'), rev, rev_p, key='rev')
+    GP = R if nocogs else g.node(2, 'profit', 'Gross profit', gp, gp_p, key='gp')
     pos_ox = [d for d in opex if float(d['v']) > 0]
     gains_ox = [d for d in opex if float(d['v']) < 0]
     pos_sum = sum(float(d['v']) for d in pos_ox)
