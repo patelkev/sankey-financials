@@ -1,0 +1,64 @@
+{
+ "flow": "income",
+ "company": "Testco",
+ "ticker": "TST",
+ "period": "Q2 2026",
+ "dates": "Apr 1 to Jun 30, 2026",
+ "basis": "GAAP",
+ "source": "synthetic",
+ "revenue": [
+  1000,
+  900
+ ],
+ "cogs": [
+  400,
+  380
+ ],
+ "opex": [
+  {
+   "l": "Research, development and engineering expenses including stock-based compensation and amortization",
+   "v": 200,
+   "p": 190
+  },
+  {
+   "l": "\u8ca9\u58f2\u8cbb\u53ca\u3073\u4e00\u822c\u7ba1\u7406\u8cbb (SG&A) \ud83d\ude80",
+   "v": 150,
+   "p": 140
+  }
+ ],
+ "operating_income": [
+  250,
+  190
+ ],
+ "nonop": [
+  {
+   "l": "Interest income",
+   "v": 10,
+   "p": 8
+  }
+ ],
+ "tax": [
+  50,
+  40
+ ],
+ "net_income": [
+  210,
+  158
+ ],
+ "views": {
+  "Product": {
+   "items": [
+    {
+     "l": "\u00dcn\u00efc\u00f8d\u00e9 W\u00eddgets \u2014 Premium Edition\u2122 for Enterprise and Government customers worldwide",
+     "v": 700,
+     "p": 600
+    },
+    {
+     "l": "\ud83d\udd25 Services",
+     "v": 300,
+     "p": 300
+    }
+   ]
+  }
+ }
+}

@@ -1,14 +1,15 @@
 const COL={rev:'#2a78d6',profit:'#1baf7a',cost:'#eb6834',other:'#888780',loss:'#e34948'};
-const VW=760,NW=10,TOP=72,BASEH=470,LH=15,MINGAP=14,MINH=2;
+const VW=760,NW=10,TOP=72,BASEH=470,LH=15,MINGAP=14,MINH=2,SIDEW=160;
 const VK=Object.keys(CFG.views||{});
 const HUB=CFG.hub?CFG.base.find(n=>n.id===CFG.hub):null;
 const SCALE=CFG.scale||{v:HUB.v,l:HUB.l};
-const K=BASEH*0.72/SCALE.v;
+let K=BASEH*0.72/SCALE.v;
 const UNIT=CFG.unit||'usd_m';
 const S={view:VK[0]||null,yoy:CFG.yoy!==false};
 let NODES=[],LINKS=[],M={},XS=[],NC=1,H=BASEH,VH=600,WRAP=100;
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
-const tw=(s,z)=>String(s).length*z*0.56;
+// CJK and emoji glyphs are about twice as wide as Latin ones.
+const tw=(s,z)=>[...String(s)].reduce((a,c)=>a+(c.codePointAt(0)>0x2e7f?1:0.56),0)*z;
 const CUR=CFG.cur||'$';
 const fmt=v=>{const a=Math.abs(v),sg=v<0?'-':'';if(UNIT==='pct')return sg+a.toFixed(a<10?2:1)+'%';return sg+CUR+(a>=1e6?(a/1e6).toFixed(2)+'T':a>=1000?(a/1000).toFixed(2)+'B':a>=1?a.toFixed(1)+'M':(a*1000).toFixed(0)+'K')};
 const okP=n=>n.p!=null&&n.p>0;
@@ -19,14 +20,15 @@ function src(){if(!S.view)return[];const v=CFG.views[S.view];return v.same?CFG.v
 function side(n){return n.sd||(n.c===0?'left':(n.c===NC-1||!n.out.length)?'right':'above')}
 function wrap(s,max){
   if(tw(s,12.5)<=max)return[s];
-  const w=s.split(' ');let a=[],cur='';
+  const w=[];s.split(' ').forEach(x=>{let r='';[...x].forEach(c=>{if(r&&tw(r+c,12.5)>max){w.push(r);r=''}r+=c});w.push(r)});
+  let a=[],cur='';
   w.forEach(x=>{const t=cur?cur+' '+x:x;if(tw(t,12.5)>max&&cur){a.push(cur);cur=x}else cur=t});
   if(cur)a.push(cur);return a;
 }
 function lines(n){
   const L=[{s:fmt(n.v),f:COL[n.t],z:13,w:500}];
   if(S.yoy)L.push({s:yoyStr(n),f:yoyCol(n),z:12,w:400});
-  const names=side(n)==='above'?wrap(n.l,WRAP):[n.l];
+  const names=wrap(n.l,side(n)==='above'?WRAP:SIDEW);
   names.forEach(s=>L.push({s,f:'var(--text-primary)',z:12.5,w:400}));
   return L;
 }
@@ -44,14 +46,19 @@ function build(){
   NC=Math.max(...NODES.map(n=>n.c))+1;
   M={};NODES.forEach((n,i)=>{n.i=i;n.in=[];n.out=[];M[n.id]=n});
   const negSum=neg.reduce((a,n)=>a-n.v,0);
-  NODES.forEach(n=>{const dv=n.id===CFG.hub?n.v+negSum:n.v;n.dv=dv;n.tiny=dv*K<MINH;n.h=Math.max(MINH,dv*K)});
+  NODES.forEach(n=>{n.dv=n.id===CFG.hub?n.v+negSum:n.v});
+  // Scale to the tallest column, not just the hub: when investing/financing flows or an operating loss
+  // dwarf the hub, scaling to the hub made charts thousands of pixels tall.
+  const colTot=[...Array(NC)].map((_,c)=>NODES.filter(n=>n.c===c).reduce((a,n)=>a+n.dv,0));
+  K=BASEH*0.72/Math.max(SCALE.v,...colTot);
+  NODES.forEach(n=>{n.tiny=n.dv*K<MINH;n.h=Math.max(MINH,n.dv*K)});
   if(HUB&&negSum)M[CFG.hub].auto=`Drawn before ${fmt(negSum)} of negative items, which branch off to the right.`;
   LINKS=pos.map(n=>({s:M[n.id],t:M[CFG.hub],v:n.v}))
     .concat(CFG.links.map(([a,b,v])=>({s:M[a],t:M[b],v})))
     .concat(neg.map(n=>({s:M[CFG.hub],t:M[n.id],v:-n.v})));
   LINKS.forEach((l,i)=>{l.i=i;l.w=Math.max(1,l.v*K);l.s.out.push(l);l.t.in.push(l)});
   NODES.forEach(n=>{n.out.sort((a,b)=>a.t.i-b.t.i);let o=0;n.out.forEach(l=>{l.so=o;o+=l.w})});
-  const lw=n=>Math.max(...[fmt(n.v),S.yoy?yoyStr(n):'',n.l].map((s,k)=>tw(s,k===0?13:12.5)));
+  const lw=n=>Math.max(...lines(n).map(q=>tw(q.s,q.z)));
   const c0=NODES.filter(n=>n.c===0),cl=NODES.filter(n=>n.c===NC-1);
   const left=Math.max(110,(c0.length?Math.max(...c0.map(lw)):0)+14);
   const right=Math.min(VW-140,VW-Math.max(...cl.map(lw))-NW-14);

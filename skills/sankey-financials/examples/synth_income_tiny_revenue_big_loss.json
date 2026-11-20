@@ -1,0 +1,48 @@
+{
+ "flow": "income",
+ "company": "Biotech Zero",
+ "ticker": "BZRO",
+ "period": "Q1 2026",
+ "dates": "Jan 1 to Mar 31, 2026",
+ "basis": "GAAP",
+ "source": "synthetic",
+ "revenue": [
+  5,
+  2
+ ],
+ "cogs": [
+  0,
+  0
+ ],
+ "opex": [
+  {
+   "l": "R&D",
+   "v": 120,
+   "p": 95
+  },
+  {
+   "l": "G&A",
+   "v": 30,
+   "p": 25
+  }
+ ],
+ "operating_income": [
+  -145,
+  -118
+ ],
+ "nonop": [
+  {
+   "l": "Interest income",
+   "v": 8,
+   "p": 9
+  }
+ ],
+ "tax": [
+  0,
+  0
+ ],
+ "net_income": [
+  -137,
+  -109
+ ]
+}
