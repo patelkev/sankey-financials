@@ -31,7 +31,14 @@ It works as an AI agent skill (Claude Code, and any agent that can read a markdo
 </tr>
 </table>
 
-Open the live, interactive versions from the [`gallery/`](gallery/) folder (download the repo and open any `.html` file).
+Open the live, interactive charts (hover, switch tabs, toggle Y/Y):
+[NVIDIA income statement](https://patelkev.github.io/sankey-financials/gallery/nvda_income.html) ·
+[Apple cash flow](https://patelkev.github.io/sankey-financials/gallery/aapl_cash.html) ·
+[Microsoft balance sheet](https://patelkev.github.io/sankey-financials/gallery/msft_balance.html) ·
+[QQQ holdings](https://patelkev.github.io/sankey-financials/gallery/qqq_holdings.html) ·
+[DRAM ETF holdings](https://patelkev.github.io/sankey-financials/gallery/dram_holdings.html) ·
+[Alphabet segments](https://patelkev.github.io/sankey-financials/gallery/goog_segments.html) ·
+[all source files](gallery/).
 
 ## Features
 
