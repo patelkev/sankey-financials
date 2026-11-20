@@ -107,7 +107,12 @@ merged (Alphabet's two share classes). Mapping holdings to sectors is a judgment
  "corporate":[{"l":"Alphabet-level costs","v":-7849,"note":"..."}]}
 ```
 
-Checks: segment revenue + other revenue = revenue; segment operating income + corporate items +
+Intersegment sales (Intel's foundry selling to its product groups) go in
+`"eliminations":[{"l":"Intersegment eliminations","v":-6291,"p":null}]`, negative as filed. Segment
+boxes stay gross as reported; the subtitle states the eliminated amount; put the eliminations' profit
+effect in `corporate`.
+
+Checks: segment revenue + other revenue + eliminations = revenue; segment operating income + corporate items +
 other revenue = operating income. Profitable segments split into profit (top) and costs (below);
 a loss-making segment's revenue covers its own costs and its loss is drawn as a red outflow from the
 profit pool.

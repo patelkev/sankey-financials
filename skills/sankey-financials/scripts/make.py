@@ -480,12 +480,23 @@ def segments(spec):
     segs = spec['segments']
     extra_rev = grouped(spec.get('other_revenue', []))
     corp = grouped(spec.get('corporate', []))
+    for d in extra_rev:
+        if float(d['v']) < 0:
+            raise SpecError(f'Negative other revenue "{d["l"]}": put intersegment eliminations in "eliminations" '
+                            'and other negative items in "corporate".')
     tot_rev = sum(pair(s['revenue'])[0] for s in segs) + sum(float(d['v']) for d in extra_rev)
     need(spec, 'revenue', 'operating_income')
-    check('Segment revenue vs total revenue', tot_rev, pair(spec['revenue'])[0])
+    # Intersegment eliminations reduce reported revenue but not operating income (their profit effect is
+    # reported in a corporate/eliminations line). Segment boxes stay gross, as the filing shows them.
+    elim = spec.get('eliminations', [])
+    if any(float(d['v']) > 0 for d in elim):
+        raise SpecError('eliminations are reductions of revenue: enter them as negative numbers, as filed.')
+    elim_v = sum(float(d['v']) for d in elim)
+    check('Segment revenue vs total revenue', tot_rev + elim_v, pair(spec['revenue'])[0])
     srp = [pair(s['revenue'])[1] for s in segs]
+    orp, elp = psum(spec.get('other_revenue', [])), psum(elim)
     check_prior('Segment revenue vs total revenue',
-                None if None in srp or psum(spec.get('other_revenue', [])) is None else sum(srp) + psum(spec.get('other_revenue', [])), pair(spec['revenue'])[1])
+                None if None in srp or orp is None or elp is None else sum(srp) + orp + elp, pair(spec['revenue'])[1])
     oi = (sum(pair(s['operating_income'])[0] for s in segs) + sum(float(d['v']) for d in corp)
           + sum(float(d['v']) for d in extra_rev))
     oi_rep, oi_p = pair(spec['operating_income']) if 'operating_income' in spec else (None, None)
@@ -501,7 +512,6 @@ def segments(spec):
         rev_ids.append(g.node(0, 'rev', s['l'], r, rp, key='r_' + s['l']))
     for d in extra_rev:
         l, v, p = item(d)
-        if v < 0: raise SpecError('Negative other revenue in segment view: fold it into corporate items.')
         er_ids.append((g.node(0, 'rev', l, v, p, d.get('full'), d.get('note')), v))
     pool_in, losses, costs = [], [], []
     for s, rid in zip(segs, rev_ids):
@@ -537,7 +547,10 @@ def segments(spec):
         g.link(PL, g.node(3, 'loss', l, v, p, note=note), v)
     for l, v, p, note in corp_cost:
         g.link(PL, g.node(3, 'cost', l, v, p, note=note), v)
-    return g, {'hub': None, 'scale': {'v': tot_rev, 'l': 'Revenue'}, 'views': False}
+    meta = {'hub': None, 'scale': {'v': tot_rev, 'l': 'Revenue' if not elim else 'Segment revenue'}, 'views': False}
+    if elim:
+        meta['subtitle_extra'] = f'Segments before {money(-elim_v)} of intersegment eliminations'
+    return g, meta
 
 
 FLOWS = {'income': income, 'cashflow': cashflow, 'balance': balance, 'holdings': holdings, 'segments': segments}
