@@ -2,7 +2,7 @@
 """Load a built widget in headless Chrome: measure real label overlaps in every view,
 click every control, hover every node, and save one screenshot per view.
 Usage: python3 browser_check.py widget.html out_prefix   (exit 1 on any problem)"""
-import asyncio, sys, os
+import asyncio, sys, os, json, re, subprocess, tempfile
 from playwright.async_api import async_playwright
 CHROME = os.environ.get('CHROME')
 w = open(sys.argv[1]).read(); out = sys.argv[2]
@@ -19,12 +19,24 @@ MEASURE = """()=>{const sk=document.getElementById('sk');const vb=sk.viewBox.bas
    B.slice(i+1).forEach(b=>{if(ov(a,b))bad.push('labels '+a.id+'/'+b.id)});
    R.forEach(r=>{if(r.id!==a.id&&ov(a,r))bad.push('label '+a.id+' covers '+r.id)})});
  return {bad,nodes:R.map(r=>r.id),h:vb.height}}"""
+def data_checks(widget):
+    """Run test.js on the CFG embedded in the page, so a chart with broken numbers can't pass here."""
+    m = re.search(r'const CFG=(.*?);\n', widget)
+    if not m: return ['no chart data (const CFG=...) found in the page']
+    with tempfile.NamedTemporaryFile('w', suffix='.json', delete=False) as f:
+        f.write(m.group(1)); tmp = f.name
+    r = subprocess.run(['node', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'test.js'), tmp, '-q'],
+                       capture_output=True, text=True)
+    os.unlink(tmp)
+    return [] if r.returncode == 0 else ['data/layout checks failed: ' + '; '.join(
+        l for l in (r.stdout + r.stderr).splitlines() if l.startswith('ERROR') or 'Error' in l)[:600]]
 async def main():
-    probs = []
+    probs = data_checks(w)
     async with async_playwright() as p:
         b = await (p.chromium.launch(executable_path=CHROME) if CHROME else p.chromium.launch())
         pg = await b.new_page(viewport={'width': 760, 'height': 1000}, device_scale_factor=2)
         errs = []; pg.on('pageerror', lambda e: errs.append(str(e)))
+        pg.on('dialog', lambda d: (errs.append('page opened a dialog: ' + d.message), asyncio.ensure_future(d.dismiss())))
         await pg.set_content(html)
         tabs = await pg.locator('#views button').all()
         visible_tabs = await pg.locator('#views').is_visible()
@@ -45,10 +57,11 @@ async def main():
                         t = await pg.locator('#tip').inner_text()
                         if not t.strip(): probs.append(f'{name}: empty tooltip on {nid}')
             if sw and await pg.get_attribute('#yoy', 'aria-checked') != 'true': await pg.click('#yoy')
-        first = (await pg.evaluate(MEASURE))['nodes'][0]
-        await pg.locator(f'rect.nd[data-n="{first}"]').click(force=True)
+        nodes = (await pg.evaluate(MEASURE))['nodes']
+        if not nodes: probs.append('no nodes rendered')
+        else: await pg.locator(f'rect.nd[data-n="{nodes[0]}"]').click(force=True)
         pr = await pg.evaluate('prompts')
-        if not pr: probs.append('click-to-ask sent nothing')
+        if nodes and not pr: probs.append('click-to-ask sent nothing')
         if any(x in pr[0] for x in ('undefined', 'NaN')) if pr else False: probs.append('bad prompt: ' + pr[0])
         if errs: probs.append('page errors: ' + '; '.join(errs))
         await b.close()
