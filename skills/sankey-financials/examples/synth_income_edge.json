@@ -1,0 +1,7 @@
+{"flow":"income","company":"Testco","ticker":"TEST","period":"Q1","dates":"Synthetic","basis":"GAAP",
+ "views":{"Product":{"items":[{"l":"Widgets","v":900,"p":800},{"l":"Services","v":150,"p":100},{"l":"Hedging loss","v":-50,"p":20}]},
+          "Geography":{"items":[{"l":"Americas","v":600,"p":500},{"l":"Rest of world","v":400,"p":420}]}},
+ "revenue":[1000,920],"cogs":[400,380],
+ "opex":[{"l":"R&D","v":200,"p":190},{"l":"SG&A","v":150,"p":140},{"l":"Gain on sale","v":-30,"p":null}],
+ "nonop":[{"l":"Interest income","v":25,"p":10},{"l":"Interest expense","v":-15,"p":-12},{"l":"Investment loss","v":-5,"p":8}],
+ "tax":[-20,30],"net_income":[305,186]}

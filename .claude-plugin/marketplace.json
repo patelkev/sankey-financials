@@ -1,0 +1,11 @@
+{
+  "name": "sankey-financials",
+  "owner": { "name": "Kevin Patel" },
+  "plugins": [
+    {
+      "name": "sankey-financials",
+      "source": "./",
+      "description": "Interactive Sankey diagrams of company and fund financials."
+    }
+  ]
+}

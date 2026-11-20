@@ -1,0 +1,67 @@
+{
+ "flow": "segments",
+ "company": "Alphabet",
+ "ticker": "GOOG",
+ "period": "Q3 2026",
+ "dates": "Jul 1 to Sep 30, 2026",
+ "basis": "GAAP",
+ "revenue": [
+  127577,
+  102346
+ ],
+ "operating_income": [
+  40576,
+  31228
+ ],
+ "segments": [
+  {
+   "l": "Google Services",
+   "revenue": [
+    96302,
+    87052
+   ],
+   "operating_income": [
+    39157,
+    33527
+   ]
+  },
+  {
+   "l": "Google Cloud",
+   "revenue": [
+    30709,
+    15157
+   ],
+   "operating_income": [
+    11121,
+    3594
+   ]
+  },
+  {
+   "l": "Other Bets",
+   "revenue": [
+    372,
+    344
+   ],
+   "operating_income": [
+    -2047,
+    -1426
+   ]
+  }
+ ],
+ "other_revenue": [
+  {
+   "l": "Hedging gains",
+   "v": 194,
+   "p": -207
+  }
+ ],
+ "corporate": [
+  {
+   "l": "Alphabet-level costs",
+   "v": -7849,
+   "p": null,
+   "note": "Alphabet-level activities were -$7.66B; shown here before the $194M hedging gains, which enter on the left."
+  }
+ ],
+ "source": "Alphabet Q3 2026 earnings release"
+}

@@ -1,0 +1,81 @@
+{
+ "flow": "income",
+ "company": "Rivian",
+ "ticker": "RIVN",
+ "period": "Q3 2026",
+ "dates": "Jul 1 to Sep 30, 2026",
+ "basis": "GAAP",
+ "views": {
+  "Product": {
+   "items": [
+    {
+     "l": "Automotive",
+     "v": 1550,
+     "p": 1142
+    },
+    {
+     "l": "Software and services",
+     "v": 605,
+     "p": 416
+    }
+   ]
+  },
+  "Business": {
+   "same": "Product",
+   "note": "Rivian reports these two lines as its segments."
+  }
+ },
+ "revenue": [
+  2155,
+  1558
+ ],
+ "cogs": [
+  1979,
+  1534
+ ],
+ "opex": [
+  {
+   "l": "R&D",
+   "full": "Research and development",
+   "v": 485,
+   "p": 453
+  },
+  {
+   "l": "SG&A",
+   "full": "Selling, general and administrative",
+   "v": 572,
+   "p": 554
+  }
+ ],
+ "operating_income": [
+  -881,
+  -983
+ ],
+ "nonop": [
+  {
+   "l": "Interest income",
+   "v": 55,
+   "p": 76,
+   "note": "Derived: the release excerpt omitted this line, so it is backed out from the reported pretax loss."
+  },
+  {
+   "l": "Interest expense",
+   "v": -74,
+   "p": -69
+  },
+  {
+   "l": "Other expense",
+   "v": -8,
+   "p": -191
+  }
+ ],
+ "tax": [
+  -1,
+  -1
+ ],
+ "net_income": [
+  -907,
+  -1166
+ ],
+ "source": "Rivian Q3 2026 shareholder letter (interest income derived)"
+}

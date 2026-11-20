@@ -1,0 +1,113 @@
+{
+ "flow": "income",
+ "company": "Marvell",
+ "ticker": "MRVL",
+ "period": "Q2 FY27",
+ "dates": "May 3 to Aug 1, 2026",
+ "basis": "GAAP",
+ "views": {
+  "Product": {
+   "items": [
+    {
+     "l": "Data center",
+     "v": 2171.5,
+     "p": 1490.5
+    },
+    {
+     "l": "Comms and other",
+     "full": "Communications and other",
+     "v": 567.8,
+     "p": 515.6
+    }
+   ]
+  },
+  "Business": {
+   "same": "Product",
+   "note": "Marvell reports a single business segment, so this view matches the product split."
+  },
+  "Geography": {
+   "note": "By ship-to location, which is often an assembly hub rather than where the end customer sits.",
+   "items": [
+    {
+     "l": "China",
+     "v": 1161.5,
+     "p": 583.4
+    },
+    {
+     "l": "Taiwan",
+     "v": 456.8,
+     "p": 541.2
+    },
+    {
+     "l": "Singapore",
+     "v": 337.3,
+     "p": 141.5
+    },
+    {
+     "l": "United States",
+     "v": 190.8,
+     "p": 310.8
+    },
+    {
+     "l": "Other",
+     "full": "Other countries",
+     "v": 592.9,
+     "p": 429.2
+    }
+   ]
+  }
+ },
+ "revenue": [
+  2739.3,
+  2006.1
+ ],
+ "cogs": [
+  1283.7,
+  995.5
+ ],
+ "opex": [
+  {
+   "l": "R&D",
+   "full": "Research and development",
+   "v": 741.1,
+   "p": 519.0
+  },
+  {
+   "l": "SG&A",
+   "full": "Selling, general and administrative",
+   "v": 257.6,
+   "p": 192.8
+  },
+  {
+   "l": "Restructuring gain",
+   "v": -2.8,
+   "p": 8.7
+  }
+ ],
+ "operating_income": [
+  459.7,
+  290.1
+ ],
+ "nonop": [
+  {
+   "l": "Interest",
+   "full": "Interest expense",
+   "v": -61.6,
+   "p": -51.9
+  },
+  {
+   "l": "Other expense",
+   "v": -19.8,
+   "p": -4.5
+  }
+ ],
+ "tax": [
+  70.3,
+  38.9
+ ],
+ "net_income": [
+  308.0,
+  194.8
+ ],
+ "source": "Marvell Q2 FY27 earnings release and 10-Q"
+}

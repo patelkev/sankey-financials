@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>MRVL Q2 FY27 income statement</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--surface-1:#fcfcfb;--surface-2:#fff;--text-primary:#0b0b0b;--text-secondary:#52514e;--text-muted:#898781;
+--text-success:#0c7a0c;--text-danger:#c53030;--text-accent:#2a78d6;--bg-neutral:#f0efec;--border-strong:rgba(11,11,11,.18);
+--border-stronger:rgba(11,11,11,.4);--radius:8px}
+@media (prefers-color-scheme:dark){:root{--surface-1:#151515;--surface-2:#202020;--text-primary:#f0efec;--text-secondary:#c3c2b7;
+--text-muted:#898781;--text-success:#3fb950;--text-danger:#f47067;--text-accent:#3987e5;--bg-neutral:#262624;
+--border-strong:rgba(255,255,255,.18);--border-stronger:rgba(255,255,255,.4)}}
+body{margin:0;background:var(--surface-1);color:var(--text-primary);font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif}
+main{max-width:900px;margin:24px auto;padding:0 16px}
+button{font:inherit;cursor:pointer}
+#copied{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--surface-2);border:1px solid var(--border-strong);
+border-radius:8px;padding:8px 14px;font-size:13px;opacity:0;transition:opacity .2s}
+</style></head><body><main>
+<script>window.sendPrompt=t=>{navigator.clipboard&&navigator.clipboard.writeText(t);const c=document.getElementById('copied');
+c.style.opacity=1;setTimeout(()=>c.style.opacity=0,2200)}</script>
+<style>
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.seg{display:inline-flex;background:var(--bg-neutral);border-radius:var(--radius);padding:3px;gap:2px}
+.seg button{border:none;background:transparent;font-size:13px;padding:5px 12px;border-radius:6px;color:var(--text-secondary)}
+.seg button.on{background:var(--surface-2);color:var(--text-accent);font-weight:500}
+.lg{display:inline-flex;align-items:center;gap:5px;font-size:13px;color:var(--text-secondary)}
+.dot{width:9px;height:9px;border-radius:50%}
+.sw{border:none;background:transparent;padding:0;display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--text-secondary)}
+.trk{width:34px;height:20px;border-radius:10px;position:relative;transition:background .15s}
+.knb{position:absolute;top:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .15s}
+#tip{position:absolute;pointer-events:none;background:var(--surface-2);border:0.5px solid var(--border-strong);border-radius:8px;padding:8px 10px;font-size:12px;line-height:1.5;opacity:0;transition:opacity .1s;max-width:240px;z-index:2}
+svg text{paint-order:stroke;stroke:var(--surface-1);stroke-width:3px;stroke-linejoin:round}
+</style>
+<h2 class="sr-only">Interactive Sankey diagram: MRVL Q2 FY27 income statement, May 3 to Aug 1, 2026 · USD · GAAP.</h2>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;padding:.5rem 0 .25rem">
+  <div class="seg" id="views"></div>
+  <span id="legend" style="display:inline-flex;gap:14px;flex-wrap:wrap"></span>
+  <button class="sw" id="yoy" role="switch" aria-checked="true" style="margin-left:auto"><span id="cmpl">Y/Y</span><span class="trk" id="trk"><span class="knb" id="knb"></span></span></button>
+</div>
+<div id="note" style="font-size:12px;color:var(--text-secondary);min-height:18px"></div>
+<div id="wrap" style="position:relative">
+<svg id="sk" viewBox="0 0 760 600" width="100%" role="img" aria-label="Financial Sankey diagram"></svg>
+<div id="tip"></div>
+</div>
+<script>
+const CFG={"company":"Marvell","ticker":"MRVL","title":"MRVL Q2 FY27 income statement","sub":"May 3 to Aug 1, 2026 · USD · GAAP","flow":"income","legend":[["Revenue","rev"],["Expense","cost"],["Profit","profit"]],"base":[{"id":"rev","c":1,"t":"rev","l":"Revenue","v":2739.3,"p":2006.1},{"id":"gp","c":2,"t":"profit","l":"Gross profit","v":1455.6,"p":1010.6},{"id":"cogs","c":2,"t":"cost","l":"Cost of revenue","v":1283.7,"p":995.5},{"id":"oi","c":3,"t":"profit","l":"Operating income","v":459.7,"p":290.1},{"id":"opex","c":3,"t":"cost","l":"Operating expenses","v":995.9,"p":720.5},{"id":"restructuring_gain","c":3,"t":"profit","l":"Restructuring gain","v":2.8,"p":null,"note":"A year ago this line was $8.7M of charge."},{"id":"pti","c":4,"t":"profit","l":"Pretax income","v":378.3,"p":233.7},{"id":"io","c":4,"t":"cost","l":"Interest and other","v":81.4,"p":56.4},{"id":"ni","c":5,"t":"profit","l":"Net income","v":308.0,"p":194.8},{"id":"tax","c":5,"t":"cost","l":"Income tax","v":70.3,"p":38.9},{"id":"interest","c":5,"t":"cost","l":"Interest","v":61.6,"p":51.9,"full":"Interest expense"},{"id":"other_expense","c":5,"t":"cost","l":"Other expense","v":19.8,"p":4.5},{"id":"gox","c":4,"t":"cost","l":"Gross operating expenses","v":998.7,"p":null,"note":"Operating expenses before the gains shown entering this box."},{"id":"r_d","c":5,"t":"cost","l":"R&D","v":741.1,"p":519.0,"full":"Research and development"},{"id":"sg_a","c":5,"t":"cost","l":"SG&A","v":257.6,"p":192.8,"full":"Selling, general and administrative"}],"links":[["rev","gp",1455.6],["rev","cogs",1283.7],["gp","oi",459.7],["gp","opex",995.9],["oi","pti",378.3],["oi","io",81.4],["pti","ni",308.0],["pti","tax",70.3],["io","interest",61.6],["io","other_expense",19.8],["opex","gox",995.9],["restructuring_gain","gox",2.8],["gox","r_d",741.1],["gox","sg_a",257.6]],"hub":"rev","views":{"prod":{"label":"Product","nodes":[{"id":"data_center","l":"Data center","v":2171.5,"p":1490.5},{"id":"comms_and_other","l":"Comms and other","v":567.8,"p":515.6,"full":"Communications and other"}]},"biz":{"label":"Business","same":"prod","note":"Marvell reports a single business segment, so this view matches the product split."},"geo":{"label":"Geography","nodes":[{"id":"china","l":"China","v":1161.5,"p":583.4},{"id":"taiwan","l":"Taiwan","v":456.8,"p":541.2},{"id":"singapore","l":"Singapore","v":337.3,"p":141.5},{"id":"united_states","l":"United States","v":190.8,"p":310.8},{"id":"other","l":"Other","v":592.9,"p":429.2,"full":"Other countries"}],"note":"By ship-to location, which is often an assembly hub rather than where the end customer sits."}},"yoy":true,"source":"Marvell Q2 FY27 earnings release and 10-Q"};
+const COL={rev:'#2a78d6',profit:'#1baf7a',cost:'#eb6834',other:'#888780',loss:'#e34948'};
+const VW=760,NW=10,TOP=72,BASEH=470,LH=15,MINGAP=14,MINH=2;
+const VK=Object.keys(CFG.views||{});
+const HUB=CFG.hub?CFG.base.find(n=>n.id===CFG.hub):null;
+const SCALE=CFG.scale||{v:HUB.v,l:HUB.l};
+const K=BASEH*0.72/SCALE.v;
+const UNIT=CFG.unit||'usd_m';
+const S={view:VK[0]||null,yoy:CFG.yoy!==false};
+let NODES=[],LINKS=[],M={},XS=[],NC=1,H=BASEH,VH=600,WRAP=100;
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const tw=(s,z)=>String(s).length*z*0.56;
+const fmt=v=>{const a=Math.abs(v),sg=v<0?'-':'';if(UNIT==='pct')return sg+a.toFixed(a<10?2:1)+'%';return sg+(a>=1e6?'$'+(a/1e6).toFixed(2)+'T':a>=1000?'$'+(a/1000).toFixed(2)+'B':'$'+a.toFixed(1)+'M')};
+const okP=n=>n.p!=null&&n.p>0;
+const yoyStr=n=>{if(!okP(n))return'n/m';const r=(n.v/n.p-1)*100;return Math.abs(r)<0.05?'0.0%':(r>0?'+':'')+r.toFixed(1)+'%'};
+const good=n=>n.t==='rev'||n.t==='profit';
+const yoyCol=n=>!okP(n)||!good(n)?'var(--text-secondary)':n.v>=n.p?'var(--text-success)':'var(--text-danger)';
+function src(){if(!S.view)return[];const v=CFG.views[S.view];return v.same?CFG.views[v.same].nodes:v.nodes}
+function side(n){return n.sd||(n.c===0?'left':(n.c===NC-1||!n.out.length)?'right':'above')}
+function wrap(s,max){
+  if(tw(s,12.5)<=max)return[s];
+  const w=s.split(' ');let a=[],cur='';
+  w.forEach(x=>{const t=cur?cur+' '+x:x;if(tw(t,12.5)>max&&cur){a.push(cur);cur=x}else cur=t});
+  if(cur)a.push(cur);return a;
+}
+function lines(n){
+  const L=[{s:fmt(n.v),f:COL[n.t],z:13,w:500}];
+  if(S.yoy)L.push({s:yoyStr(n),f:yoyCol(n),z:12,w:400});
+  const names=side(n)==='above'?wrap(n.l,WRAP):[n.l];
+  names.forEach(s=>L.push({s,f:'var(--text-primary)',z:12.5,w:400}));
+  return L;
+}
+const labH=n=>lines(n).length*LH;
+const topExt=n=>side(n)==='above'?labH(n)+8:Math.max(0,(labH(n)-n.h)/2)+4;
+const botExt=n=>side(n)==='above'?0:Math.max(0,(labH(n)-n.h)/2)+4;
+function build(){
+  const s=src(),pos=s.filter(n=>n.v>0),neg=s.filter(n=>n.v<0);
+  NODES=pos.map(n=>({t:'rev',...n,c:0})).concat(CFG.base.map(n=>({...n})));
+  if(HUB&&neg.length){
+    const hc=HUB.c;
+    neg.forEach(n=>NODES.push({...n,c:hc+1,t:'other',v:-n.v,p:n.p!=null&&n.p<0?-n.p:null,neg:true,
+      note:(n.note?n.note+' ':'')+`Reduces ${HUB.l.toLowerCase()} by ${fmt(-n.v)}.`}));
+  }
+  NC=Math.max(...NODES.map(n=>n.c))+1;
+  M={};NODES.forEach((n,i)=>{n.i=i;n.in=[];n.out=[];M[n.id]=n});
+  const negSum=neg.reduce((a,n)=>a-n.v,0);
+  NODES.forEach(n=>{const dv=n.id===CFG.hub?n.v+negSum:n.v;n.dv=dv;n.tiny=dv*K<MINH;n.h=Math.max(MINH,dv*K)});
+  if(HUB&&negSum)M[CFG.hub].auto=`Drawn before ${fmt(negSum)} of negative items, which branch off to the right.`;
+  LINKS=pos.map(n=>({s:M[n.id],t:M[CFG.hub],v:n.v}))
+    .concat(CFG.links.map(([a,b,v])=>({s:M[a],t:M[b],v})))
+    .concat(neg.map(n=>({s:M[CFG.hub],t:M[n.id],v:-n.v})));
+  LINKS.forEach((l,i)=>{l.i=i;l.w=Math.max(1,l.v*K);l.s.out.push(l);l.t.in.push(l)});
+  NODES.forEach(n=>{n.out.sort((a,b)=>a.t.i-b.t.i);let o=0;n.out.forEach(l=>{l.so=o;o+=l.w})});
+  const lw=n=>Math.max(...[fmt(n.v),S.yoy?yoyStr(n):'',n.l].map((s,k)=>tw(s,k===0?13:12.5)));
+  const c0=NODES.filter(n=>n.c===0),cl=NODES.filter(n=>n.c===NC-1);
+  const left=Math.max(110,(c0.length?Math.max(...c0.map(lw)):0)+14);
+  const right=Math.min(VW-140,VW-Math.max(...cl.map(lw))-NW-14);
+  XS=Array.from({length:NC},(_,c)=>NC===1?left:Math.round(left+c*(right-left)/(NC-1)));
+  WRAP=NC>1?(right-left)/(NC-1)-12:200;
+}
+const gap=(a,b)=>Math.max(MINGAP,botExt(a)+topExt(b));
+function cols(){return[...Array(NC)].map((_,c)=>NODES.filter(n=>n.c===c))}
+function resolve(col){
+  let p=null;
+  col.forEach(n=>{const lo=p?p.y+p.h+gap(p,n):TOP+topExt(n);n.y=Math.max(n.ideal,lo);p=n});
+}
+function layout(){
+  const C=cols(),start=TOP+Math.max(...C.filter(c=>c.length).map(c=>topExt(c[0])));
+  let from=0;
+  if(HUB){
+    const hub=M[CFG.hub];hub.y=start;
+    if(hub.c===1){let o=0;C[0].forEach(n=>{n.ideal=hub.y+o;o+=n.h});resolve(C[0]);from=1}
+  }
+  for(let c=from;c<NC;c++){
+    C[c].forEach(n=>{n.ideal=HUB&&n.id===CFG.hub?M[CFG.hub].y:n.in.length?Math.min(...n.in.map(l=>l.s.y+l.so)):-Infinity});
+    resolve(C[c]);
+  }
+  NODES.forEach(n=>{n.in.sort((a,b)=>a.s.y-b.s.y||a.s.i-b.s.i);let t=0;n.in.forEach(l=>{l.to=t;t+=l.w})});
+  H=Math.max(...NODES.map(n=>n.y+n.h+botExt(n)))-TOP;VH=TOP+H+24;
+  return C;
+}
+function lbox(n){
+  const L=lines(n),tot=L.length*LH,sd=side(n),w=Math.max(...L.map(q=>tw(q.s,q.z)));let x0,y0;
+  if(sd==='left'){x0=XS[0]-7-w;y0=n.y+n.h/2-tot/2}
+  else if(sd==='right'){x0=XS[n.c]+NW+7;y0=n.y+n.h/2-tot/2}
+  else{x0=XS[n.c]+NW/2-w/2;y0=n.y-6-tot}
+  return{x0,x1:x0+w,y0,y1:y0+tot};
+}
+const hit=(a,b)=>a.x0<b.x1&&b.x0<a.x1&&a.y0<b.y1&&b.y0<a.y1;
+function fixLeaves(){
+  let moved=false;
+  NODES.filter(n=>n.c>0&&n.c<NC-1&&!n.out.length&&!n.sd).forEach(n=>{
+    const b=lbox(n);b.x1+=4;
+    const clash=NODES.some(m=>m!==n&&m.c>n.c&&(hit(b,{x0:XS[m.c],x1:XS[m.c]+NW,y0:m.y-4,y1:m.y+m.h+4})||hit(b,lbox(m))));
+    if(clash){n.sd='above';moved=true}
+  });
+  return moved;
+}
+function label(n){
+  const L=lines(n),tot=L.length*LH,sd=side(n);let x,a,y0;
+  if(sd==='left'){x=XS[0]-7;a='end';y0=n.y+n.h/2-tot/2+11}
+  else if(sd==='right'){x=XS[n.c]+NW+7;a='start';y0=n.y+n.h/2-tot/2+11}
+  else{x=XS[n.c]+NW/2;a='middle';y0=n.y-6-tot+11}
+  return `<g class="lb" data-n="${n.id}" style="pointer-events:none">`+L.map((q,k)=>`<text x="${x}" y="${(y0+k*LH).toFixed(1)}" text-anchor="${a}" style="fill:${q.f};font-size:${q.z}px;font-weight:${q.w}">${esc(q.s)}</text>`).join('')+'</g>';
+}
+function render(){
+  build();layout();if(fixLeaves())layout();let g='<defs>',p='',nd='',lb='';
+  LINKS.forEach(l=>{
+    const x0=XS[l.s.c]+NW,x1=XS[l.t.c],xm=(x0+x1)/2,a=l.s.y+l.so,b=a+l.w,c=l.t.y+l.to,d=c+l.w;
+    g+=`<linearGradient id="lg${l.i}" gradientUnits="userSpaceOnUse" x1="${x0}" x2="${x1}"><stop offset="0" stop-color="${COL[l.s.t]}"/><stop offset="1" stop-color="${COL[l.t.t]}"/></linearGradient>`;
+    p+=`<path class="lk" data-l="${l.i}" d="M${x0},${a}C${xm},${a} ${xm},${c} ${x1},${c}L${x1},${d}C${xm},${d} ${xm},${b} ${x0},${b}Z" fill="url(#lg${l.i})" style="opacity:.26;transition:opacity .12s;cursor:pointer"/>`;
+  });
+  NODES.forEach(n=>{nd+=`<rect class="nd" data-n="${n.id}" x="${XS[n.c]}" y="${n.y.toFixed(1)}" width="${NW}" height="${n.h.toFixed(1)}" rx="1.5" fill="${COL[n.t]}" style="cursor:pointer;transition:opacity .12s"/>`;lb+=label(n)});
+  const t=`<text x="${VW/2}" y="30" text-anchor="middle" style="fill:var(--text-primary);font-size:17px;font-weight:500">${esc(CFG.title)}</text><text x="${VW/2}" y="50" text-anchor="middle" style="fill:var(--text-secondary);font-size:12px">${esc(CFG.sub)}</text>`;
+  const sk=document.getElementById('sk');sk.setAttribute('viewBox',`0 0 ${VW} ${Math.ceil(VH)}`);
+  sk.innerHTML=g+'</defs>'+t+p+nd+lb;
+}
+function related(id){
+  const set=new Set([id]),ls=new Set();
+  const up=n=>n.in.forEach(l=>{ls.add(l.i);if(!set.has(l.s.id)){set.add(l.s.id);up(l.s)}});
+  const dn=n=>n.out.forEach(l=>{ls.add(l.i);if(!set.has(l.t.id)){set.add(l.t.id);dn(l.t)}});
+  up(M[id]);dn(M[id]);return{set,ls};
+}
+const sk=document.getElementById('sk'),tip=document.getElementById('tip'),wrapEl=document.getElementById('wrap');
+function hilite(r){
+  sk.querySelectorAll('.lk').forEach(e=>e.style.opacity=!r?.26:r.ls.has(+e.dataset.l)?.5:.06);
+  sk.querySelectorAll('.nd,.lb').forEach(e=>e.style.opacity=!r||r.set.has(e.dataset.n)?1:.25);
+}
+function showTip(e,h){tip.innerHTML=h;tip.style.opacity=1;const r=wrapEl.getBoundingClientRect();let x=e.clientX-r.left+14;if(x>r.width-250)x=e.clientX-r.left-250;tip.style.left=x+'px';tip.style.top=(e.clientY-r.top+14)+'px'}
+function nodeTip(n){
+  let h=`<div style="font-weight:500;color:var(--text-primary)">${esc(n.full||n.l)}</div><div style="color:var(--text-primary)">${fmt(n.v)} · ${(n.v/SCALE.v*100).toFixed(1)}% of ${esc(SCALE.l.toLowerCase())}</div>`;
+  if(CFG.yoy!==false&&n.p!=null)h+=`<div style="color:var(--text-secondary)">${esc(CFG.prevLabel||'Year ago')} ${fmt(n.p)} · ${esc(CFG.cmp||'Y/Y')} ${yoyStr(n)}</div>`;
+  [n.note,n.auto,n.tiny?'Too small to draw to scale, so shown at a minimum width.':''].forEach(t=>{if(t)h+=`<div style="color:var(--text-secondary)">${esc(t)}</div>`});
+  return h+'<div style="color:var(--text-muted)">Click to ask about this line</div>';
+}
+sk.addEventListener('mousemove',e=>{
+  const t=e.target;
+  if(t.classList.contains('nd')){const n=M[t.dataset.n];hilite(related(n.id));showTip(e,nodeTip(n))}
+  else if(t.classList.contains('lk')){const l=LINKS[+t.dataset.l];hilite({set:new Set([l.s.id,l.t.id]),ls:new Set([l.i])});showTip(e,`<div style="font-weight:500;color:var(--text-primary)">${esc(l.s.l)} → ${esc(l.t.l)}</div><div style="color:var(--text-primary)">${fmt(l.v)}</div><div style="color:var(--text-secondary)">${(l.v/SCALE.v*100).toFixed(1)}% of ${esc(SCALE.l.toLowerCase())} · ${(l.v/l.s.v*100).toFixed(1)}% of ${esc(l.s.l.toLowerCase())}</div>`)}
+  else{hilite(null);tip.style.opacity=0}
+});
+sk.addEventListener('mouseleave',()=>{hilite(null);tip.style.opacity=0});
+sk.addEventListener('click',e=>{const t=e.target;if(t.classList.contains('nd')){const n=M[t.dataset.n];sendPrompt(`Explain ${CFG.company}'s ${CFG.title.replace(CFG.ticker+' ','')} ${n.full||n.l} line (${fmt(n.v)}${S.yoy&&okP(n)?', '+yoyStr(n)+' '+(CFG.cmp||'Y/Y'):''}). What drove it and what should I watch?`)}});
+const LEG=CFG.legend||[['Revenue','rev'],['Expense','cost'],['Profit','profit']];
+document.getElementById('legend').innerHTML=LEG.map(([l,t])=>`<span class="lg"><span class="dot" style="background:${COL[t]}"></span>${esc(l)}</span>`).join('');
+document.getElementById('cmpl').textContent=CFG.cmp||'Y/Y';
+if(CFG.yoy===false)document.getElementById('yoy').style.display='none';
+const vb=document.getElementById('views');
+vb.innerHTML=VK.map((k,i)=>`<button data-v="${k}"${i?'':' class="on"'}>${esc(CFG.views[k].label)}</button>`).join('');
+if(VK.length<2)vb.style.display='none';
+vb.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;vb.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));S.view=b.dataset.v;document.getElementById('note').textContent=(S.view&&CFG.views[S.view].note)||'';render()});
+function setSw(){document.getElementById('yoy').setAttribute('aria-checked',S.yoy);document.getElementById('trk').style.background=S.yoy?'#2a78d6':'var(--border-stronger)';document.getElementById('knb').style.left=S.yoy?'16px':'2px'}
+document.getElementById('yoy').addEventListener('click',()=>{S.yoy=!S.yoy;setSw();render()});
+setSw();document.getElementById('note').textContent=(S.view&&CFG.views[S.view].note)||'';render();
+</script>
+<p style="font-size:12px;color:var(--text-muted)">Source: Marvell Q2 FY27 earnings release and 10-Q</p></main>
+<div id="copied">Question copied. Paste it into your AI assistant to ask about this line.</div></body></html>

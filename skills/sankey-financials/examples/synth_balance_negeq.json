@@ -1,0 +1,4 @@
+{"flow":"balance","company":"Deficitco","ticker":"DEF","period":"Q4","dates":"Synthetic","basis":"GAAP",
+ "assets":[{"l":"Cash","v":3000,"p":2800},{"l":"Property","v":20000,"p":19000},{"l":"Other","v":5000,"p":5200}],
+ "liabilities":[{"l":"Debt","v":30000,"p":28000},{"l":"Leases","v":2000,"p":1900},{"l":"Other","v":4000,"p":4100}],
+ "equity":[{"l":"Paid-in capital","v":1000,"p":1000},{"l":"Accumulated deficit","v":-9000,"p":-8000}]}

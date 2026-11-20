@@ -1,0 +1,2 @@
+{"flow":"income","company":"Typo Inc","ticker":"BAD","period":"Q1","dates":"Synthetic",
+ "revenue":[1000,900],"cogs":[400,380],"opex":[{"l":"R&D","v":200,"p":190}],"nonop":[],"tax":[50,40],"net_income":[400,300]}

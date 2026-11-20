@@ -1,0 +1,94 @@
+{
+ "flow": "holdings",
+ "fund": "Roundhill Memory ETF (DRAM)",
+ "count": 25,
+ "aum": 13951.151,
+ "min_weight": 2,
+ "sectors": [
+  {
+   "l": "DRAM & logic memory",
+   "v": 59.56
+  },
+  {
+   "l": "NAND & storage",
+   "v": 8.939
+  },
+  {
+   "l": "T-bills & cash",
+   "v": 31.499
+  }
+ ],
+ "holdings": [
+  {
+   "l": "Samsung",
+   "v": 19.182,
+   "sector": "DRAM & logic memory"
+  },
+  {
+   "l": "Micron",
+   "v": 18.387,
+   "sector": "DRAM & logic memory"
+  },
+  {
+   "l": "SK hynix",
+   "v": 15.503,
+   "sector": "DRAM & logic memory"
+  },
+  {
+   "l": "CXMT",
+   "v": 3.603,
+   "sector": "DRAM & logic memory"
+  },
+  {
+   "l": "Nanya",
+   "v": 1.569,
+   "sector": "DRAM & logic memory"
+  },
+  {
+   "l": "Winbond",
+   "v": 0.699,
+   "sector": "DRAM & logic memory"
+  },
+  {
+   "l": "GigaDevice",
+   "v": 0.617,
+   "sector": "DRAM & logic memory"
+  },
+  {
+   "l": "Seagate",
+   "v": 2.802,
+   "sector": "NAND & storage"
+  },
+  {
+   "l": "Western Digital",
+   "v": 2.418,
+   "sector": "NAND & storage"
+  },
+  {
+   "l": "Sandisk",
+   "v": 2.226,
+   "sector": "NAND & storage"
+  },
+  {
+   "l": "Kioxia",
+   "v": 1.493,
+   "sector": "NAND & storage"
+  },
+  {
+   "l": "US T-bills",
+   "v": 31.465,
+   "sector": "T-bills & cash"
+  },
+  {
+   "l": "Cash (FX)",
+   "v": 0.034,
+   "sector": "T-bills & cash"
+  }
+ ],
+ "source": "stockanalysis.com / Roundhill holdings as of Nov 19, 2026. Physical shares and total-return swaps on the same name are combined. Weights are rescaled to 100% of gross exposure (native gross is about 146% because swaps are funded by T-bills).",
+ "ticker": "DRAM",
+ "company": "Roundhill Memory ETF",
+ "period": "Nov 19, 2026",
+ "dates": "Holdings as of Nov 19, 2026",
+ "basis": "Holdings"
+}

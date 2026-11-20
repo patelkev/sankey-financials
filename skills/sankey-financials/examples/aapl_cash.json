@@ -1,0 +1,144 @@
+{
+ "flow": "cashflow",
+ "company": "Apple",
+ "ticker": "AAPL",
+ "period": "FY2026",
+ "dates": "12 months to Sep 26, 2026",
+ "basis": "GAAP",
+ "operating": [
+  {
+   "l": "Net income",
+   "v": 132175,
+   "p": 112010
+  },
+  {
+   "l": "Depreciation and amortization",
+   "v": 13423,
+   "p": 11698
+  },
+  {
+   "l": "Stock-based compensation",
+   "v": 13789,
+   "p": 12863
+  },
+  {
+   "l": "Other adjustments",
+   "v": 568,
+   "p": -89
+  },
+  {
+   "l": "AR",
+   "group": "Working capital",
+   "v": -3994,
+   "p": -6682
+  },
+  {
+   "l": "vendor non-trade receivables",
+   "group": "Working capital",
+   "v": -6716,
+   "p": -347
+  },
+  {
+   "l": "inventories",
+   "group": "Working capital",
+   "v": -8905,
+   "p": 1400
+  },
+  {
+   "l": "other assets",
+   "group": "Working capital",
+   "v": -21117,
+   "p": -9197
+  },
+  {
+   "l": "accounts payable",
+   "group": "Working capital",
+   "v": 12171,
+   "p": 902
+  },
+  {
+   "l": "other liabilities",
+   "group": "Working capital",
+   "v": 13703,
+   "p": -11076
+  }
+ ],
+ "cfo": [
+  145097,
+  111482
+ ],
+ "capex": [
+  9041,
+  12715
+ ],
+ "other": [
+  {
+   "l": "Buybacks",
+   "full": "Repurchases of common stock",
+   "v": -86390,
+   "p": -90711
+  },
+  {
+   "l": "Dividends",
+   "v": -15721,
+   "p": -15421
+  },
+  {
+   "l": "Term debt repaid",
+   "group": "Debt repaid",
+   "v": -12396,
+   "p": -10932
+  },
+  {
+   "l": "Commercial paper repaid",
+   "group": "Debt repaid",
+   "v": -5911,
+   "p": -2032
+  },
+  {
+   "l": "Debt issued",
+   "v": 0,
+   "p": 4481
+  },
+  {
+   "l": "Taxes on employee share settlements",
+   "v": -6793,
+   "p": -5960
+  },
+  {
+   "l": "purchases",
+   "group": "Net securities purchases",
+   "v": -54945,
+   "p": -24407
+  },
+  {
+   "l": "maturities",
+   "group": "Net securities purchases",
+   "v": 34815,
+   "p": 40907
+  },
+  {
+   "l": "sales",
+   "group": "Net securities purchases",
+   "v": 14280,
+   "p": 12890
+  },
+  {
+   "l": "other investing",
+   "group": "Other",
+   "v": -2389,
+   "p": -1480
+  },
+  {
+   "l": "other financing",
+   "group": "Other",
+   "v": -235,
+   "p": -111
+  }
+ ],
+ "change_in_cash": [
+  371,
+  5991
+ ],
+ "source": "Apple FY26 Q4 condensed consolidated financial statements"
+}

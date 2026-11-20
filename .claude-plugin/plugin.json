@@ -1,0 +1,7 @@
+{
+  "name": "sankey-financials",
+  "description": "Interactive Sankey diagrams of where a company's or fund's money comes from and goes: income statements, cash flow, balance sheets, ETF holdings and segment profit.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "keywords": ["sankey", "finance", "earnings", "visualization", "etf"]
+}

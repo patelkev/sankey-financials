@@ -1,0 +1,159 @@
+{
+ "flow": "income",
+ "company": "Alphabet",
+ "ticker": "GOOG",
+ "period": "Q3 2026",
+ "dates": "Jul 1 to Sep 30, 2026",
+ "basis": "GAAP",
+ "views": {
+  "Product": {
+   "items": [
+    {
+     "l": "Search and other",
+     "full": "Google Search and other",
+     "v": 63350,
+     "p": 56567
+    },
+    {
+     "l": "Google Cloud",
+     "v": 30709,
+     "p": 15157
+    },
+    {
+     "l": "Subscriptions and devices",
+     "full": "Google subscriptions, platforms, and devices",
+     "v": 14290,
+     "p": 12870
+    },
+    {
+     "l": "YouTube ads",
+     "v": 11207,
+     "p": 10261
+    },
+    {
+     "l": "Google Network",
+     "v": 7455,
+     "p": 7354
+    },
+    {
+     "l": "Other Bets",
+     "v": 372,
+     "p": 344
+    },
+    {
+     "l": "Hedging gains",
+     "v": 194,
+     "p": -207,
+     "note": "Gains from currency hedges, reported apart from product revenue."
+    }
+   ]
+  },
+  "Business": {
+   "items": [
+    {
+     "l": "Google Services",
+     "v": 96302,
+     "p": 87052
+    },
+    {
+     "l": "Google Cloud",
+     "v": 30709,
+     "p": 15157
+    },
+    {
+     "l": "Other Bets",
+     "v": 372,
+     "p": 344
+    },
+    {
+     "l": "Hedging gains",
+     "v": 194,
+     "p": -207
+    }
+   ]
+  },
+  "Geography": {
+   "note": "By customer location; hedging gains are reported separately.",
+   "items": [
+    {
+     "l": "United States",
+     "v": 67681,
+     "p": 48758
+    },
+    {
+     "l": "EMEA",
+     "full": "Europe, Middle East and Africa",
+     "v": 32695,
+     "p": 29911
+    },
+    {
+     "l": "APAC",
+     "full": "Asia-Pacific",
+     "v": 19906,
+     "p": 17819
+    },
+    {
+     "l": "Other Americas",
+     "v": 7101,
+     "p": 6065
+    },
+    {
+     "l": "Hedging gains",
+     "v": 194,
+     "p": -207
+    }
+   ]
+  }
+ },
+ "revenue": [
+  127577,
+  102346
+ ],
+ "cogs": [
+  51419,
+  41369
+ ],
+ "opex": [
+  {
+   "l": "R&D",
+   "full": "Research and development",
+   "v": 20640,
+   "p": 15151
+  },
+  {
+   "l": "Sales and marketing",
+   "v": 8804,
+   "p": 7205
+  },
+  {
+   "l": "G&A",
+   "full": "General and administrative",
+   "v": 6138,
+   "p": 7393
+  }
+ ],
+ "operating_income": [
+  40576,
+  31228
+ ],
+ "nonop": [
+  {
+   "l": "Other expense",
+   "full": "Other income (expense), net",
+   "v": -8221,
+   "p": 12759
+  }
+ ],
+ "tax": [
+  5887,
+  9008
+ ],
+ "net_income": [
+  26468,
+  34979
+ ],
+ "notes": {
+  "net_income": "Includes $298M of preferred dividends; $26.17B went to common shareholders."
+ },
+ "source": "Alphabet Q3 2026 earnings release"
+}

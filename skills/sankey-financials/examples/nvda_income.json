@@ -1,0 +1,17 @@
+{"flow":"income","company":"NVIDIA","ticker":"NVDA","period":"Q3 FY2027","dates":"Jul 27 to Oct 25, 2026","basis":"GAAP",
+ "source":"NVIDIA Q3 FY27 earnings release (Nov 17, 2026) and CFO Commentary (SEC 8-K Ex. 99.2). Segment and platform splits are published to $0.1B only.",
+ "views":{
+  "Product":{"items":[
+    {"l":"Hyperscale","full":"Data Center: Hyperscale","v":60100,"p":35100,"note":"Published as $60.1B (prior $35.1B, recast)."},
+    {"l":"AI Clouds, Industrial & Enterprise","full":"Data Center: AI Clouds, Industrial, & Enterprise","v":47544,"p":16115,"note":"Derived: Data Center ($107.6B) less Hyperscale, balanced to reported revenue."},
+    {"l":"Edge Computing","full":"Edge Computing (Gaming, Pro Visualization, Automotive, OEM)","v":8200,"p":5791,"note":"Published as $8.2B; prior year is the sum of the four lines it replaced."}],
+   "note":"Market platform split. Q3 values are rounded to $0.1B in the CFO commentary; the exact figures come with the 10-Q."},
+  "Business":{"items":[
+    {"l":"Compute & Networking","v":106044,"p":50908,"note":"Published as $106.0B; derived to balance to reported revenue."},
+    {"l":"Graphics","v":9800,"p":6098,"note":"Published as $9.8B."}],
+   "note":"Reportable segments."}},
+ "revenue":[115844,57006],"cogs":[29168,15157],
+ "opex":[{"l":"R&D","full":"Research and development","v":7454,"p":4705},{"l":"SG&A","full":"Sales, general and administrative","v":1702,"p":1134}],
+ "operating_income":[77520,36010],
+ "nonop":[{"l":"Other income, net","v":1497,"p":1926}],
+ "tax":[13730,6026],"net_income":[65287,31910]}

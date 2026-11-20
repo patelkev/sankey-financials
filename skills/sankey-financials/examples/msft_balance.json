@@ -1,0 +1,163 @@
+{
+ "flow": "balance",
+ "company": "Microsoft",
+ "ticker": "MSFT",
+ "period": "Sep 30, 2026",
+ "title": "MSFT balance sheet, Sep 30, 2026",
+ "dates": "Compared with Jun 30, 2026",
+ "basis": "GAAP",
+ "cmp": "vs Jun 30",
+ "prev_label": "Jun 30",
+ "assets": [
+  {
+   "l": "Cash and investments",
+   "full": "Cash, cash equivalents, and short-term investments",
+   "v": 64509,
+   "p": 76843
+  },
+  {
+   "l": "Accounts receivable",
+   "v": 62084,
+   "p": 80876
+  },
+  {
+   "l": "inventories",
+   "group": "Other current assets",
+   "v": 1835,
+   "p": 1397
+  },
+  {
+   "l": "other current",
+   "group": "Other current assets",
+   "v": 57709,
+   "p": 48594
+  },
+  {
+   "l": "Property and equipment",
+   "v": 346844,
+   "p": 313076
+  },
+  {
+   "l": "Leased assets",
+   "full": "Operating lease right-of-use assets",
+   "v": 30178,
+   "p": 24177
+  },
+  {
+   "l": "Equity investments",
+   "full": "Equity and other investments",
+   "v": 37808,
+   "p": 36348
+  },
+  {
+   "l": "Goodwill",
+   "v": 119646,
+   "p": 119651
+  },
+  {
+   "l": "Intangibles",
+   "v": 17751,
+   "p": 18609
+  },
+  {
+   "l": "Other long-term assets",
+   "v": 41039,
+   "p": 38805
+  }
+ ],
+ "total_assets": [
+  779403,
+  758376
+ ],
+ "liabilities": [
+  {
+   "l": "Accounts payable",
+   "v": 42625,
+   "p": 42416
+  },
+  {
+   "l": "current debt",
+   "group": "Debt",
+   "v": 4391,
+   "p": 9227
+  },
+  {
+   "l": "long-term debt",
+   "group": "Debt",
+   "v": 31090,
+   "p": 31067
+  },
+  {
+   "l": "Accrued compensation",
+   "v": 10156,
+   "p": 14945
+  },
+  {
+   "l": "short-term",
+   "group": "Income taxes",
+   "v": 1447,
+   "p": 2534
+  },
+  {
+   "l": "long-term",
+   "group": "Income taxes",
+   "v": 29235,
+   "p": 28647
+  },
+  {
+   "l": "deferred",
+   "group": "Income taxes",
+   "v": 3174,
+   "p": 3054
+  },
+  {
+   "l": "short-term",
+   "group": "Unearned revenue",
+   "v": 66866,
+   "p": 72965
+  },
+  {
+   "l": "long-term",
+   "group": "Unearned revenue",
+   "v": 2697,
+   "p": 2747
+  },
+  {
+   "l": "Lease liabilities",
+   "full": "Operating lease liabilities",
+   "v": 21719,
+   "p": 16532
+  },
+  {
+   "l": "other current",
+   "group": "Other liabilities",
+   "v": 26483,
+   "p": 26738
+  },
+  {
+   "l": "other long-term",
+   "group": "Other liabilities",
+   "v": 69011,
+   "p": 65117
+  }
+ ],
+ "equity": [
+  {
+   "l": "Paid-in capital",
+   "full": "Common stock and paid-in capital",
+   "v": 119571,
+   "p": 117406
+  },
+  {
+   "l": "Retained earnings",
+   "v": 354795,
+   "p": 328265
+  },
+  {
+   "l": "Accumulated other comprehensive loss",
+   "v": -3857,
+   "p": -3284
+  }
+ ],
+ "source": "Microsoft FY27 Q1 earnings release"
+}

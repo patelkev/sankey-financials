@@ -1,0 +1,151 @@
+{
+ "flow": "holdings",
+ "fund": "Invesco QQQ",
+ "ticker": "QQQ",
+ "period": "Nov 18, 2026",
+ "title": "QQQ holdings by sector",
+ "dates": "As of Nov 18, 2026",
+ "count": 104,
+ "aum": 461198.62,
+ "min_weight": 2,
+ "sectors": [
+  {
+   "l": "Technology",
+   "v": 55
+  },
+  {
+   "l": "Consumer discretionary",
+   "v": 11.93
+  },
+  {
+   "l": "Communication services",
+   "v": 11.85
+  },
+  {
+   "l": "Consumer staples",
+   "v": 7.38
+  },
+  {
+   "l": "Industrials",
+   "v": 5.85
+  },
+  {
+   "l": "Healthcare",
+   "v": 4.96
+  },
+  {
+   "l": "Utilities",
+   "v": 1.22
+  },
+  {
+   "l": "Materials",
+   "v": 1.11
+  },
+  {
+   "l": "Energy",
+   "v": 0.45
+  },
+  {
+   "l": "Financials",
+   "v": 0.23
+  }
+ ],
+ "holdings": [
+  {
+   "l": "Apple",
+   "v": 8.74,
+   "sector": "Technology"
+  },
+  {
+   "l": "Microsoft",
+   "v": 6.41,
+   "sector": "Technology"
+  },
+  {
+   "l": "NVIDIA",
+   "v": 6.18,
+   "sector": "Technology"
+  },
+  {
+   "l": "Amazon",
+   "v": 4.9,
+   "sector": "Consumer discretionary"
+  },
+  {
+   "l": "AMD",
+   "v": 4.06,
+   "sector": "Technology"
+  },
+  {
+   "l": "Micron",
+   "v": 3.73,
+   "sector": "Technology"
+  },
+  {
+   "l": "Tesla",
+   "v": 3.42,
+   "sector": "Consumer discretionary"
+  },
+  {
+   "l": "Meta",
+   "v": 3.11,
+   "sector": "Communication services"
+  },
+  {
+   "l": "Walmart",
+   "v": 2.9,
+   "sector": "Consumer staples"
+  },
+  {
+   "l": "SpaceX",
+   "v": 2.89,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Broadcom",
+   "v": 2.86,
+   "sector": "Technology"
+  },
+  {
+   "l": "Alphabet",
+   "v": 2.81,
+   "sector": "Communication services"
+  },
+  {
+   "l": "Alphabet",
+   "v": 2.62,
+   "sector": "Communication services"
+  },
+  {
+   "l": "Costco",
+   "v": 2.28,
+   "sector": "Consumer staples"
+  },
+  {
+   "l": "Cisco",
+   "v": 1.8,
+   "sector": "Technology"
+  },
+  {
+   "l": "Palantir",
+   "v": 1.69,
+   "sector": "Technology"
+  },
+  {
+   "l": "Netflix",
+   "v": 1.17,
+   "sector": "Communication services"
+  },
+  {
+   "l": "Amgen",
+   "v": 1.13,
+   "sector": "Healthcare"
+  },
+  {
+   "l": "Linde",
+   "v": 1.11,
+   "sector": "Materials"
+  }
+ ],
+ "source": "stockanalysis.com QQQ holdings, Nov 18, 2026 (sector mapping by Claude)"
+}

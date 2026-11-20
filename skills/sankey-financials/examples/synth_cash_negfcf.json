@@ -1,0 +1,5 @@
+{"flow":"cashflow","company":"Buildco","ticker":"BLD","period":"FY","dates":"Synthetic","basis":"GAAP",
+ "operating":[{"l":"Net loss","v":-200,"p":-150},{"l":"Depreciation","v":500,"p":400},{"l":"Stock comp","v":100,"p":90},{"l":"Working capital","v":-50,"p":30}],
+ "cfo":[350,370],"capex":[600,300],
+ "other":[{"l":"Debt issued","v":400,"p":0},{"l":"Dividends","v":-50,"p":-50}],
+ "change_in_cash":[100,20]}
