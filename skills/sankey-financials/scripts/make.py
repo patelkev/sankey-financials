@@ -9,7 +9,7 @@ expenses/outflows positive where the spec says "cost" lists, see each flow.
 """
 import json, re, sys
 
-TOL = 1.0  # $M rounding tolerance for reported-total checks
+TOL = 1.0  # $M rounding tolerance for reported-total checks; make() shrinks it for small companies
 
 
 class SpecError(Exception):
@@ -42,12 +42,38 @@ def money(v):
     return ('-' if v < 0 else '') + s
 
 
+def num(x):
+    return f'{x:,.3f}' if TOL < 1 else f'{x:,.1f}'
+
+
 def check(name, got, want):
-    if want is None:
+    if want is None or got is None:
         return
     if abs(got - want) > TOL:
-        raise SpecError(f'{name}: computed {got:,.1f} but the filing says {want:,.1f} '
-                        f'(off by {got-want:,.1f}). Fix the line items before drawing.')
+        raise SpecError(f'{name}: computed {num(got)} but the filing says {num(want)} '
+                        f'(off by {num(got-want)}). Fix the line items before drawing.')
+
+
+def check_prior(name, got, want):
+    """Same check for the comparison column, so every Y/Y figure rests on reconciled numbers."""
+    if want is None or got is None:
+        return
+    if abs(got - want) > TOL:
+        raise SpecError(f'{name}, prior period: the prior figures add to {num(got)} but the reported prior total is '
+                        f'{num(want)} (off by {num(got-want)}). Fix the prior figures (or set unknown ones to null).')
+
+
+def psum(items, key='p'):
+    """Sum of prior values, or None if any is missing."""
+    vals = [d.get(key) for d in items]
+    return None if any(x is None for x in vals) else sum(float(x) for x in vals)
+
+
+def need(spec, *keys):
+    for k in keys:
+        if spec.get(k) is None:
+            raise SpecError(f'"{k}" is required: it is the reported total the chart is checked against. '
+                            'Copy it from the filing.')
 
 
 def grouped(items):
@@ -136,6 +162,7 @@ def income(spec):
     for label, v in spec.get('views', {}).items():
         if 'items' in v:
             check(f'{label} items vs revenue', sum(float(d['v']) for d in v['items']), rev)
+            check_prior(f'{label} items vs revenue', psum(v['items']), rev_p)
 
     gp, gp_p = rev - cogs, sub(rev_p, cogs_p)
     if rev <= 0:
@@ -144,9 +171,12 @@ def income(spec):
     if gp <= 0:
         raise SpecError('Gross loss (cost of revenue above revenue) is not supported yet.')
     ox = sum(float(d['v']) for d in opex)
-    ox_p = None if any(d.get('p') is None for d in opex) or not opex else sum(float(d['p']) for d in opex)
+    # priors come from the raw lines: grouped() drops lines that are zero now but were not a year ago
+    ox_p = psum(spec['opex']) if opex else None
     oi, oi_p = gp - ox, sub(gp_p, ox_p)
-    check('Operating income', oi, pair(spec['operating_income'])[0] if 'operating_income' in spec else None)
+    need(spec, 'operating_income', 'net_income')
+    check('Operating income', oi, pair(spec['operating_income'])[0])
+    check_prior('Operating income', oi_p, pair(spec['operating_income'])[1])
 
     R = g.node(1, 'rev', 'Revenue', rev, rev_p, key='rev')
     GP = g.node(2, 'profit', 'Gross profit', gp, gp_p, key='gp')
@@ -160,6 +190,8 @@ def income(spec):
         ni, ni_p = pair(spec['net_income']) if 'net_income' in spec else (None, None)
         nonop_sum = sum(float(d['v']) for d in nonop)
         check('Net income', oi + nonop_sum - tax, ni)
+        nps = psum(spec.get('nonop', []))
+        check_prior('Net income', None if oi_p is None or nps is None or tax_p is None else oi_p + nps - tax_p, ni_p)
         note = f'Spending exceeded gross profit by {money(loss)}.'
         if ni is not None:
             note += f' After other items and tax, the net loss was {money(-ni)}' + (f' ({money(-ni_p)} a year ago).' if ni_p is not None else '.')
@@ -192,7 +224,7 @@ def income(spec):
     g.link(R, GP, gp); g.link(R, C, cogs); g.link(GP, OI, oi); g.link(GP, OX, ox)
 
     nonop_sum = sum(float(d['v']) for d in nonop)
-    nonop_sum_p = None if any(d.get('p') is None for d in nonop) else sum(float(d['p']) for d in nonop)
+    nonop_sum_p = psum(spec.get('nonop', []))
     pti = oi + nonop_sum
     pti_p = None if oi_p is None or nonop_sum_p is None else oi_p + nonop_sum_p
     if pti <= 0:
@@ -216,7 +248,8 @@ def income(spec):
 
     ni = pti - tax
     ni_p = None if pti_p is None or tax_p is None else pti_p - tax_p
-    check('Net income', ni, pair(spec['net_income'])[0] if 'net_income' in spec else None)
+    check('Net income', ni, pair(spec['net_income'])[0])
+    check_prior('Net income', ni_p, pair(spec['net_income'])[1])
     if tax >= 0:
         NI = g.node(5, 'profit', 'Net income', ni, ni_p, note=spec.get('notes', {}).get('net_income'), key='ni')
         g.link(PTI, NI, pti - tax)
@@ -252,12 +285,15 @@ def cashflow(spec):
     ops = grouped(spec['operating'])
     cfo, cfo_p = pair(spec['cfo'])
     check('Operating items vs cash from operations', sum(float(d['v']) for d in ops), cfo)
+    check_prior('Operating items vs cash from operations', psum(spec['operating']), cfo_p)
     if cfo <= 0:
         raise SpecError('Negative operating cash flow is not supported yet.')
     capex, capex_p = pair(spec['capex'])
     other = grouped(spec.get('other', []))
     chg, chg_p = pair(spec['change_in_cash'])
     check('Change in cash', cfo - capex + sum(float(d['v']) for d in other), chg)
+    op = psum(spec.get('other', []))
+    check_prior('Change in cash', None if None in (cfo_p, capex_p, op) else cfo_p - capex_p + op, chg_p)
 
     H = g.node(1, 'rev', 'Operating cash flow', cfo, cfo_p, key='cfo')
     fcf = cfo - capex
@@ -319,11 +355,14 @@ def balance(spec):
     ta = sum(float(d['v']) for d in assets)
     tl = sum(float(d['v']) for d in liabs)
     te = sum(float(d['v']) for d in eq_items)
-    ta_p = None if any(d.get('p') is None for d in assets) else sum(float(d['p']) for d in assets)
-    tl_p = None if any(d.get('p') is None for d in liabs) else sum(float(d['p']) for d in liabs)
-    te_p = None if any(d.get('p') is None for d in eq_items) else sum(float(d['p']) for d in eq_items)
-    check('Total assets', ta, pair(spec['total_assets'])[0] if 'total_assets' in spec else None)
+    ta_p = psum(spec['assets'])
+    tl_p = psum(spec['liabilities'])
+    te_p = psum(spec['equity'])
+    need(spec, 'total_assets')
+    check('Total assets', ta, pair(spec['total_assets'])[0])
     check('Assets = liabilities + equity', ta, tl + te)
+    check_prior('Total assets', ta_p, pair(spec['total_assets'])[1])
+    check_prior('Liabilities + equity vs total assets', None if tl_p is None or te_p is None else tl_p + te_p, ta_p)
     assets = net_into_largest(assets, 'asset')
     if te < 0:
         A = [(g.node(0, 'rev', *item(d)[0:3], d.get('full'), d.get('note')), float(d['v'])) for d in assets]
@@ -393,11 +432,18 @@ def segments(spec):
     extra_rev = grouped(spec.get('other_revenue', []))
     corp = grouped(spec.get('corporate', []))
     tot_rev = sum(pair(s['revenue'])[0] for s in segs) + sum(float(d['v']) for d in extra_rev)
-    check('Segment revenue vs total revenue', tot_rev, pair(spec['revenue'])[0] if 'revenue' in spec else None)
+    need(spec, 'revenue', 'operating_income')
+    check('Segment revenue vs total revenue', tot_rev, pair(spec['revenue'])[0])
+    srp = [pair(s['revenue'])[1] for s in segs]
+    check_prior('Segment revenue vs total revenue',
+                None if None in srp or psum(spec.get('other_revenue', [])) is None else sum(srp) + psum(spec.get('other_revenue', [])), pair(spec['revenue'])[1])
     oi = (sum(pair(s['operating_income'])[0] for s in segs) + sum(float(d['v']) for d in corp)
           + sum(float(d['v']) for d in extra_rev))
     oi_rep, oi_p = pair(spec['operating_income']) if 'operating_income' in spec else (None, None)
     check('Operating income', oi, oi_rep)
+    sop = [pair(s['operating_income'])[1] for s in segs]
+    check_prior('Operating income', None if None in sop or psum(spec.get('corporate', [])) is None or psum(spec.get('other_revenue', [])) is None
+                else sum(sop) + psum(spec.get('corporate', [])) + psum(spec.get('other_revenue', [])), oi_p)
     if oi <= 0:
         raise SpecError('Total operating loss is not supported in the segment view yet.')
     rev_ids, er_ids = [], []
@@ -457,6 +503,20 @@ DEFAULT_TITLE = {'income': 'income statement', 'cashflow': 'cash flow', 'balance
                  'holdings': 'holdings', 'segments': 'segment profit'}
 
 
+def tolerance(spec):
+    """$1M for normal filers (figures rounded to millions); smaller for companies reporting in
+    thousands, where a flat $1M would let almost any mistake through."""
+    big = 0.0
+    def walk(x):
+        nonlocal big
+        if isinstance(x, bool): return
+        if isinstance(x, (int, float)): big = max(big, abs(x))
+        elif isinstance(x, list): [walk(y) for y in x]
+        elif isinstance(x, dict): [walk(y) for k, y in x.items() if k not in ('count', 'min_weight')]
+    walk({k: spec.get(k) for k in ('revenue', 'total_assets', 'cfo', 'segments')})
+    return min(1.0, max(0.005, big * 0.005))
+
+
 HINTS = {
     'ni': 'Net income is negative although pretax income is positive (tax above pretax income). That case is not supported yet.',
     'pti': 'Pretax income is not fully used by tax and net income; check tax and net_income.',
@@ -485,6 +545,8 @@ def make(spec):
     flow = spec['flow']
     if flow not in FLOWS:
         raise SpecError(f'Unknown flow "{flow}". Use one of {", ".join(FLOWS)}.')
+    global TOL
+    TOL = tolerance(spec)
     g, meta = FLOWS[flow](spec)
     finish(g, flow)
     used = {n['id'] for n in g.nodes}

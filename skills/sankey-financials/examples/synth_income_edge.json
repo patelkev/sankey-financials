@@ -4,4 +4,4 @@
  "revenue":[1000,920],"cogs":[400,380],
  "opex":[{"l":"R&D","v":200,"p":190},{"l":"SG&A","v":150,"p":140},{"l":"Gain on sale","v":-30,"p":null}],
  "nonop":[{"l":"Interest income","v":25,"p":10},{"l":"Interest expense","v":-15,"p":-12},{"l":"Investment loss","v":-5,"p":8}],
- "tax":[-20,30],"net_income":[305,186]}
+ "operating_income":[280,null],"tax":[-20,30],"net_income":[305,186]}
