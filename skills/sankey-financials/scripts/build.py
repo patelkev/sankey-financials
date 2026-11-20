@@ -4,12 +4,14 @@
   python3 build.py cfg.json out.html               -> widget fragment (inline widget fragment for chat UIs such as claude.ai)
   python3 build.py cfg.json out.html --standalone  -> full web page to open in a browser (CLI or any browser)
 """
-import json, os, sys
+import html, json, os, sys
 D = os.path.dirname(os.path.abspath(__file__))
 cfg = json.load(open(sys.argv[1]))
-summary = f"Interactive Sankey diagram: {cfg['title']}, {cfg['sub']}."
+summary = html.escape(f"Interactive Sankey diagram: {cfg['title']}, {cfg['sub']}.")
 head = open(os.path.join(D, 'shell_head.html')).read().replace('SUMMARY', summary)
-frag = (head + 'const CFG=' + json.dumps(cfg, separators=(',', ':'), ensure_ascii=False) + ';\n'
+# '</' inside a JSON string would close the <script> tag early; '<\/' is the same string in JS.
+data = json.dumps(cfg, separators=(',', ':'), ensure_ascii=False).replace('</', '<\\/')
+frag = (head + 'const CFG=' + data + ';\n'
         + open(os.path.join(D, 'engine.js')).read() + open(os.path.join(D, 'interact.js')).read() + '</script>')
 if '--standalone' in sys.argv:
     page = """<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>%s</title>
@@ -27,12 +29,13 @@ button{font:inherit;cursor:pointer}
 #copied{position:fixed;bottom:16px;left:50%%;transform:translateX(-50%%);background:var(--surface-2);border:1px solid var(--border-strong);
 border-radius:8px;padding:8px 14px;font-size:13px;opacity:0;transition:opacity .2s}
 </style></head><body><main>
-<script>window.sendPrompt=t=>{navigator.clipboard&&navigator.clipboard.writeText(t);const c=document.getElementById('copied');
-c.style.opacity=1;setTimeout(()=>c.style.opacity=0,2200)}</script>
+<script>window.sendPrompt=t=>{const c=document.getElementById('copied'),show=m=>{c.textContent=m;c.style.opacity=1;setTimeout(()=>c.style.opacity=0,3500)};
+const fail=()=>show('Could not copy automatically. Your question: '+t);
+navigator.clipboard?navigator.clipboard.writeText(t).then(()=>show('Question copied. Paste it into your AI assistant to ask about this line.'),fail):fail()}</script>
 %s
 <p style="font-size:12px;color:var(--text-muted)">Source: %s</p></main>
-<div id="copied">Question copied. Paste it into your AI assistant to ask about this line.</div></body></html>""" % (
-        cfg['title'], frag, cfg.get('source', 'company filings'))
+<div id="copied" role="status" aria-live="polite"></div></body></html>""" % (
+        html.escape(cfg['title']), frag, html.escape(cfg.get('source', 'company filings')))
     open(sys.argv[2], 'w').write(page)
 else:
     open(sys.argv[2], 'w').write(frag)
