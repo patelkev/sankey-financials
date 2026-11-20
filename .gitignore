@@ -5,3 +5,4 @@ node_modules/
 /out/
 *.cfg.json
 !skills/sankey-financials/examples/*.json
+_local/
