@@ -46,7 +46,7 @@ Open the live, interactive versions from the [`gallery/`](gallery/) folder (down
 Copy the repository link and paste this prompt into your coding agent (Claude Code, Codex, Cursor, Gemini CLI, or similar):
 
 ```text
-Set up this repo for me: https://github.com/<your-github-username>/sankey-financials
+Set up this repo for me: https://github.com/patelkev/sankey-financials
 Read its AGENTS.md and follow the setup steps. Install it for the environment you are
 running in, run the test suite to verify, then tell me what to say to make my first chart.
 ```
@@ -58,14 +58,14 @@ The agent will check that Python and Node are present, install the skill in the 
 **Claude Code, as a plugin**
 
 ```text
-/plugin marketplace add <your-github-username>/sankey-financials
+/plugin marketplace add patelkev/sankey-financials
 /plugin install sankey-financials
 ```
 
 **Claude Code, as a skill folder**
 
 ```bash
-git clone https://github.com/<your-github-username>/sankey-financials.git
+git clone https://github.com/patelkev/sankey-financials.git
 cp -R sankey-financials/skills/sankey-financials ~/.claude/skills/
 ```
 
