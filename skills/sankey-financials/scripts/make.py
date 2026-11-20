@@ -296,6 +296,9 @@ def cashflow(spec):
     if cfo <= 0:
         raise SpecError('Negative operating cash flow is not supported yet.')
     capex, capex_p = pair(spec['capex'])
+    if capex < 0 or (capex_p or 0) < 0:
+        raise SpecError(f'capex is {money(capex)}. Enter capital expenditures as a positive number, although the '
+                        'filing shows them in parentheses.')
     other = grouped(spec.get('other', []))
     chg, chg_p = pair(spec['change_in_cash'])
     check('Change in cash', cfo - capex + sum(float(d['v']) for d in other), chg)

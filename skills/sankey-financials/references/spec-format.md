@@ -61,8 +61,10 @@ operating expenses; the net loss goes in the subtitle).
 `operating` items carry the filing's signs and must sum to `cfo`. `other` is every investing and
 financing line except capex, signed as filed (outflows negative), plus FX effects if any.
 Check: `cfo - capex + sum(other) = change_in_cash`. Negative operating items branch off in gray;
-inflows and any cash drawdown feed a "Cash to deploy" box; negative free cash flow shows as a red
-shortfall. Negative operating cash flow is refused.
+inflows and any cash drawdown feed a "Cash to deploy" box. `capex` is a positive number even though
+the filing shows it in parentheses. When capex exceeds operating cash flow, the capex box is fed by all
+of operating cash flow plus the pool, and the negative free cash flow goes in the subtitle.
+Negative operating cash flow is refused.
 
 ## balance
 
