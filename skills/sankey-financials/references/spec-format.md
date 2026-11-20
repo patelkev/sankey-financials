@@ -81,7 +81,8 @@ Negative operating cash flow is refused.
 ```
 
 Checks: assets sum to `total_assets`, assets = liabilities + equity. Negative components are netted
-into the largest positive one in their group (label gets "(net)", tooltip lists what was netted).
+into the largest positive one in their group (label gets "(net)", tooltip lists what was netted). If
+they outweigh it (Boeing's treasury stock), the lines they absorb are merged into one "(net)" box.
 **Negative total equity** switches to a deficit layout: assets plus a red "Shareholders' deficit"
 flow into total liabilities.
 

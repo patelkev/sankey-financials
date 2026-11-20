@@ -353,17 +353,47 @@ def cashflow(spec):
 
 # ---------------------------------------------------------------- balance sheet
 def net_into_largest(items, kind):
-    pos = [dict(d) for d in items if float(d['v']) > 0]
+    """Net negative lines (treasury stock, AOCI, accumulated depreciation) against the positive lines,
+    largest first. When the negatives outweigh the largest line they spill into the next one, and lines
+    netted down to zero are dropped, so no box goes negative (Boeing's treasury stock is larger than
+    any single positive equity line)."""
+    pos = sorted([dict(d) for d in items if float(d['v']) > 0], key=lambda d: -float(d['v']))
     neg = [d for d in items if float(d['v']) < 0]
-    if neg and pos:
-        big = max(pos, key=lambda d: float(d['v']))
-        big['v'] = float(big['v']) + sum(float(d['v']) for d in neg)
-        if big.get('p') is not None and all(d.get('p') is not None for d in neg):
-            big['p'] = float(big['p']) + sum(float(d['p']) for d in neg)
-        big['note'] = ((big.get('note') or '') + ' Net of ' +
-                       ', '.join(f"{d['l']} ({money(float(d['v']))})" for d in neg) + '.').strip()
-        big['l'] = big['l'] + ' (net)'
-    return pos
+    if not (neg and pos):
+        return pos
+
+    def spill(vals, owed):
+        out, touched = list(vals), []
+        for i, v in enumerate(out):
+            if owed <= 1e-9: break
+            take = min(v, owed); out[i] -= take; owed -= take; touched.append(i)
+        return out, touched, owed
+
+    cur, touched, left = spill([float(d['v']) for d in pos], -sum(float(d['v']) for d in neg))
+    if left > 1e-9:  # negatives outweigh every positive line: the group total is negative
+        return pos
+    pri = [d.get('p') for d in pos]
+    negp = [d.get('p') for d in neg]
+    prior_ok = None not in pri and None not in negp
+    if prior_ok:
+        pcur, ptouched, pleft = spill([float(x) for x in pri], -sum(float(x) for x in negp))
+        prior_ok = ptouched == touched and pleft <= 1e-9
+    what = ', '.join(f"{d['l']} ({money(float(d['v']))})" for d in neg)
+    if len(touched) == 1:
+        d = pos[touched[0]]
+        d['v'] = cur[touched[0]]
+        d['p'] = pcur[touched[0]] if prior_ok else None
+        d['l'] += ' (net)'
+        d['note'] = ((d.get('note') or '') + f' Shown net of {what}.').strip()
+        return pos
+    # The negatives outweigh the largest line: merge the lines they absorb into one box, so no single
+    # line is shown with a misleading net figure.
+    tl = [pos[i] for i in touched]
+    pv = [d.get('p') for d in tl] + negp
+    merged = {'l': ' and '.join(d['l'] for d in tl) + ' (net)', 'v': sum(cur[i] for i in touched),
+              'p': None if None in pv else sum(float(x) for x in pv),
+              'note': 'Combines ' + ', '.join(f"{d['l']} ({money(float(d['v']))})" for d in tl) + f', net of {what}.'}
+    return [merged] + [d for i, d in enumerate(pos) if i not in touched]
 
 
 def balance(spec):
