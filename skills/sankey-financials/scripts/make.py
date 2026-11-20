@@ -317,10 +317,9 @@ def cashflow(spec):
     if chg < 0:
         pool_in.append((g.node(2, 'loss', 'Drawn from cash', -chg, -chg_p if chg_p is not None and chg_p < 0 else None,
                                note='Spending beyond the cash generated, paid from the existing cash balance.', key='draw'), -chg))
-    cap_from_cfo = min(capex, cfo)
-    CX = g.node(2, 'cost', 'Capital expenditures', cap_from_cfo, capex_p, key='capex',
-                note=None if fcf >= 0 else f'Capex was {money(capex)}; the {money(-fcf)} above operating cash flow appears as a shortfall.')
-    g.link(H, CX, cap_from_cfo)
+    if fcf >= 0:
+        CX = g.node(2, 'cost', 'Capital expenditures', capex, capex_p, key='capex')
+        g.link(H, CX, capex)
     pool = sum(v for _, v in pool_in)
     if len(pool_in) == 1 and fcf > 0:
         P, uc = pool_in[0][0], 3
@@ -330,13 +329,18 @@ def cashflow(spec):
         for nid, v in pool_in:
             g.link(nid, P, v)
     if fcf < 0:
-        g.link(P, g.node(uc, 'loss', 'Free cash flow shortfall', -fcf, None, key='fcfs'), -fcf)
+        # Capex above operating cash flow: draw the full capex figure (so its value and Y/Y are the
+        # real ones), funded by all of operating cash flow plus the shortfall from the pool.
+        CX = g.node(uc, 'cost', 'Capital expenditures', capex, capex_p, key='capex',
+                    note=f'Paid with all {money(cfo)} of operating cash flow plus {money(-fcf)} from the other sources '
+                         f'on the left: free cash flow was {money(fcf)}.')
+        g.link(H, CX, cfo); g.link(P, CX, -fcf)
     for d in uses:
         l, v, p = item(d); v, p, note = flip(v, p, ('outflow', 'inflow'))
         g.link(P, g.node(uc, 'cost', l, v, p, d.get('full'), d.get('note') or note), v)
     if chg > 0:
         g.link(P, g.node(uc, 'profit', 'Added to cash', chg, chg_p if chg_p and chg_p > 0 else None, key='addcash'), chg)
-    return g, {'hub': 'cfo'}
+    return g, {'hub': 'cfo', 'subtitle_extra': f'Free cash flow {money(fcf)}' if fcf < 0 else None}
 
 
 # ---------------------------------------------------------------- balance sheet
