@@ -18,9 +18,9 @@ const good=n=>n.t==='rev'||n.t==='profit';
 const yoyCol=n=>!okP(n)||!good(n)?'var(--text-secondary)':n.v>=n.p?'var(--text-success)':'var(--text-danger)';
 function src(){if(!S.view)return[];const v=CFG.views[S.view];return v.same?CFG.views[v.same].nodes:v.nodes}
 function side(n){return n.sd||(n.c===0?'left':(n.c===NC-1||!n.out.length)?'right':'above')}
-function wrap(s,max){
+function wrap(s,max,hard){
   if(tw(s,12.5)<=max)return[s];
-  const w=[];s.split(' ').forEach(x=>{let r='';[...x].forEach(c=>{if(r&&tw(r+c,12.5)>max){w.push(r);r=''}r+=c});w.push(r)});
+  const w=[];s.split(' ').forEach(x=>{if(!hard)return w.push(x);let r='';[...x].forEach(c=>{if(r&&tw(r+c,12.5)>max){w.push(r);r=''}r+=c});w.push(r)});
   let a=[],cur='';
   w.forEach(x=>{const t=cur?cur+' '+x:x;if(tw(t,12.5)>max&&cur){a.push(cur);cur=x}else cur=t});
   if(cur)a.push(cur);return a;
@@ -28,7 +28,7 @@ function wrap(s,max){
 function lines(n){
   const L=[{s:fmt(n.v),f:COL[n.t],z:13,w:500}];
   if(S.yoy)L.push({s:yoyStr(n),f:yoyCol(n),z:12,w:400});
-  const names=wrap(n.l,side(n)==='above'?WRAP:SIDEW);
+  const ab=side(n)==='above',names=wrap(n.l,ab?WRAP:SIDEW,!ab);
   names.forEach(s=>L.push({s,f:'var(--text-primary)',z:12.5,w:400}));
   return L;
 }
