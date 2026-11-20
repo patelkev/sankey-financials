@@ -36,7 +36,8 @@ quarter, GAAP**, with Product, Business and Geography tabs where the filing supp
    latest before you start; fiscal calendars differ (Marvell's FY27 Q2 ends in Aug 2026).
 2. **Write the spec** in a working folder, following `references/spec-format.md`
    (read it the first time in a session). Copy labels from the filing, shortened sensibly
-   ("R&D", "SG&A"), with the long name in `full`. Keep signs as filed. Add `source`.
+   ("R&D", "SG&A"), with the long name in `full`. Keep signs as filed. Add `source`, `end` and
+   `prior_end` (the switch label comes from these dates), and `currency` for non-USD filers.
    - Tabs: always name them **Product**, **Business**, **Geography**, whatever the filing calls
      them ("end market", "platform"). If the company reports a single segment, use
      `"Business":{"same":"Product","note":"<Company> reports a single business segment, so this view matches the product split."}`.

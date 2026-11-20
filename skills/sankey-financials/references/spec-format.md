@@ -18,6 +18,7 @@ or `{"l": label, "v": current, "p": prior}` items. Use `null` for an unknown pri
 | `source` | Where the numbers came from (shown under the standalone page) |
 | `title` | Optional override of `<TICKER> <period> <flow name>` |
 | `currency` | Optional ISO code of the filing's currency, default `USD`. Chart in the currency the company reports in (`EUR` for SAP, `JPY` for Toyota); don't convert. |
+| `end`, `prior_end` | End dates of the two columns, e.g. `2026-09-30` and `2025-12-31`. The switch label is derived: 12 months apart gives `Y/Y`, 3 months `Q/Q` (not for balance sheets), anything else `vs Dec 31`. Required for `balance` unless `cmp` is given. |
 | `cmp`, `prev_label` | Optional comparison label (default `Y/Y`, `Year ago`), e.g. `vs Jun 30` / `Jun 30` |
 
 Line items may also have `full` (long name for tooltips), `note` (tooltip text) and `group`

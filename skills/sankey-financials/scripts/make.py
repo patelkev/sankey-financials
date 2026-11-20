@@ -7,7 +7,7 @@ Exits 1 with a plain message if the figures don't reconcile.
 All money in $ millions. Signs follow the filing: income/inflows positive,
 expenses/outflows positive where the spec says "cost" lists, see each flow.
 """
-import json, re, sys
+import datetime, json, re, sys
 
 TOL = 1.0  # $M rounding tolerance for reported-total checks; make() shrinks it for small companies
 
@@ -531,6 +531,27 @@ def tolerance(spec):
     return min(1.0, max(0.005, big * 0.005))
 
 
+def compare_labels(spec, flow):
+    """(cmp, prev_label) for the comparison switch. Explicit cmp/prev_label win; otherwise derived from
+    the end dates of the two periods, so a balance sheet compared with Dec 31 can't be labelled Y/Y."""
+    if spec.get('cmp'):
+        return spec['cmp'], spec.get('prev_label')
+    if spec.get('end') and spec.get('prior_end'):
+        try:
+            e, p = (datetime.date.fromisoformat(spec[k]) for k in ('end', 'prior_end'))
+        except ValueError:
+            raise SpecError('end and prior_end must be dates like 2026-09-30.')
+        months = round((e - p).days / 30.44)
+        if months == 12: return 'Y/Y', 'Year ago'
+        if months == 3 and flow != 'balance': return 'Q/Q', 'Prior quarter'
+        d = f'{p:%b} {p.day}, {p.year}'
+        return f'vs {p:%b} {p.day}', d
+    if flow == 'balance':
+        raise SpecError('A balance sheet needs "end" and "prior_end" (e.g. "2026-09-30" and "2025-12-31"), or an '
+                        'explicit "cmp"/"prev_label": 10-Qs usually compare with the last fiscal year end, not a year ago.')
+    return None, spec.get('prev_label')
+
+
 HINTS = {
     'ni': 'Net income is negative although pretax income is positive (tax above pretax income). That case is not supported yet.',
     'pti': 'Pretax income is not fully used by tax and net income; check tax and net_income.',
@@ -598,8 +619,9 @@ def make(spec):
     has_prior = any(n.get('p') is not None for n in g.nodes)
     cfg['yoy'] = bool(has_prior and spec.get('compare', True))
     if spec.get('source'): cfg['source'] = spec['source']
-    if spec.get('cmp'): cfg['cmp'] = spec['cmp']
-    if spec.get('prev_label'): cfg['prevLabel'] = spec['prev_label']
+    cmp, prev = compare_labels(spec, flow)
+    if cmp: cfg['cmp'] = cmp
+    if prev: cfg['prevLabel'] = prev
     return cfg
 
 
