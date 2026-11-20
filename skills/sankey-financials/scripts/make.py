@@ -201,9 +201,10 @@ def income(spec):
         lp = -oi_p if oi_p is not None and oi_p < 0 else None
         ni, ni_p = pair(spec['net_income']) if 'net_income' in spec else (None, None)
         nonop_sum = sum(float(d['v']) for d in nonop)
-        check('Net income', oi + nonop_sum - tax, ni)
-        nps = psum(spec.get('nonop', []))
-        check_prior('Net income', None if oi_p is None or nps is None or tax_p is None else oi_p + nps - tax_p, ni_p)
+        at = spec.get('after_tax', [])
+        check('Net income', oi + nonop_sum - tax + sum(float(d['v']) for d in at), ni)
+        nps, atp = psum(spec.get('nonop', [])), psum(at)
+        check_prior('Net income', None if None in (oi_p, nps, tax_p, atp) else oi_p + nps - tax_p + atp, ni_p)
         note = f'Spending exceeded gross profit by {money(loss)}.'
         if ni is not None:
             note += f' After other items and tax, the net loss was {money(-ni)}' + (f' ({money(-ni_p)} a year ago).' if ni_p is not None else '.')
@@ -260,10 +261,15 @@ def income(spec):
 
     ni = pti - tax
     ni_p = None if pti_p is None or tax_p is None else pti_p - tax_p
-    check('Net income', ni, pair(spec['net_income'])[0])
-    check_prior('Net income', ni_p, pair(spec['net_income'])[1])
+    # after_tax: lines below consolidated net income, signed as filed (minority interest share negative,
+    # discontinued operations either way). net_income is then the bottom line to shareholders.
+    at = grouped(spec.get('after_tax', []))
+    at_sum, at_p = sum(float(d['v']) for d in at), psum(spec.get('after_tax', []))
+    check('Net income', ni + at_sum, pair(spec['net_income'])[0])
+    check_prior('Net income', None if ni_p is None or at_p is None else ni_p + at_p, pair(spec['net_income'])[1])
+    ni_label = 'Consolidated net income' if at else 'Net income'
     if tax >= 0:
-        NI = g.node(5, 'profit', 'Net income', ni, ni_p, note=spec.get('notes', {}).get('net_income'), key='ni')
+        NI = g.node(5, 'profit', ni_label, ni, ni_p, note=None if at else spec.get('notes', {}).get('net_income'), key='ni')
         g.link(PTI, NI, pti - tax)
         if tax > 0:
             tp = tax_p if tax_p is not None and tax_p > 0 else None
@@ -271,8 +277,21 @@ def income(spec):
                                note=None if tp is not None or tax_p is None else f'A year ago tax was a {money(-tax_p)} benefit.'), tax)
     else:
         TB = g.node(4, 'profit', 'Tax benefit', -tax, -tax_p if tax_p is not None and tax_p < 0 else None, key='taxb')
-        NI = g.node(5, 'profit', 'Net income', ni, ni_p, note=spec.get('notes', {}).get('net_income'), key='ni')
+        NI = g.node(5, 'profit', ni_label, ni, ni_p, note=None if at else spec.get('notes', {}).get('net_income'), key='ni')
         g.link(PTI, NI, pti); g.link(TB, NI, -tax)
+    if at:
+        neg = [d for d in at if float(d['v']) < 0]
+        FN = g.node(6, 'profit', spec.get('net_income_label', 'Net income to shareholders'), ni + at_sum,
+                    None if ni_p is None or at_p is None else ni_p + at_p, note=spec.get('notes', {}).get('net_income'), key='ni_sh')
+        g.link(NI, FN, ni + sum(float(d['v']) for d in neg))
+        for d in at:
+            l, v, p = item(d)
+            if v < 0:
+                v, p, note = flip(v, p, ('reduction', 'addition'))
+                g.link(NI, g.node(6, 'cost', l, v, p, d.get('full'), d.get('note') or note), v)
+            else:
+                v, p, note = flip(v, p, ('reduction', 'addition'))
+                g.link(g.node(5, 'profit', l, v, p, d.get('full'), d.get('note') or note), FN, v)
     if len(nonop_exp) > 1:
         for AG, l, v, p, full, note in later:
             g.link(AG, g.node(5, 'cost', l, v, p, full, note), v)

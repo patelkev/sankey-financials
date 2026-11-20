@@ -44,6 +44,12 @@ skips the gross-profit step and revenue flows straight into operating income and
 put a bank's provision for credit losses in `opex`. `revenue_label` renames the first box
 (e.g. `"Net revenue"`).
 
+Lines below net income go in `after_tax`, signed as filed: the non-controlling interests' share
+(negative), discontinued operations net of tax (either sign), equity-method income reported after tax.
+`net_income` is then the bottom line attributable to the company's shareholders; the chart shows
+"Consolidated net income" and then `net_income_label` (default "Net income to shareholders").
+Don't put after-tax lines in `nonop`: they would be drawn as part of pretax income.
+
 Signs: `opex` items are expenses as positive numbers; a **gain** inside opex is negative.
 `nonop` items keep the filing's sign: income positive, expense negative. `tax` is positive for an
 expense, negative for a benefit. View items must sum to revenue; a negative view item (a hedging loss)
