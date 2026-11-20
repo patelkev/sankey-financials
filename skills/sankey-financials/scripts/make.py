@@ -36,9 +36,16 @@ def item(d):
     return d['l'], float(d['v']), (None if d.get('p') is None else float(d['p']))
 
 
+SYMBOLS = {'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥', 'CNY': 'CN¥', 'INR': '₹', 'KRW': '₩', 'CAD': 'C$',
+           'AUD': 'A$', 'HKD': 'HK$', 'TWD': 'NT$', 'BRL': 'R$', 'MXN': 'MX$', 'CHF': 'CHF ', 'SEK': 'SEK ',
+           'DKK': 'DKK ', 'NOK': 'NOK '}
+CUR = '$'  # set by make() from spec['currency']
+
+
 def money(v):
-    a = abs(v)
-    s = f'${a/1e6:.2f}T' if a >= 1e6 else f'${a/1000:.2f}B' if a >= 1000 else f'${a:.1f}M'
+    a, c = abs(v), CUR
+    s = (f'{c}{a/1e6:.2f}T' if a >= 1e6 else f'{c}{a/1000:.2f}B' if a >= 1000 else f'{c}{a:.1f}M' if a >= 1
+         else f'{c}{a*1000:.0f}K')
     return ('-' if v < 0 else '') + s
 
 
@@ -545,8 +552,10 @@ def make(spec):
     flow = spec['flow']
     if flow not in FLOWS:
         raise SpecError(f'Unknown flow "{flow}". Use one of {", ".join(FLOWS)}.')
-    global TOL
+    global TOL, CUR
     TOL = tolerance(spec)
+    code = str(spec.get('currency', 'USD')).upper()
+    CUR = SYMBOLS.get(code, code + ' ')
     g, meta = FLOWS[flow](spec)
     finish(g, flow)
     used = {n['id'] for n in g.nodes}
@@ -554,7 +563,7 @@ def make(spec):
         'company': spec.get('company', spec.get('fund', '')),
         'ticker': spec['ticker'],
         'title': spec.get('title') or f"{spec['ticker']} {spec['period']} {DEFAULT_TITLE[flow]}",
-        'sub': ' · '.join(x for x in [spec.get('dates'), 'USD' if flow != 'holdings' else 'Weight of fund',
+        'sub': ' · '.join(x for x in [spec.get('dates'), code if flow != 'holdings' else 'Weight of fund',
                                       spec.get('basis'), meta.get('subtitle_extra')] if x),
         'flow': flow,
         'legend': [l for l in LEGENDS[flow] if any(n['t'] == l[1] for n in g.nodes) or l[1] == 'rev'],
@@ -562,6 +571,8 @@ def make(spec):
     }
     if flow == 'holdings':
         cfg['unit'] = 'pct'
+    elif CUR != '$':
+        cfg['cur'] = CUR
     hub = meta.get('hub', 'rev')
     if hub: cfg['hub'] = hub
     if meta.get('scale'): cfg['scale'] = meta['scale']

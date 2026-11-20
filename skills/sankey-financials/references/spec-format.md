@@ -3,7 +3,7 @@
 A spec is a small JSON file of line items **as the filing reports them**. `scripts/make.py` turns it into
 the chart config; all structure, signs and layout decisions are made by the script, not by hand.
 
-Money is in **$ millions**. Each number can carry a prior-period value: either `[current, prior]` pairs
+Money is in **millions of the reporting currency** (`$ millions` for US filers). Each number can carry a prior-period value: either `[current, prior]` pairs
 or `{"l": label, "v": current, "p": prior}` items. Use `null` for an unknown prior.
 
 ## Fields every spec has
@@ -17,6 +17,7 @@ or `{"l": label, "v": current, "p": prior}` items. Use `null` for an unknown pri
 | `basis` | `GAAP` or `Non-GAAP` |
 | `source` | Where the numbers came from (shown under the standalone page) |
 | `title` | Optional override of `<TICKER> <period> <flow name>` |
+| `currency` | Optional ISO code of the filing's currency, default `USD`. Chart in the currency the company reports in (`EUR` for SAP, `JPY` for Toyota); don't convert. |
 | `cmp`, `prev_label` | Optional comparison label (default `Y/Y`, `Year ago`), e.g. `vs Jun 30` / `Jun 30` |
 
 Line items may also have `full` (long name for tooltips), `note` (tooltip text) and `group`
