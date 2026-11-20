@@ -5,9 +5,12 @@ cd "$(dirname "$0")"; OUT=${OUT:-/tmp/sankey-financials-tests}; mkdir -p "$OUT";
 have_pw=$(python3 -c "import playwright" 2>/dev/null && echo 1 || echo 0)
 [[ $have_pw == 1 ]] || echo "(Playwright not installed: skipping browser checks)"
 for s in examples/*.json; do
-  n=$(basename "$s" .json); printf '%-22s ' "$n"
+  n=$(basename "$s" .json); printf '%-28s ' "$n"
   if ! python3 scripts/make.py "$s" "$OUT/$n.cfg.json" >/dev/null 2>"$OUT/$n.err"; then
-    if [[ $n == synth_bad* ]]; then echo "refused as expected"; continue; fi
+    if [[ $n == synth_bad* ]]; then
+      want=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]),parse_constant=float).get('expect_error',''))" "$s")
+      if [[ -n $want ]] && ! grep -qF "$want" "$OUT/$n.err"; then echo "FAIL (refused, but not with: $want)"; cat "$OUT/$n.err"; fail=1; continue; fi
+      echo "refused as expected"; continue; fi
     echo "FAIL"; cat "$OUT/$n.err"; fail=1; continue
   fi
   [[ $n == synth_bad* ]] && { echo "FAIL (bad spec was accepted)"; fail=1; continue; }

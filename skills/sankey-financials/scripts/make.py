@@ -105,6 +105,8 @@ def views_out(spec, used):
     for label, v in spec.get('views', {}).items():
         key = {'Product': 'prod', 'Business': 'biz', 'Geography': 'geo'}.get(label) or slug(label, set())
         if 'same' in v:
+            if v['same'] not in spec['views'] or 'same' in spec['views'][v['same']]:
+                raise SpecError(f'View {label} says "same":"{v["same"]}", but there is no view with items called that.')
             same = {'Product': 'prod', 'Business': 'biz', 'Geography': 'geo'}.get(v['same'], v['same'])
             out[key] = {'label': label, 'same': same}
         else:
@@ -136,6 +138,9 @@ def income(spec):
             check(f'{label} items vs revenue', sum(float(d['v']) for d in v['items']), rev)
 
     gp, gp_p = rev - cogs, sub(rev_p, cogs_p)
+    if rev <= 0:
+        raise SpecError(f'Revenue is {money(rev)}. The income chart starts from revenue, so it needs revenue above zero '
+                        '(a pre-revenue company is better described in text, or shown as a cash flow).')
     if gp <= 0:
         raise SpecError('Gross loss (cost of revenue above revenue) is not supported yet.')
     ox = sum(float(d['v']) for d in opex)
@@ -452,11 +457,36 @@ DEFAULT_TITLE = {'income': 'income statement', 'cashflow': 'cash flow', 'balance
                  'holdings': 'holdings', 'segments': 'segment profit'}
 
 
+HINTS = {
+    'ni': 'Net income is negative although pretax income is positive (tax above pretax income). That case is not supported yet.',
+    'pti': 'Pretax income is not fully used by tax and net income; check tax and net_income.',
+}
+
+
+def finish(g, flow):
+    """Drop zero-value boxes, then refuse any box the chart can't draw (negative or unbalanced)."""
+    inn, out = {}, {}
+    for a, b, v in g.links:
+        out[a] = out.get(a, 0) + v; inn[b] = inn.get(b, 0) + v
+    g.nodes = [n for n in g.nodes if abs(n['v']) > 1e-9 or n['id'] in inn or n['id'] in out]
+    for n in g.nodes:
+        if n['v'] <= 0:
+            hint = HINTS.get(n['id']) or ('Negative lines were netted into this one and outweigh it; group them differently.'
+                                          if '(net)' in n['l'] else 'This flow type cannot draw a negative box here.')
+            raise SpecError(f'"{n["l"]}" works out to {money(n["v"])}. {hint}')
+    for n in g.nodes:
+        for side, tot in (('in', inn), ('out', out)):
+            if n['id'] in tot and abs(tot[n['id']] - n['v']) > 0.51:
+                raise SpecError(f'"{n["l"]}" is {money(n["v"])} but its {side}flows add to {money(tot[n["id"]])}. '
+                                + HINTS.get(n['id'], 'The line items are inconsistent for this flow type.'))
+
+
 def make(spec):
     flow = spec['flow']
     if flow not in FLOWS:
         raise SpecError(f'Unknown flow "{flow}". Use one of {", ".join(FLOWS)}.')
     g, meta = FLOWS[flow](spec)
+    finish(g, flow)
     used = {n['id'] for n in g.nodes}
     cfg = {
         'company': spec.get('company', spec.get('fund', '')),
@@ -494,10 +524,19 @@ def make(spec):
 
 
 if __name__ == '__main__':
+    def no_nan(c):
+        raise SpecError(f'The spec contains {c}; every number must be a real figure (use null for an unknown prior).')
     try:
-        cfg = make(json.load(open(sys.argv[1])))
+        cfg = make(json.load(open(sys.argv[1]), parse_constant=no_nan))
     except SpecError as e:
         print(f'SPEC ERROR: {e}', file=sys.stderr)
+        sys.exit(1)
+    except KeyError as e:
+        print(f'SPEC ERROR: missing field {e}. See references/spec-format.md for the fields this flow needs.', file=sys.stderr)
+        sys.exit(1)
+    except (ValueError, TypeError) as e:
+        print(f'SPEC ERROR: a value has the wrong type ({e}). Numbers must be plain JSON numbers in $ millions, '
+              'no commas, currency signs or quotes.', file=sys.stderr)
         sys.exit(1)
     json.dump(cfg, open(sys.argv[2], 'w'), indent=1, ensure_ascii=False)
     print(f'{sys.argv[2]}: {len(cfg["base"])} nodes, {len(cfg["links"])} links')
