@@ -1,0 +1,179 @@
+{
+ "flow": "cashflow",
+ "company": "Boeing",
+ "ticker": "BA",
+ "period": "9M 2026",
+ "dates": "Jan 1 to Sep 30, 2026",
+ "basis": "GAAP",
+ "source": "Boeing Q3 2026 release",
+ "operating": [
+  {
+   "l": "Net loss",
+   "v": -551,
+   "p": -5982
+  },
+  {
+   "l": "SBC",
+   "group": "Non-cash items",
+   "v": 361,
+   "p": 343
+  },
+  {
+   "l": "401k shares",
+   "group": "Non-cash items",
+   "v": 1275,
+   "p": 1173
+  },
+  {
+   "l": "D&A",
+   "group": "Non-cash items",
+   "v": 1753,
+   "p": 1417
+  },
+  {
+   "l": "impair",
+   "group": "Non-cash items",
+   "v": 122,
+   "p": 32
+  },
+  {
+   "l": "gain disp",
+   "group": "Non-cash items",
+   "v": -79,
+   "p": -63
+  },
+  {
+   "l": "reach-forward",
+   "group": "Non-cash items",
+   "v": 86,
+   "p": 5140
+  },
+  {
+   "l": "other nc",
+   "group": "Non-cash items",
+   "v": -1,
+   "p": 217
+  },
+  {
+   "l": "AR",
+   "group": "Working capital",
+   "v": -1130,
+   "p": -836
+  },
+  {
+   "l": "unbilled",
+   "group": "Working capital",
+   "v": -1039,
+   "p": -679
+  },
+  {
+   "l": "advances",
+   "group": "Working capital",
+   "v": 8113,
+   "p": -2065
+  },
+  {
+   "l": "inventories",
+   "group": "Working capital",
+   "v": -6733,
+   "p": -116
+  },
+  {
+   "l": "other CA",
+   "group": "Working capital",
+   "v": -127,
+   "p": 227
+  },
+  {
+   "l": "AP",
+   "group": "Working capital",
+   "v": 2436,
+   "p": 539
+  },
+  {
+   "l": "accrued",
+   "group": "Working capital",
+   "v": -1562,
+   "p": 574
+  },
+  {
+   "l": "taxes",
+   "group": "Working capital",
+   "v": -76,
+   "p": 93
+  },
+  {
+   "l": "other LTL",
+   "group": "Working capital",
+   "v": -148,
+   "p": -294
+  },
+  {
+   "l": "pension",
+   "group": "Working capital",
+   "v": -86,
+   "p": -436
+  },
+  {
+   "l": "fin rec",
+   "group": "Working capital",
+   "v": -112,
+   "p": 274
+  },
+  {
+   "l": "other",
+   "group": "Working capital",
+   "v": 179,
+   "p": 176
+  }
+ ],
+ "cfo": [
+  2681,
+  -266
+ ],
+ "capex": [
+  3040,
+  1986
+ ],
+ "other": [
+  {
+   "l": "Debt repayments",
+   "v": -8415,
+   "p": -721
+  },
+  {
+   "l": "New borrowings",
+   "v": 46,
+   "p": 138
+  },
+  {
+   "l": "Preferred dividends",
+   "v": -259,
+   "p": -244
+  },
+  {
+   "l": "Net investment sales",
+   "v": 6870,
+   "p": -3663
+  },
+  {
+   "l": "Other investing",
+   "v": 23,
+   "p": -252
+  },
+  {
+   "l": "Other financing",
+   "v": 8,
+   "p": 15
+  },
+  {
+   "l": "FX",
+   "v": 5,
+   "p": 39
+  }
+ ],
+ "change_in_cash": [
+  -2081,
+  -6940
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "flow": "income",
+ "company": "Zero",
+ "ticker": "ZERO",
+ "period": "Q1",
+ "dates": "x",
+ "basis": "GAAP",
+ "source": "synthetic",
+ "revenue": [
+  0,
+  0
+ ],
+ "cogs": [
+  0,
+  0
+ ],
+ "opex": [],
+ "nonop": [],
+ "tax": [
+  0,
+  0
+ ]
+}

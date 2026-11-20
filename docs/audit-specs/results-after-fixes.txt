@@ -1,0 +1,88 @@
+b01_baseline_default_label         make:ok test:ok browser:ok  
+b02_treasury_exceeds_largest       make:ok test:ok browser:ok  
+b03_unbalanced                     make:REFUSED: SPEC ERROR: Assets = liabilities + equity: computed 1,000.0 but the filing says 1,010.0 (off by -10.0). Fix the line items before drawing.
+b04_prior_unbalanced_silent        make:REFUSED: SPEC ERROR: Liabilities + equity vs total assets, prior period: the prior figures add to 1,649.0 but the reported prior total is 950.0 (off by 699.0). Fix the p
+b05_negative_asset_line            make:ok test:ok browser:ok  
+b06_manual_cmp                     make:ok test:ok browser:ok  
+b07_equity_zero                    make:ok test:ok browser:ok  
+b08_bank_trillions                 make:ok test:ok browser:ok  
+b09_deficit_mcd                    make:ok test:ok browser:ok  
+c01_baseline                       make:ok test:ok browser:ok  
+c02_capex_signed_as_filed          make:REFUSED: SPEC ERROR: capex is -$300.0M. Enter capital expenditures as a positive number, although the filing shows them in parentheses.
+c03_capex_zero                     make:ok test:ok browser:ok  
+c04_negfcf_capex_yoy               make:ok test:ok browser:ok  
+c05_huge_financing                 make:ok test:ok browser:ok  WARN  [yoy] debt_repaid change 4900%, double-check the prior figure
+c06_negative_cfo                   make:REFUSED: SPEC ERROR: Negative operating cash flow is not supported yet.
+c07_fcf_zero                       make:ok test:ok browser:ok  
+c08_inflows_only                   make:ok test:ok browser:ok  
+c09_drawdown                       make:ok test:ok browser:ok  
+c10_negfcf_drawdown                make:ok test:ok browser:ok  
+c11_fx_tiny                        make:REFUSED: SPEC ERROR: Change in cash, prior period: the prior figures add to 242.0 but the reported prior total is 240.0 (off by 2.0). Fix the prior figures (or set unkno
+c12_saas_deferred_sbc              make:ok test:ok browser:ok  
+c13_netloss_positive_cfo           make:ok test:ok browser:ok  
+h01_one_holding                    make:ok test:ok browser:ok  
+h02_500_holdings_minw03            make:ok test:ok browser:ok  WARN  [layout] main/no-cmp: chart is 5930px tall; consider grouping small items
+h03_500_holdings_minw0             make:ok test:ok browser:ok  WARN  [layout] main/no-cmp: chart is 18052px tall; consider grouping small items
+h04_short_negative_weights         make:REFUSED: SPEC ERROR: Holdings mapped to Short positions total 0.00% but the sector is -5.00%; check the mapping.
+h05_leveraged_negative_cash        make:REFUSED: SPEC ERROR: Holdings mapped to Cash total 0.00% but the sector is -100.00%; check the mapping.
+h06_unknown_sector                 make:REFUSED: SPEC ERROR: Holding Apple maps to unknown sector "Technology".
+i01_baseline                       make:ok test:ok browser:ok  
+i02_prior_mismatch_silent          make:REFUSED: SPEC ERROR: Operating income, prior period: the prior figures add to 290.0 but the reported prior total is 190.0 (off by 100.0). Fix the prior figures (or set u
+i03_view_prior_mismatch            make:REFUSED: SPEC ERROR: Product items vs revenue, prior period: the prior figures add to 200.0 but the reported prior total is 900.0 (off by -700.0). Fix the prior figures 
+i04_no_totals_given                make:REFUSED: SPEC ERROR: "operating_income" is required: it is the reported total the chart is checked against. Copy it from the filing.
+i05_bank_cogs0                     make:ok test:ok browser:ok  
+i05b_bank_label                    make:ok test:ok browser:ok  
+i06_bank_no_cogs_key               make:ok test:ok browser:ok  
+i07_biotech_zero_rev               make:REFUSED: SPEC ERROR: Revenue is $0. The income chart starts from revenue, so it needs revenue above zero (a pre-revenue company is better described in text, or shown as 
+i08_biotech_tiny_rev_cogs0         make:ok test:ok browser:ok  
+i09_negative_revenue               make:REFUSED: SPEC ERROR: Revenue is -$10.0M. The income chart starts from revenue, so it needs revenue above zero (a pre-revenue company is better described in text, or show
+i10_tax_exceeds_pretax             make:REFUSED: SPEC ERROR: "Net income" works out to -$40.0M. Net income is negative although pretax income is positive (tax above pretax income). That case is not supported y
+i11_pretax_loss_flip               make:REFUSED: SPEC ERROR: Pretax loss despite an operating profit is not supported yet.
+i12_loss_to_profit                 make:ok test:ok browser:ok  
+i13_profit_to_oploss               make:ok test:ok browser:ok  
+i14_wmt_nci_consolidated           make:ok test:ok browser:ok  
+i14b_wmt_after_tax                 make:ok test:ok browser:ok  
+i14c_wmt_mixed                     make:ok test:ok browser:ok  
+i15_discontinued_in_nonop          make:ok test:ok browser:ok  
+i15b_discops_after_tax             make:ok test:ok browser:ok  
+i16_sap_eur_ifrs                   make:ok test:ok browser:ok  WARN  [yoy] restructuring change 1362%, double-check the prior figure
+i17_toyota_jpy_huge                make:ok test:ok browser:ok  
+i18_tiny_thousands_tolerance       make:REFUSED: SPEC ERROR: Net income: computed 0.150 but the filing says 0.950 (off by -0.800). Fix the line items before drawing.
+i18b_tiny_ok                       make:ok test:ok browser:ok  
+i19_many_opex                      make:ok test:ok browser:ok  WARN  [layout] main/cmp: chart is 1889px tall; consider grouping small items
+i20_long_unicode_labels            make:ok test:ok browser:ok  
+i21_xss                            make:ok test:ok browser:ok  
+i22_string_number                  make:REFUSED: SPEC ERROR: a value has the wrong type (could not convert string to float: '1,200'). Numbers must be plain JSON numbers in $ millions, no commas, currency signs
+i23_nan_prior                      make:REFUSED: SPEC ERROR: The spec contains NaN; every number must be a real figure (use null for an unknown prior).
+i24_nan_value                      make:REFUSED: SPEC ERROR: The spec contains NaN; every number must be a real figure (use null for an unknown prior).
+i25_missing_ticker                 make:REFUSED: SPEC ERROR: missing field 'ticker'. See references/spec-format.md for the fields this flow needs.
+i26_flow_case                      make:REFUSED: SPEC ERROR: Unknown flow "Income". Use one of income, cashflow, balance, holdings, segments.
+i27_dup_and_zero_labels            make:REFUSED: SPEC ERROR: Operating income, prior period: the prior figures add to 185.0 but the reported prior total is 190.0 (off by -5.0). Fix the prior figures (or set un
+i28_all_zero                       make:REFUSED: SPEC ERROR: Revenue is $0. The income chart starts from revenue, so it needs revenue above zero (a pre-revenue company is better described in text, or shown as 
+i29_scalar_and_short_pairs         make:ok test:ok browser:ok  
+i30_same_bad_ref                   make:REFUSED: SPEC ERROR: View Business says "same":"Segments", but there is no view with items called that.
+i31_single_item_view               make:ok test:ok browser:ok  
+i32_gain_in_oploss                 make:REFUSED: SPEC ERROR: Operating gains inside a loss-making quarter: group them into an opex line instead.
+i33_qoq_label_default              make:ok test:ok browser:ok  
+i33b_qoq                           make:ok test:ok browser:ok  
+i34_ipo_no_priors                  make:ok test:ok browser:ok  
+i35_53week                         make:ok test:ok browser:ok  
+i36_equity_method_after_tax        make:ok test:ok browser:ok  
+s01_baseline                       make:ok test:ok browser:ok  
+s02_zero_rev_segment               make:ok test:ok browser:ok  WARN  [yoy] new_venture_loss change 400%, double-check the prior figure
+s03_segment_oi_zero                make:ok test:ok browser:ok  
+s04_seg_oi_exceeds_rev             make:REFUSED: SPEC ERROR: "A costs" works out to -$50.0M. This flow type cannot draw a negative box here.
+s05_eliminations                   make:REFUSED: SPEC ERROR: Negative other revenue "Intersegment eliminations": put intersegment eliminations in "eliminations" and other negative items in "corporate".
+s05b_elim                          make:ok test:ok browser:ok  
+s06_total_oploss                   make:REFUSED: SPEC ERROR: Total operating loss is not supported in the segment view yet.
+s07_intc_elim                      make:ok test:ok browser:ok  
+1a_jpm_zero_cogs_segview_raw       make:REFUSED: SPEC ERROR: Segment items vs revenue: computed 50,907.0 but the filing says 50,172.0 (off by 735.0). Fix the line items before drawing.
+1b_jpm_managed_fixed               make:ok test:ok browser:ok  
+1c_jpm_cogs_zero                   make:ok test:ok browser:ok  
+2_wmt_income_nci                   make:ok test:ok browser:ok  
+3_ba_balance_vs_dec31              make:ok test:ok browser:ok  WARN  [yoy] noncontrolling_int change 400%, double-check the prior figure
+3b_ba_balance_equity_grouped       make:ok test:ok browser:ok  WARN  [yoy] noncontrolling_int change 400%, double-check the prior figure
+4_ba_cashflow_9m_negprior          make:ok test:ok browser:ok  WARN  [yoy] debt_repayments change 1067%, double-check the prior figure
+5_amzn_segments                    make:ok test:ok browser:ok  
+6_intc_segments                    make:REFUSED: SPEC ERROR: Negative other revenue "Intersegment eliminations": put intersegment eliminations in "eliminations" and other negative items in "corporate".
+6b_intc_elim_as_segment            make:REFUSED: SPEC ERROR: "Intersegment eliminations" works out to -$6.29B. This flow type cannot draw a negative box here.

@@ -1,0 +1,30 @@
+{
+ "flow": "holdings",
+ "company": "",
+ "ticker": "LEV",
+ "period": "Nov 2026",
+ "dates": "As of Nov 18, 2026",
+ "basis": "GAAP",
+ "source": "synthetic",
+ "fund": "2x Leveraged",
+ "count": 1,
+ "sectors": [
+  {
+   "l": "Technology",
+   "v": 200,
+   "p": null
+  },
+  {
+   "l": "Cash",
+   "v": -100,
+   "p": null
+  }
+ ],
+ "holdings": [
+  {
+   "l": "Swap on NDX",
+   "v": 200,
+   "sector": "Technology"
+  }
+ ]
+}

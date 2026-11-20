@@ -1,0 +1,48 @@
+{
+ "flow": "income",
+ "company": "Testco",
+ "ticker": "TST",
+ "period": "Q2 2026",
+ "dates": "Apr 1 to Jun 30, 2026",
+ "basis": "GAAP",
+ "source": "synthetic",
+ "revenue": [
+  1000,
+  null
+ ],
+ "cogs": [
+  400,
+  null
+ ],
+ "opex": [
+  {
+   "l": "R&D",
+   "v": 200,
+   "p": null
+  },
+  {
+   "l": "SG&A",
+   "v": 150,
+   "p": null
+  }
+ ],
+ "operating_income": [
+  250,
+  null
+ ],
+ "nonop": [
+  {
+   "l": "Interest income",
+   "v": 10,
+   "p": null
+  }
+ ],
+ "tax": [
+  50,
+  null
+ ],
+ "net_income": [
+  210,
+  null
+ ]
+}

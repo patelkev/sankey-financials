@@ -1,0 +1,52 @@
+{
+ "flow": "segments",
+ "company": "Amazon",
+ "ticker": "AMZN",
+ "period": "Q3 2026",
+ "dates": "Jul 1 to Sep 30, 2026",
+ "basis": "GAAP",
+ "source": "Amazon Q3 2026 release",
+ "revenue": [
+  201944,
+  180169
+ ],
+ "operating_income": [
+  28076,
+  17422
+ ],
+ "segments": [
+  {
+   "l": "North America",
+   "revenue": [
+    112852,
+    106267
+   ],
+   "operating_income": [
+    8723,
+    4789
+   ]
+  },
+  {
+   "l": "International",
+   "revenue": [
+    43108,
+    40896
+   ],
+   "operating_income": [
+    1580,
+    1199
+   ]
+  },
+  {
+   "l": "AWS",
+   "revenue": [
+    45984,
+    33006
+   ],
+   "operating_income": [
+    17773,
+    11434
+   ]
+  }
+ ]
+}

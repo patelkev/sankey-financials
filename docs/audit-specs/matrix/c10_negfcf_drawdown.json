@@ -1,0 +1,1 @@
+{"flow": "cashflow", "company": "Cashco", "ticker": "CSH", "period": "FY2026", "dates": "Jan 1 to Dec 31, 2026", "basis": "GAAP", "source": "synthetic", "operating": [{"l": "Net income", "v": 800, "p": 700}, {"l": "D&A", "v": 200, "p": 180}], "cfo": [1000, 880], "capex": [1200, 0], "other": [{"l": "Acquisition", "v": -2000, "p": null}], "change_in_cash": [-2200, null]}

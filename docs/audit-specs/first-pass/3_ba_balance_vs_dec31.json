@@ -1,0 +1,186 @@
+{
+ "flow": "balance",
+ "company": "Boeing",
+ "ticker": "BA",
+ "period": "Sep 30, 2026",
+ "dates": "Compared with Dec 31, 2025",
+ "cmp": "vs Dec 31",
+ "prev_label": "Dec 31",
+ "basis": "GAAP",
+ "source": "Boeing Q3 2026 earnings release",
+ "assets": [
+  {
+   "l": "Cash",
+   "v": 9498,
+   "p": 10921
+  },
+  {
+   "l": "Short-term investments",
+   "v": 11216,
+   "p": 18479
+  },
+  {
+   "l": "billed",
+   "group": "Receivables",
+   "v": 4069,
+   "p": 2921
+  },
+  {
+   "l": "unbilled",
+   "group": "Receivables",
+   "v": 10179,
+   "p": 9158
+  },
+  {
+   "l": "Inventories",
+   "v": 90948,
+   "p": 84679
+  },
+  {
+   "l": "other current",
+   "group": "Other assets",
+   "v": 2674,
+   "p": 2301
+  },
+  {
+   "l": "held for sale",
+   "group": "Other assets",
+   "v": 688,
+   "p": 0
+  },
+  {
+   "l": "Property, plant and equipment",
+   "v": 16685,
+   "p": 15361
+  },
+  {
+   "l": "Goodwill",
+   "v": 17778,
+   "p": 17275
+  },
+  {
+   "l": "Intangibles",
+   "v": 1279,
+   "p": 1567
+  },
+  {
+   "l": "fin rec",
+   "group": "Other assets",
+   "v": 334,
+   "p": 241
+  },
+  {
+   "l": "def tax",
+   "group": "Other assets",
+   "v": 193,
+   "p": 107
+  },
+  {
+   "l": "investments",
+   "group": "Other assets",
+   "v": 970,
+   "p": 1048
+  },
+  {
+   "l": "other",
+   "group": "Other assets",
+   "v": 4228,
+   "p": 4177
+  }
+ ],
+ "total_assets": [
+  170739,
+  168235
+ ],
+ "liabilities": [
+  {
+   "l": "Accounts payable",
+   "v": 15288,
+   "p": 13109
+  },
+  {
+   "l": "Accrued liabilities",
+   "v": 26441,
+   "p": 27141
+  },
+  {
+   "l": "Advances and progress billings",
+   "v": 67502,
+   "p": 59404
+  },
+  {
+   "l": "short-term",
+   "group": "Debt",
+   "v": 4569,
+   "p": 8461
+  },
+  {
+   "l": "long-term",
+   "group": "Debt",
+   "v": 41351,
+   "p": 45637
+  },
+  {
+   "l": "held for sale",
+   "group": "Other liabilities",
+   "v": 161,
+   "p": 0
+  },
+  {
+   "l": "deferred tax",
+   "group": "Other liabilities",
+   "v": 310,
+   "p": 216
+  },
+  {
+   "l": "retiree health",
+   "group": "Other liabilities",
+   "v": 1995,
+   "p": 2091
+  },
+  {
+   "l": "pension",
+   "group": "Other liabilities",
+   "v": 4018,
+   "p": 4287
+  },
+  {
+   "l": "other LT",
+   "group": "Other liabilities",
+   "v": 2542,
+   "p": 2432
+  }
+ ],
+ "equity": [
+  {
+   "l": "Preferred and common stock",
+   "v": 5067,
+   "p": 5067
+  },
+  {
+   "l": "Additional paid-in capital",
+   "v": 22222,
+   "p": 21441
+  },
+  {
+   "l": "Treasury stock",
+   "v": -27159,
+   "p": -28029
+  },
+  {
+   "l": "Retained earnings",
+   "v": 16429,
+   "p": 17252
+  },
+  {
+   "l": "AOCI",
+   "v": -10012,
+   "p": -10277
+  },
+  {
+   "l": "Noncontrolling interests",
+   "v": 15,
+   "p": 3
+  }
+ ]
+}

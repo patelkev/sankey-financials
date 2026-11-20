@@ -1,0 +1,25 @@
+{
+ "flow": "holdings",
+ "company": "",
+ "ticker": "BAD",
+ "period": "Nov 2026",
+ "dates": "As of Nov 18, 2026",
+ "basis": "GAAP",
+ "source": "synthetic",
+ "fund": "Bad Map",
+ "count": 1,
+ "sectors": [
+  {
+   "l": "Tech",
+   "v": 100,
+   "p": null
+  }
+ ],
+ "holdings": [
+  {
+   "l": "Apple",
+   "v": 10,
+   "sector": "Technology"
+  }
+ ]
+}

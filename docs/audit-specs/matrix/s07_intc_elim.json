@@ -1,0 +1,82 @@
+{
+ "flow": "segments",
+ "company": "Intel",
+ "ticker": "INTC",
+ "period": "Q3 2026",
+ "dates": "Jul 1 to Sep 30, 2026",
+ "basis": "GAAP",
+ "source": "Intel Q3 2026 release",
+ "revenue": [
+  16513,
+  null
+ ],
+ "operating_income": [
+  2522,
+  683
+ ],
+ "segments": [
+  {
+   "l": "Client Computing",
+   "revenue": [
+    8097,
+    null
+   ],
+   "operating_income": [
+    2285,
+    2694
+   ]
+  },
+  {
+   "l": "Data Center & AI",
+   "revenue": [
+    7318,
+    null
+   ],
+   "operating_income": [
+    3039,
+    964
+   ]
+  },
+  {
+   "l": "Intel Foundry",
+   "revenue": [
+    6697,
+    null
+   ],
+   "operating_income": [
+    -1853,
+    -2321
+   ]
+  },
+  {
+   "l": "All other",
+   "revenue": [
+    692,
+    null
+   ],
+   "operating_income": [
+    179,
+    100
+   ]
+  }
+ ],
+ "corporate": [
+  {
+   "l": "Corporate unallocated",
+   "v": -1058,
+   "p": -782
+  },
+  {
+   "l": "Eliminations",
+   "v": -70,
+   "p": 28
+  }
+ ],
+ "eliminations": [
+  {
+   "l": "Intersegment eliminations",
+   "v": -6291,
+   "p": null
+  }
+ ]
+}

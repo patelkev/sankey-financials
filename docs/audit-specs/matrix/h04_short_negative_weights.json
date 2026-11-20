@@ -1,0 +1,40 @@
+{
+ "flow": "holdings",
+ "company": "",
+ "ticker": "LSF",
+ "period": "Nov 2026",
+ "dates": "As of Nov 18, 2026",
+ "basis": "GAAP",
+ "source": "synthetic",
+ "fund": "Long/Short Fund",
+ "count": 1,
+ "sectors": [
+  {
+   "l": "Technology",
+   "v": 80,
+   "p": null
+  },
+  {
+   "l": "Cash",
+   "v": 25,
+   "p": null
+  },
+  {
+   "l": "Short positions",
+   "v": -5,
+   "p": null
+  }
+ ],
+ "holdings": [
+  {
+   "l": "Apple",
+   "v": 30,
+   "sector": "Technology"
+  },
+  {
+   "l": "Short SPY",
+   "v": -5,
+   "sector": "Short positions"
+  }
+ ]
+}

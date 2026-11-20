@@ -1,0 +1,48 @@
+{
+ "flow": "income",
+ "company": "Walmart",
+ "ticker": "WMT",
+ "period": "FY2025",
+ "dates": "Feb 1, 2024 to Jan 31, 2025",
+ "basis": "GAAP",
+ "source": "approx, WMT FY2025 10-K",
+ "revenue": [
+  680985,
+  648125
+ ],
+ "cogs": [
+  511753,
+  490142
+ ],
+ "opex": [
+  {
+   "l": "Operating, SG&A",
+   "v": 139884,
+   "p": 130971
+  }
+ ],
+ "operating_income": [
+  29348,
+  27012
+ ],
+ "nonop": [
+  {
+   "l": "Interest, net",
+   "v": -2249,
+   "p": -2137
+  },
+  {
+   "l": "Other gains and losses",
+   "v": 1027,
+   "p": -3027
+  }
+ ],
+ "tax": [
+  6152,
+  5578
+ ],
+ "net_income": [
+  21974,
+  16270
+ ]
+}

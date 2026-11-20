@@ -1,0 +1,25 @@
+{
+ "flow": "holdings",
+ "company": "",
+ "ticker": "ONE",
+ "period": "Nov 2026",
+ "dates": "As of Nov 18, 2026",
+ "basis": "GAAP",
+ "source": "synthetic",
+ "fund": "Single Stock ETF",
+ "count": 1,
+ "sectors": [
+  {
+   "l": "Technology",
+   "v": 100,
+   "p": null
+  }
+ ],
+ "holdings": [
+  {
+   "l": "Nvidia",
+   "v": 100,
+   "sector": "Technology"
+  }
+ ]
+}

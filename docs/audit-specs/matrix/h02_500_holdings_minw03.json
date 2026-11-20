@@ -1,0 +1,2571 @@
+{
+ "flow": "holdings",
+ "company": "",
+ "ticker": "B500",
+ "period": "Nov 2026",
+ "dates": "As of Nov 18, 2026",
+ "basis": "GAAP",
+ "source": "synthetic",
+ "fund": "Broad 500 ETF",
+ "count": 500,
+ "sectors": [
+  {
+   "l": "Technology",
+   "v": 9.7612,
+   "p": null
+  },
+  {
+   "l": "Health care",
+   "v": 7.1862,
+   "p": null
+  },
+  {
+   "l": "Financials",
+   "v": 10.4911,
+   "p": null
+  },
+  {
+   "l": "Industrials",
+   "v": 7.125,
+   "p": null
+  },
+  {
+   "l": "Consumer",
+   "v": 7.7477,
+   "p": null
+  },
+  {
+   "l": "Energy",
+   "v": 9.5844,
+   "p": null
+  },
+  {
+   "l": "Utilities",
+   "v": 8.4537,
+   "p": null
+  },
+  {
+   "l": "Materials",
+   "v": 10.5987,
+   "p": null
+  },
+  {
+   "l": "Real estate",
+   "v": 12.4161,
+   "p": null
+  },
+  {
+   "l": "Communication",
+   "v": 6.4045,
+   "p": null
+  },
+  {
+   "l": "Staples",
+   "v": 10.2314,
+   "p": null
+  }
+ ],
+ "holdings": [
+  {
+   "l": "Company 0",
+   "v": 0.0019,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 1",
+   "v": 0.4788,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 2",
+   "v": 0.3505,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 3",
+   "v": 0.0131,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 4",
+   "v": 0.0957,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 5",
+   "v": 0.0714,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 6",
+   "v": 0.2177,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 7",
+   "v": 0.386,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 8",
+   "v": 0.0007,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 9",
+   "v": 0.0,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 10",
+   "v": 0.4593,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 11",
+   "v": 0.0638,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 12",
+   "v": 0.3485,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 13",
+   "v": 0.0,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 14",
+   "v": 0.0695,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 15",
+   "v": 0.2955,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 16",
+   "v": 0.0094,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 17",
+   "v": 0.6645,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 18",
+   "v": 0.5763,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 19",
+   "v": 0.0,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 20",
+   "v": 0.0,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 21",
+   "v": 0.1249,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 22",
+   "v": 0.6517,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 23",
+   "v": 0.0436,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 24",
+   "v": 0.008,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 25",
+   "v": 0.0592,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 26",
+   "v": 0.0,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 27",
+   "v": 0.0086,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 28",
+   "v": 0.0661,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 29",
+   "v": 0.0959,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 30",
+   "v": 0.01,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 31",
+   "v": 0.0097,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 32",
+   "v": 0.0082,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 33",
+   "v": 0.0764,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 34",
+   "v": 0.0191,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 35",
+   "v": 0.0,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 36",
+   "v": 0.4623,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 37",
+   "v": 0.1356,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 38",
+   "v": 0.2085,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 39",
+   "v": 0.0051,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 40",
+   "v": 0.7693,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 41",
+   "v": 0.5003,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 42",
+   "v": 0.0014,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 43",
+   "v": 0.029,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 44",
+   "v": 0.2955,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 45",
+   "v": 0.283,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 46",
+   "v": 0.6461,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 47",
+   "v": 0.0592,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 48",
+   "v": 0.4499,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 49",
+   "v": 0.2369,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 50",
+   "v": 0.022,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 51",
+   "v": 0.1596,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 52",
+   "v": 0.5407,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 53",
+   "v": 0.4767,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 54",
+   "v": 0.1015,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 55",
+   "v": 0.1608,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 56",
+   "v": 0.0,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 57",
+   "v": 0.0113,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 58",
+   "v": 0.3989,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 59",
+   "v": 0.056,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 60",
+   "v": 0.0041,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 61",
+   "v": 0.13,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 62",
+   "v": 0.2734,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 63",
+   "v": 0.2414,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 64",
+   "v": 0.0414,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 65",
+   "v": 0.0665,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 66",
+   "v": 0.1034,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 67",
+   "v": 0.3711,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 68",
+   "v": 0.1112,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 69",
+   "v": 0.0478,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 70",
+   "v": 0.0924,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 71",
+   "v": 0.0,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 72",
+   "v": 0.0001,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 73",
+   "v": 0.2738,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 74",
+   "v": 0.7477,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 75",
+   "v": 0.1642,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 76",
+   "v": 0.048,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 77",
+   "v": 0.0039,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 78",
+   "v": 0.0997,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 79",
+   "v": 0.7452,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 80",
+   "v": 0.3599,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 81",
+   "v": 0.1236,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 82",
+   "v": 0.5009,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 83",
+   "v": 0.0098,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 84",
+   "v": 0.1067,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 85",
+   "v": 0.6798,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 86",
+   "v": 0.1518,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 87",
+   "v": 0.0761,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 88",
+   "v": 0.0154,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 89",
+   "v": 0.1295,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 90",
+   "v": 0.6898,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 91",
+   "v": 0.0,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 92",
+   "v": 0.3786,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 93",
+   "v": 0.4346,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 94",
+   "v": 0.5475,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 95",
+   "v": 0.3195,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 96",
+   "v": 0.4168,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 97",
+   "v": 0.1098,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 98",
+   "v": 0.1392,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 99",
+   "v": 0.0609,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 100",
+   "v": 0.0001,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 101",
+   "v": 0.5181,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 102",
+   "v": 0.1457,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 103",
+   "v": 0.0063,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 104",
+   "v": 0.1012,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 105",
+   "v": 0.0897,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 106",
+   "v": 0.0357,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 107",
+   "v": 0.0326,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 108",
+   "v": 0.1228,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 109",
+   "v": 0.1907,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 110",
+   "v": 0.1807,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 111",
+   "v": 0.0757,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 112",
+   "v": 0.0,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 113",
+   "v": 0.0095,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 114",
+   "v": 0.0044,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 115",
+   "v": 0.1571,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 116",
+   "v": 0.5022,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 117",
+   "v": 0.4005,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 118",
+   "v": 0.3984,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 119",
+   "v": 0.4282,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 120",
+   "v": 0.0131,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 121",
+   "v": 0.4692,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 122",
+   "v": 0.2399,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 123",
+   "v": 0.0005,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 124",
+   "v": 0.0,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 125",
+   "v": 0.0,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 126",
+   "v": 0.3394,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 127",
+   "v": 0.0122,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 128",
+   "v": 0.001,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 129",
+   "v": 0.1919,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 130",
+   "v": 0.0321,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 131",
+   "v": 0.0003,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 132",
+   "v": 0.0032,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 133",
+   "v": 0.1154,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 134",
+   "v": 0.0037,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 135",
+   "v": 0.016,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 136",
+   "v": 0.2835,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 137",
+   "v": 0.074,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 138",
+   "v": 0.0263,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 139",
+   "v": 0.0837,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 140",
+   "v": 0.0,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 141",
+   "v": 0.0454,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 142",
+   "v": 0.0587,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 143",
+   "v": 0.0052,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 144",
+   "v": 0.001,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 145",
+   "v": 0.5732,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 146",
+   "v": 0.1044,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 147",
+   "v": 0.0072,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 148",
+   "v": 0.1748,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 149",
+   "v": 0.4291,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 150",
+   "v": 0.0,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 151",
+   "v": 0.0,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 152",
+   "v": 0.0025,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 153",
+   "v": 0.2922,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 154",
+   "v": 0.0032,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 155",
+   "v": 0.2752,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 156",
+   "v": 0.2454,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 157",
+   "v": 0.1271,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 158",
+   "v": 0.0084,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 159",
+   "v": 0.7305,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 160",
+   "v": 0.3995,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 161",
+   "v": 0.1085,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 162",
+   "v": 0.0087,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 163",
+   "v": 0.2146,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 164",
+   "v": 0.0484,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 165",
+   "v": 0.1502,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 166",
+   "v": 0.0261,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 167",
+   "v": 0.1976,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 168",
+   "v": 0.0002,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 169",
+   "v": 0.0209,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 170",
+   "v": 0.7134,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 171",
+   "v": 0.528,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 172",
+   "v": 0.0226,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 173",
+   "v": 0.4978,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 174",
+   "v": 0.0235,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 175",
+   "v": 0.652,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 176",
+   "v": 0.3238,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 177",
+   "v": 0.0567,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 178",
+   "v": 0.0126,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 179",
+   "v": 0.0,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 180",
+   "v": 0.5338,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 181",
+   "v": 0.0,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 182",
+   "v": 0.4329,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 183",
+   "v": 0.7009,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 184",
+   "v": 0.1459,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 185",
+   "v": 0.004,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 186",
+   "v": 0.5141,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 187",
+   "v": 0.7265,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 188",
+   "v": 0.2745,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 189",
+   "v": 0.1037,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 190",
+   "v": 0.0425,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 191",
+   "v": 0.0329,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 192",
+   "v": 0.0069,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 193",
+   "v": 0.2411,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 194",
+   "v": 0.0638,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 195",
+   "v": 0.0058,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 196",
+   "v": 0.0009,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 197",
+   "v": 0.2324,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 198",
+   "v": 0.0204,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 199",
+   "v": 0.0982,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 200",
+   "v": 0.0271,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 201",
+   "v": 0.521,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 202",
+   "v": 0.5729,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 203",
+   "v": 0.0,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 204",
+   "v": 0.0064,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 205",
+   "v": 0.0277,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 206",
+   "v": 0.7566,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 207",
+   "v": 0.3772,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 208",
+   "v": 0.0307,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 209",
+   "v": 0.0076,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 210",
+   "v": 0.2414,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 211",
+   "v": 0.4625,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 212",
+   "v": 0.6373,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 213",
+   "v": 0.032,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 214",
+   "v": 0.5405,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 215",
+   "v": 0.2552,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 216",
+   "v": 0.0895,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 217",
+   "v": 0.753,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 218",
+   "v": 0.0102,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 219",
+   "v": 0.3004,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 220",
+   "v": 0.0005,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 221",
+   "v": 0.0038,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 222",
+   "v": 0.5948,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 223",
+   "v": 0.0076,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 224",
+   "v": 0.3442,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 225",
+   "v": 0.1701,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 226",
+   "v": 0.4682,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 227",
+   "v": 0.0392,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 228",
+   "v": 0.031,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 229",
+   "v": 0.0194,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 230",
+   "v": 0.5135,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 231",
+   "v": 0.1733,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 232",
+   "v": 0.6838,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 233",
+   "v": 0.5495,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 234",
+   "v": 0.002,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 235",
+   "v": 0.1317,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 236",
+   "v": 0.0009,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 237",
+   "v": 0.0,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 238",
+   "v": 0.0003,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 239",
+   "v": 0.5113,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 240",
+   "v": 0.3851,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 241",
+   "v": 0.4474,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 242",
+   "v": 0.0312,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 243",
+   "v": 0.1832,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 244",
+   "v": 0.3761,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 245",
+   "v": 0.0425,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 246",
+   "v": 0.1463,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 247",
+   "v": 0.0088,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 248",
+   "v": 0.0004,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 249",
+   "v": 0.0149,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 250",
+   "v": 0.5561,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 251",
+   "v": 0.1415,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 252",
+   "v": 0.6228,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 253",
+   "v": 0.0755,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 254",
+   "v": 0.0168,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 255",
+   "v": 0.3835,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 256",
+   "v": 0.4462,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 257",
+   "v": 0.0,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 258",
+   "v": 0.2371,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 259",
+   "v": 0.0006,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 260",
+   "v": 0.0012,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 261",
+   "v": 0.5455,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 262",
+   "v": 0.0001,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 263",
+   "v": 0.0108,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 264",
+   "v": 0.7591,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 265",
+   "v": 0.0587,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 266",
+   "v": 0.0012,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 267",
+   "v": 0.0037,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 268",
+   "v": 0.0111,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 269",
+   "v": 0.324,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 270",
+   "v": 0.0009,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 271",
+   "v": 0.5944,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 272",
+   "v": 0.0426,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 273",
+   "v": 0.7186,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 274",
+   "v": 0.5914,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 275",
+   "v": 0.02,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 276",
+   "v": 0.0128,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 277",
+   "v": 0.0854,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 278",
+   "v": 0.0008,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 279",
+   "v": 0.2181,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 280",
+   "v": 0.0,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 281",
+   "v": 0.0,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 282",
+   "v": 0.7464,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 283",
+   "v": 0.0203,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 284",
+   "v": 0.167,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 285",
+   "v": 0.0716,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 286",
+   "v": 0.0242,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 287",
+   "v": 0.0002,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 288",
+   "v": 0.5995,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 289",
+   "v": 0.7176,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 290",
+   "v": 0.7176,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 291",
+   "v": 0.0011,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 292",
+   "v": 0.0078,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 293",
+   "v": 0.1855,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 294",
+   "v": 0.7404,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 295",
+   "v": 0.1259,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 296",
+   "v": 0.2564,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 297",
+   "v": 0.2281,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 298",
+   "v": 0.0137,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 299",
+   "v": 0.125,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 300",
+   "v": 0.0228,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 301",
+   "v": 0.0118,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 302",
+   "v": 0.0004,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 303",
+   "v": 0.0174,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 304",
+   "v": 0.7482,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 305",
+   "v": 0.0707,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 306",
+   "v": 0.2181,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 307",
+   "v": 0.2096,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 308",
+   "v": 0.655,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 309",
+   "v": 0.0468,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 310",
+   "v": 0.0227,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 311",
+   "v": 0.0276,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 312",
+   "v": 0.025,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 313",
+   "v": 0.4783,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 314",
+   "v": 0.5612,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 315",
+   "v": 0.0218,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 316",
+   "v": 0.0294,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 317",
+   "v": 0.1268,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 318",
+   "v": 0.1527,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 319",
+   "v": 0.1665,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 320",
+   "v": 0.0116,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 321",
+   "v": 0.0,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 322",
+   "v": 0.0114,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 323",
+   "v": 0.0003,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 324",
+   "v": 0.1318,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 325",
+   "v": 0.0003,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 326",
+   "v": 0.0003,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 327",
+   "v": 0.2018,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 328",
+   "v": 0.0194,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 329",
+   "v": 0.3911,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 330",
+   "v": 0.0944,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 331",
+   "v": 0.5051,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 332",
+   "v": 0.0029,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 333",
+   "v": 0.0992,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 334",
+   "v": 0.3953,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 335",
+   "v": 0.0004,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 336",
+   "v": 0.6729,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 337",
+   "v": 0.0041,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 338",
+   "v": 0.3679,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 339",
+   "v": 0.7516,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 340",
+   "v": 0.4363,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 341",
+   "v": 0.0257,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 342",
+   "v": 0.001,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 343",
+   "v": 0.1071,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 344",
+   "v": 0.6113,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 345",
+   "v": 0.0199,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 346",
+   "v": 0.5617,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 347",
+   "v": 0.0022,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 348",
+   "v": 0.5938,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 349",
+   "v": 0.0,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 350",
+   "v": 0.0248,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 351",
+   "v": 0.5795,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 352",
+   "v": 0.4087,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 353",
+   "v": 0.5873,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 354",
+   "v": 0.4675,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 355",
+   "v": 0.3269,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 356",
+   "v": 0.258,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 357",
+   "v": 0.0044,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 358",
+   "v": 0.0637,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 359",
+   "v": 0.0031,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 360",
+   "v": 0.2874,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 361",
+   "v": 0.2343,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 362",
+   "v": 0.0127,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 363",
+   "v": 0.0002,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 364",
+   "v": 0.7035,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 365",
+   "v": 0.4154,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 366",
+   "v": 0.1304,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 367",
+   "v": 0.1248,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 368",
+   "v": 0.4854,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 369",
+   "v": 0.0733,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 370",
+   "v": 0.0487,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 371",
+   "v": 0.0306,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 372",
+   "v": 0.0135,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 373",
+   "v": 0.0,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 374",
+   "v": 0.2125,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 375",
+   "v": 0.0569,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 376",
+   "v": 0.1462,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 377",
+   "v": 0.0002,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 378",
+   "v": 0.0352,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 379",
+   "v": 0.0021,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 380",
+   "v": 0.0015,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 381",
+   "v": 0.0137,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 382",
+   "v": 0.4481,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 383",
+   "v": 0.0495,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 384",
+   "v": 0.0508,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 385",
+   "v": 0.1807,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 386",
+   "v": 0.01,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 387",
+   "v": 0.0,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 388",
+   "v": 0.1163,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 389",
+   "v": 0.0989,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 390",
+   "v": 0.2149,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 391",
+   "v": 0.0663,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 392",
+   "v": 0.2546,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 393",
+   "v": 0.3079,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 394",
+   "v": 0.0107,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 395",
+   "v": 0.0955,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 396",
+   "v": 0.0864,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 397",
+   "v": 0.009,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 398",
+   "v": 0.0551,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 399",
+   "v": 0.1385,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 400",
+   "v": 0.5869,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 401",
+   "v": 0.6081,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 402",
+   "v": 0.0164,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 403",
+   "v": 0.2125,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 404",
+   "v": 0.0001,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 405",
+   "v": 0.0003,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 406",
+   "v": 0.1054,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 407",
+   "v": 0.5315,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 408",
+   "v": 0.0032,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 409",
+   "v": 0.3536,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 410",
+   "v": 0.5417,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 411",
+   "v": 0.0238,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 412",
+   "v": 0.2613,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 413",
+   "v": 0.4814,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 414",
+   "v": 0.0404,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 415",
+   "v": 0.2713,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 416",
+   "v": 0.3142,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 417",
+   "v": 0.1654,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 418",
+   "v": 0.4939,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 419",
+   "v": 0.5671,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 420",
+   "v": 0.6962,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 421",
+   "v": 0.1466,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 422",
+   "v": 0.0043,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 423",
+   "v": 0.0124,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 424",
+   "v": 0.0081,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 425",
+   "v": 0.1453,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 426",
+   "v": 0.3423,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 427",
+   "v": 0.0001,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 428",
+   "v": 0.2492,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 429",
+   "v": 0.2902,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 430",
+   "v": 0.0332,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 431",
+   "v": 0.1075,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 432",
+   "v": 0.0035,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 433",
+   "v": 0.3059,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 434",
+   "v": 0.0001,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 435",
+   "v": 0.7433,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 436",
+   "v": 0.4149,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 437",
+   "v": 0.1953,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 438",
+   "v": 0.0151,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 439",
+   "v": 0.5985,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 440",
+   "v": 0.6948,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 441",
+   "v": 0.0021,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 442",
+   "v": 0.3673,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 443",
+   "v": 0.4695,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 444",
+   "v": 0.2259,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 445",
+   "v": 0.2703,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 446",
+   "v": 0.0694,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 447",
+   "v": 0.6213,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 448",
+   "v": 0.7207,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 449",
+   "v": 0.044,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 450",
+   "v": 0.4069,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 451",
+   "v": 0.0638,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 452",
+   "v": 0.0035,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 453",
+   "v": 0.0271,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 454",
+   "v": 0.0016,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 455",
+   "v": 0.5907,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 456",
+   "v": 0.6948,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 457",
+   "v": 0.0013,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 458",
+   "v": 0.1705,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 459",
+   "v": 0.0535,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 460",
+   "v": 0.0013,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 461",
+   "v": 0.0203,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 462",
+   "v": 0.012,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 463",
+   "v": 0.3313,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 464",
+   "v": 0.0,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 465",
+   "v": 0.0054,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 466",
+   "v": 0.0665,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 467",
+   "v": 0.0,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 468",
+   "v": 0.1944,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 469",
+   "v": 0.1748,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 470",
+   "v": 0.4586,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 471",
+   "v": 0.0069,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 472",
+   "v": 0.0182,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 473",
+   "v": 0.1255,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 474",
+   "v": 0.016,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 475",
+   "v": 0.1581,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 476",
+   "v": 0.0124,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 477",
+   "v": 0.2512,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 478",
+   "v": 0.3895,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 479",
+   "v": 0.416,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 480",
+   "v": 0.7261,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 481",
+   "v": 0.1276,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 482",
+   "v": 0.093,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 483",
+   "v": 0.4929,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 484",
+   "v": 0.3579,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 485",
+   "v": 0.1461,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 486",
+   "v": 0.0443,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 487",
+   "v": 0.018,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 488",
+   "v": 0.001,
+   "sector": "Consumer"
+  },
+  {
+   "l": "Company 489",
+   "v": 0.4143,
+   "sector": "Energy"
+  },
+  {
+   "l": "Company 490",
+   "v": 0.0013,
+   "sector": "Utilities"
+  },
+  {
+   "l": "Company 491",
+   "v": 0.3283,
+   "sector": "Materials"
+  },
+  {
+   "l": "Company 492",
+   "v": 0.1276,
+   "sector": "Real estate"
+  },
+  {
+   "l": "Company 493",
+   "v": 0.7069,
+   "sector": "Communication"
+  },
+  {
+   "l": "Company 494",
+   "v": 0.3468,
+   "sector": "Staples"
+  },
+  {
+   "l": "Company 495",
+   "v": 0.7259,
+   "sector": "Technology"
+  },
+  {
+   "l": "Company 496",
+   "v": 0.002,
+   "sector": "Health care"
+  },
+  {
+   "l": "Company 497",
+   "v": 0.0986,
+   "sector": "Financials"
+  },
+  {
+   "l": "Company 498",
+   "v": 0.1477,
+   "sector": "Industrials"
+  },
+  {
+   "l": "Company 499",
+   "v": 0.0237,
+   "sector": "Consumer"
+  }
+ ],
+ "min_weight": 0.3
+}

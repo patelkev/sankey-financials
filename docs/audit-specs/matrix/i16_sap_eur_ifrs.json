@@ -1,0 +1,59 @@
+{
+ "flow": "income",
+ "company": "SAP",
+ "ticker": "SAP",
+ "period": "FY2024",
+ "dates": "Jan 1 to Dec 31, 2024",
+ "basis": "IFRS",
+ "source": "approx, SAP FY2024 IFRS, EUR",
+ "currency": "EUR",
+ "revenue": [
+  34176,
+  31207
+ ],
+ "cogs": [
+  9887,
+  8937
+ ],
+ "opex": [
+  {
+   "l": "R&D",
+   "v": 6513,
+   "p": 6324
+  },
+  {
+   "l": "S&M",
+   "v": 9671,
+   "p": 9050
+  },
+  {
+   "l": "G&A",
+   "v": 1626,
+   "p": 1499
+  },
+  {
+   "l": "Restructuring",
+   "v": 3144,
+   "p": 215
+  }
+ ],
+ "operating_income": [
+  3335,
+  5182
+ ],
+ "nonop": [
+  {
+   "l": "Financial income, net",
+   "v": 250,
+   "p": 386
+  }
+ ],
+ "tax": [
+  2133,
+  1817
+ ],
+ "net_income": [
+  1452,
+  3751
+ ]
+}

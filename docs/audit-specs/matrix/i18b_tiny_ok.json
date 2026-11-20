@@ -1,0 +1,1 @@
+{"flow": "income", "company": "Microcap", "ticker": "MCRO", "period": "Q1 2026", "dates": "Jan 1 to Mar 31, 2026", "basis": "GAAP", "source": "synthetic", "revenue": [0.85, 0.62], "cogs": [0.3, 0.25], "opex": [{"l": "SG&A", "v": 0.4, "p": 0.3}], "operating_income": [0.15, 0.07], "nonop": [], "tax": [0, 0], "net_income": [0.15, 0.07]}

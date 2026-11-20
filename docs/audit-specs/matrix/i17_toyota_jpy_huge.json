@@ -1,0 +1,44 @@
+{
+ "flow": "income",
+ "company": "Toyota",
+ "ticker": "TM",
+ "period": "FY2025",
+ "dates": "Apr 1, 2024 to Mar 31, 2025",
+ "basis": "GAAP",
+ "source": "approx, Toyota 20-F, JPY",
+ "currency": "JPY",
+ "revenue": [
+  48036704,
+  45095325
+ ],
+ "cogs": [
+  39000000,
+  35000000
+ ],
+ "opex": [
+  {
+   "l": "SG&A",
+   "v": 4241000,
+   "p": 4744000
+  }
+ ],
+ "nonop": [
+  {
+   "l": "Other income, net",
+   "v": 600000,
+   "p": 900000
+  }
+ ],
+ "tax": [
+  1400000,
+  1600000
+ ],
+ "operating_income": [
+  4795704,
+  5351325
+ ],
+ "net_income": [
+  3995704,
+  4651325
+ ]
+}

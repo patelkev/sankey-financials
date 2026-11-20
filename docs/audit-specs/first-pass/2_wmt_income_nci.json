@@ -1,0 +1,74 @@
+{
+ "flow": "income",
+ "company": "Walmart",
+ "ticker": "WMT",
+ "period": "Q3 FY2027",
+ "dates": "Aug 1 to Oct 31, 2026",
+ "basis": "GAAP",
+ "source": "Walmart FY27 Q3 earnings release",
+ "views": {
+  "Business": {
+   "items": [
+    {
+     "l": "Walmart U.S.",
+     "v": 125920,
+     "p": 121343
+    },
+    {
+     "l": "Walmart International",
+     "v": 36331,
+     "p": 33932
+    },
+    {
+     "l": "Sam's Club U.S.",
+     "v": 26570,
+     "p": 24215
+    },
+    {
+     "l": "Corporate and other",
+     "v": 14,
+     "p": 6
+    }
+   ]
+  }
+ },
+ "revenue": [
+  188835,
+  179496
+ ],
+ "cogs": [
+  141003,
+  134706
+ ],
+ "opex": [
+  {
+   "l": "Operating, SG&A",
+   "v": 40062,
+   "p": 38094
+  }
+ ],
+ "operating_income": [
+  7770,
+  6696
+ ],
+ "nonop": [
+  {
+   "l": "Interest, net",
+   "v": -685,
+   "p": -591
+  },
+  {
+   "l": "Other gains and (losses)",
+   "v": -341,
+   "p": 2081
+  }
+ ],
+ "tax": [
+  1649,
+  2098
+ ],
+ "net_income": [
+  5095,
+  6088
+ ]
+}

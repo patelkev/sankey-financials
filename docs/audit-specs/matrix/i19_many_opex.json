@@ -1,0 +1,182 @@
+{
+ "flow": "income",
+ "company": "Testco",
+ "ticker": "TST",
+ "period": "Q2 2026",
+ "dates": "Apr 1 to Jun 30, 2026",
+ "basis": "GAAP",
+ "source": "synthetic",
+ "revenue": [
+  1000,
+  900
+ ],
+ "cogs": [
+  400,
+  380
+ ],
+ "opex": [
+  {
+   "l": "Expense line 0",
+   "v": 10,
+   "p": 9
+  },
+  {
+   "l": "Expense line 1",
+   "v": 11,
+   "p": 9
+  },
+  {
+   "l": "Expense line 2",
+   "v": 12,
+   "p": 9
+  },
+  {
+   "l": "Expense line 3",
+   "v": 10,
+   "p": 9
+  },
+  {
+   "l": "Expense line 4",
+   "v": 11,
+   "p": 9
+  },
+  {
+   "l": "Expense line 5",
+   "v": 12,
+   "p": 9
+  },
+  {
+   "l": "Expense line 6",
+   "v": 10,
+   "p": 9
+  },
+  {
+   "l": "Expense line 7",
+   "v": 11,
+   "p": 9
+  },
+  {
+   "l": "Expense line 8",
+   "v": 12,
+   "p": 9
+  },
+  {
+   "l": "Expense line 9",
+   "v": 10,
+   "p": 9
+  },
+  {
+   "l": "Expense line 10",
+   "v": 11,
+   "p": 9
+  },
+  {
+   "l": "Expense line 11",
+   "v": 12,
+   "p": 9
+  },
+  {
+   "l": "Expense line 12",
+   "v": 10,
+   "p": 9
+  },
+  {
+   "l": "Expense line 13",
+   "v": 11,
+   "p": 9
+  },
+  {
+   "l": "Expense line 14",
+   "v": 12,
+   "p": 9
+  },
+  {
+   "l": "Expense line 15",
+   "v": 10,
+   "p": 9
+  },
+  {
+   "l": "Expense line 16",
+   "v": 11,
+   "p": 9
+  },
+  {
+   "l": "Expense line 17",
+   "v": 12,
+   "p": 9
+  },
+  {
+   "l": "Expense line 18",
+   "v": 10,
+   "p": 9
+  },
+  {
+   "l": "Expense line 19",
+   "v": 11,
+   "p": 9
+  },
+  {
+   "l": "Expense line 20",
+   "v": 12,
+   "p": 9
+  },
+  {
+   "l": "Expense line 21",
+   "v": 10,
+   "p": 9
+  },
+  {
+   "l": "Expense line 22",
+   "v": 11,
+   "p": 9
+  },
+  {
+   "l": "Expense line 23",
+   "v": 12,
+   "p": 9
+  },
+  {
+   "l": "Expense line 24",
+   "v": 10,
+   "p": 9
+  },
+  {
+   "l": "Expense line 25",
+   "v": 11,
+   "p": 9
+  },
+  {
+   "l": "Expense line 26",
+   "v": 12,
+   "p": 9
+  },
+  {
+   "l": "Expense line 27",
+   "v": 10,
+   "p": 9
+  },
+  {
+   "l": "Expense line 28",
+   "v": 11,
+   "p": 9
+  },
+  {
+   "l": "Expense line 29",
+   "v": 12,
+   "p": 9
+  }
+ ],
+ "operating_income": [
+  270,
+  null
+ ],
+ "nonop": [],
+ "tax": [
+  0,
+  0
+ ],
+ "net_income": [
+  270,
+  null
+ ]
+}

@@ -1,0 +1,59 @@
+{
+ "flow": "segments",
+ "company": "Segco",
+ "ticker": "SEG",
+ "period": "Q3 2026",
+ "dates": "Jul 1 to Sep 30, 2026",
+ "basis": "GAAP",
+ "source": "synthetic",
+ "revenue": [
+  1000,
+  900
+ ],
+ "operating_income": [
+  100,
+  110
+ ],
+ "segments": [
+  {
+   "l": "A",
+   "revenue": [
+    700,
+    600
+   ],
+   "operating_income": [
+    200,
+    150
+   ]
+  },
+  {
+   "l": "B",
+   "revenue": [
+    300,
+    300
+   ],
+   "operating_income": [
+    -20,
+    0
+   ]
+  },
+  {
+   "l": "New venture",
+   "revenue": [
+    0,
+    0
+   ],
+   "operating_income": [
+    -50,
+    -10
+   ]
+  }
+ ],
+ "corporate": [
+  {
+   "l": "Corporate",
+   "v": -30,
+   "p": -30
+  }
+ ]
+}

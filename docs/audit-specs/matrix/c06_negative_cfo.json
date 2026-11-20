@@ -1,0 +1,35 @@
+{
+ "flow": "cashflow",
+ "company": "Cashco",
+ "ticker": "CSH",
+ "period": "FY2026",
+ "dates": "Jan 1 to Dec 31, 2026",
+ "basis": "GAAP",
+ "source": "synthetic",
+ "operating": [
+  {
+   "l": "Net loss",
+   "v": -500,
+   "p": 100
+  }
+ ],
+ "cfo": [
+  -500,
+  100
+ ],
+ "capex": [
+  100,
+  100
+ ],
+ "other": [
+  {
+   "l": "Equity raised",
+   "v": 800,
+   "p": 0
+  }
+ ],
+ "change_in_cash": [
+  200,
+  0
+ ]
+}

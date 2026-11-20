@@ -1,0 +1,49 @@
+{
+ "flow": "income",
+ "company": "Evil \"Co\" <b>",
+ "ticker": "X</title><script>alert(1)</script>",
+ "period": "Q2 2026",
+ "dates": "<svg onload=alert(5)>",
+ "basis": "GAAP",
+ "source": "<img src=x onerror=alert(2)>",
+ "revenue": [
+  1000,
+  900
+ ],
+ "cogs": [
+  400,
+  380
+ ],
+ "opex": [
+  {
+   "l": "</script><script>alert(3)</script>",
+   "v": 200,
+   "p": 190
+  },
+  {
+   "l": "SG&A",
+   "v": 150,
+   "p": 140,
+   "note": "<img src=x onerror=alert(4)>"
+  }
+ ],
+ "operating_income": [
+  250,
+  190
+ ],
+ "nonop": [
+  {
+   "l": "Interest income",
+   "v": 10,
+   "p": 8
+  }
+ ],
+ "tax": [
+  50,
+  40
+ ],
+ "net_income": [
+  210,
+  158
+ ]
+}

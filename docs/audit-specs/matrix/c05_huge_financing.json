@@ -1,0 +1,55 @@
+{
+ "flow": "cashflow",
+ "company": "Cashco",
+ "ticker": "CSH",
+ "period": "FY2026",
+ "dates": "Jan 1 to Dec 31, 2026",
+ "basis": "GAAP",
+ "source": "synthetic",
+ "operating": [
+  {
+   "l": "Net loss",
+   "v": -1000,
+   "p": -9000
+  },
+  {
+   "l": "Working capital",
+   "v": 1300,
+   "p": 6000
+  }
+ ],
+ "cfo": [
+  300,
+  -3000
+ ],
+ "capex": [
+  200,
+  1500
+ ],
+ "other": [
+  {
+   "l": "Debt repaid",
+   "v": -5000,
+   "p": -100
+  },
+  {
+   "l": "Equity issued",
+   "v": 21000,
+   "p": 0
+  },
+  {
+   "l": "Debt issued",
+   "v": 2000,
+   "p": 10000
+  },
+  {
+   "l": "Investments",
+   "v": -9000,
+   "p": -1000
+  }
+ ],
+ "change_in_cash": [
+  9100,
+  4400
+ ]
+}

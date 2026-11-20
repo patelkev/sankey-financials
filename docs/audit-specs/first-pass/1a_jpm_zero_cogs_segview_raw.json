@@ -1,0 +1,63 @@
+{
+ "flow": "income",
+ "company": "JPMorgan Chase",
+ "ticker": "JPM",
+ "period": "Q3 2026",
+ "dates": "Jul 1 to Sep 30, 2026",
+ "source": "JPM 3Q26 earnings release; tax derived as pretax less net income",
+ "revenue": [
+  50172,
+  46427
+ ],
+ "opex": [
+  {
+   "l": "Noninterest expense",
+   "v": 27295,
+   "p": 24281
+  }
+ ],
+ "nonop": [],
+ "tax": [
+  4829,
+  4350
+ ],
+ "net_income": [
+  15305,
+  14393
+ ],
+ "basis": "GAAP",
+ "views": {
+  "Segment": {
+   "items": [
+    {
+     "l": "Consumer & Community Banking",
+     "v": 21171,
+     "p": 19473
+    },
+    {
+     "l": "Commercial & Investment Bank",
+     "v": 22734,
+     "p": 19878
+    },
+    {
+     "l": "Asset & Wealth Mgmt",
+     "v": 6909,
+     "p": 6066
+    },
+    {
+     "l": "Corporate",
+     "v": 93,
+     "p": 1703
+    }
+   ]
+  }
+ },
+ "cogs": [
+  2743,
+  3403
+ ],
+ "operating_income": [
+  20134,
+  18743
+ ]
+}
