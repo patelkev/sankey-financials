@@ -11,19 +11,19 @@ function hilite(r){
 }
 function showTip(e,h){tip.innerHTML=h;tip.style.opacity=1;const r=wrapEl.getBoundingClientRect();let x=e.clientX-r.left+14;if(x>r.width-250)x=e.clientX-r.left-250;tip.style.left=x+'px';tip.style.top=(e.clientY-r.top+14)+'px'}
 function nodeTip(n){
-  let h=`<div style="font-weight:500;color:var(--text-primary)">${esc(n.full||n.l)}</div><div style="color:var(--text-primary)">${fmt(n.v)} · ${(n.v/SCALE.v*100).toFixed(1)}% of ${esc(SCALE.l.toLowerCase())}</div>`;
-  if(CFG.yoy!==false&&n.p!=null)h+=`<div style="color:var(--text-secondary)">${esc(CFG.prevLabel||'Year ago')} ${fmt(n.p)} · ${esc(CFG.cmp||'Y/Y')} ${yoyStr(n)}</div>`;
+  let h=`<div style="font-weight:500;color:var(--text-primary)">${esc(n.full||n.l)}</div><div style="color:var(--text-primary)">${esc(fmt(n.v))} · ${(n.v/SCALE.v*100).toFixed(1)}% of ${esc(SCALE.l.toLowerCase())}</div>`;
+  if(CFG.yoy!==false&&n.p!=null)h+=`<div style="color:var(--text-secondary)">${esc(CFG.prevLabel||'Year ago')} ${esc(fmt(n.p))} · ${esc(CFG.cmp||'Y/Y')} ${yoyStr(n)}</div>`;
   [n.note,n.auto,n.tiny?'Too small to draw to scale, so shown at a minimum width.':''].forEach(t=>{if(t)h+=`<div style="color:var(--text-secondary)">${esc(t)}</div>`});
   return h+'<div style="color:var(--text-muted)">Click to ask about this line</div>';
 }
 sk.addEventListener('mousemove',e=>{
   const t=e.target;
   if(t.classList.contains('nd')){const n=M[t.dataset.n];hilite(related(n.id));showTip(e,nodeTip(n))}
-  else if(t.classList.contains('lk')){const l=LINKS[+t.dataset.l];hilite({set:new Set([l.s.id,l.t.id]),ls:new Set([l.i])});showTip(e,`<div style="font-weight:500;color:var(--text-primary)">${esc(l.s.l)} → ${esc(l.t.l)}</div><div style="color:var(--text-primary)">${fmt(l.v)}</div><div style="color:var(--text-secondary)">${(l.v/SCALE.v*100).toFixed(1)}% of ${esc(SCALE.l.toLowerCase())} · ${(l.v/l.s.v*100).toFixed(1)}% of ${esc(l.s.l.toLowerCase())}</div>`)}
+  else if(t.classList.contains('lk')){const l=LINKS[+t.dataset.l];hilite({set:new Set([l.s.id,l.t.id]),ls:new Set([l.i])});showTip(e,`<div style="font-weight:500;color:var(--text-primary)">${esc(l.s.l)} → ${esc(l.t.l)}</div><div style="color:var(--text-primary)">${esc(fmt(l.v))}</div><div style="color:var(--text-secondary)">${(l.v/SCALE.v*100).toFixed(1)}% of ${esc(SCALE.l.toLowerCase())} · ${(l.v/l.s.v*100).toFixed(1)}% of ${esc(l.s.l.toLowerCase())}</div>`)}
   else{hilite(null);tip.style.opacity=0}
 });
 sk.addEventListener('mouseleave',()=>{hilite(null);tip.style.opacity=0});
-sk.addEventListener('click',e=>{const t=e.target;if(t.classList.contains('nd')){const n=M[t.dataset.n];sendPrompt(`Explain ${CFG.company}'s ${CFG.title.replace(CFG.ticker+' ','')} ${n.full||n.l} line (${fmt(n.v)}${S.yoy&&okP(n)?', '+yoyStr(n)+' '+(CFG.cmp||'Y/Y'):''}). What drove it and what should I watch?`)}});
+sk.addEventListener('click',e=>{const t=e.target;if(t.classList.contains('nd')){const n=M[t.dataset.n];sendPrompt(`Explain ${CFG.company}'s ${CFG.title.replace(CFG.ticker+' ','')} ${n.full||n.l} line (${esc(fmt(n.v))}${S.yoy&&okP(n)?', '+yoyStr(n)+' '+(CFG.cmp||'Y/Y'):''}). What drove it and what should I watch?`)}});
 const LEG=CFG.legend||[['Revenue','rev'],['Expense','cost'],['Profit','profit']];
 document.getElementById('legend').innerHTML=LEG.map(([l,t])=>`<span class="lg"><span class="dot" style="background:${COL[t]}"></span>${esc(l)}</span>`).join('');
 document.getElementById('cmpl').textContent=CFG.cmp||'Y/Y';

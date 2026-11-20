@@ -1,0 +1,47 @@
+{
+ "flow": "cashflow",
+ "company": "Midco",
+ "ticker": "MID",
+ "period": "FY2026",
+ "dates": "x",
+ "basis": "GAAP",
+ "end": "2026-12-31",
+ "prior_end": "2025-12-31",
+ "operating": [
+  {
+   "l": "Net income",
+   "v": 80,
+   "p": 70
+  },
+  {
+   "l": "D&A",
+   "v": 40,
+   "p": 38
+  }
+ ],
+ "cfo": [
+  120,
+  108
+ ],
+ "capex": [
+  60,
+  55
+ ],
+ "other": [
+  {
+   "l": "Buybacks",
+   "v": -500,
+   "p": -400
+  },
+  {
+   "l": "Debt issued",
+   "v": 450,
+   "p": 300
+  }
+ ],
+ "change_in_cash": [
+  11,
+  -46
+ ],
+ "source": "Synthetic: small operating cash flow with large financing lines and M rounding in change in cash"
+}

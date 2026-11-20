@@ -135,6 +135,18 @@ def flip(v, p, kind):
     return abs(v), (abs(p) if p is not None else None), note
 
 
+def absorb(items, target):
+    """Filings round each line, so parts can miss the reported total by up to TOL. check() has accepted
+    that gap; put it on the largest line (with a note) so the drawn flows balance exactly."""
+    gap = target - sum(float(d['v']) for d in items)
+    if abs(gap) > 1e-9 and items:
+        big = max(items, key=lambda d: abs(float(d['v'])))
+        big['v'] = float(big['v']) + gap
+        big['note'] = ((big.get('note') or '') + f' Includes a {money(gap)} rounding difference so the lines '
+                       'add to the reported total.').strip()
+    return items
+
+
 def views_out(spec, used):
     out = {}
     for label, v in spec.get('views', {}).items():
@@ -152,7 +164,7 @@ def views_out(spec, used):
                 for f in ('full', 'note'):
                     if d.get(f): n[f] = d[f]
                 nodes.append(n)
-            out[key] = {'label': label, 'nodes': nodes}
+            out[key] = {'label': label, 'nodes': absorb(nodes, pair(spec['revenue'])[0])}
         if v.get('note'): out[key]['note'] = v['note']
     # same-as views reuse ids of their source, fine.
     return out
@@ -328,6 +340,8 @@ def cashflow(spec):
     check('Change in cash', cfo - capex + sum(float(d['v']) for d in other), chg)
     op = psum(spec.get('other', []))
     check_prior('Change in cash', None if None in (cfo_p, capex_p, op) else cfo_p - capex_p + op, chg_p)
+    # Draw the change in cash implied by the lines, so a $1M rounding gap in the filing can't unbalance the pool.
+    chg = cfo - capex + sum(float(d['v']) for d in other)
 
     H = g.node(1, 'rev', 'Operating cash flow', cfo, cfo_p, key='cfo')
     fcf = cfo - capex
@@ -431,6 +445,7 @@ def balance(spec):
     check('Assets = liabilities + equity', ta, tl + te)
     check_prior('Total assets', ta_p, pair(spec['total_assets'])[1])
     check_prior('Liabilities + equity vs total assets', None if tl_p is None or te_p is None else tl_p + te_p, ta_p)
+    liabs = absorb(liabs, ta - te); tl = ta - te
     assets = net_into_largest(assets, 'asset')
     if te < 0:
         A = [(g.node(0, 'rev', *item(d)[0:3], d.get('full'), d.get('note')), float(d['v'])) for d in assets]
@@ -585,8 +600,9 @@ DEFAULT_TITLE = {'income': 'income statement', 'cashflow': 'cash flow', 'balance
 
 
 def tolerance(spec):
-    """$1M for normal filers (figures rounded to millions); smaller for companies reporting in
-    thousands, where a flat $1M would let almost any mistake through."""
+    """$1M for normal filers (figures rounded to millions); smaller for companies whose largest figure
+    is under about $200M, where a flat $1M would let almost any mistake through. Uses the largest number
+    anywhere in the spec, so a small hub with big other lines (CFO 120, buybacks 500) keeps $1M."""
     big = 0.0
     def walk(x):
         nonlocal big
@@ -594,7 +610,7 @@ def tolerance(spec):
         if isinstance(x, (int, float)): big = max(big, abs(x))
         elif isinstance(x, list): [walk(y) for y in x]
         elif isinstance(x, dict): [walk(y) for k, y in x.items() if k not in ('count', 'min_weight')]
-    walk({k: spec.get(k) for k in ('revenue', 'total_assets', 'cfo', 'segments')})
+    walk(spec)
     return min(1.0, max(0.005, big * 0.005))
 
 
@@ -650,6 +666,8 @@ def make(spec):
     global TOL, CUR
     TOL = tolerance(spec)
     code = str(spec.get('currency', 'USD')).upper()
+    if not re.fullmatch(r'[A-Z]{3}', code):
+        raise SpecError(f'currency must be a three-letter ISO code such as USD, EUR or JPY, not "{spec["currency"]}".')
     CUR = SYMBOLS.get(code, code + ' ')
     g, meta = FLOWS[flow](spec)
     finish(g, flow)
@@ -679,6 +697,7 @@ def make(spec):
             dict({'id': slug(d['l'], used), 'l': d['l'], 'v': float(d['v']),
                   'p': None if d.get('p') is None else float(d['p'])}, **({'note': d['note']} if d.get('note') else {}))
             for d in ops]}}
+        absorb(cfg['views']['ops']['nodes'], pair(spec['cfo'])[0])
         for n in cfg['views']['ops']['nodes']:
             if n['p'] is not None and (n['p'] > 0) != (n['v'] > 0):
                 n['note'] = (n.get('note', '') + f" A year ago this was {money(n['p'])}.").strip()
