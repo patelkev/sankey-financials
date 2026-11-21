@@ -13,8 +13,9 @@ button{font:inherit;cursor:pointer}
 #copied{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--surface-2);border:1px solid var(--border-strong);
 border-radius:8px;padding:8px 14px;font-size:13px;opacity:0;transition:opacity .2s}
 </style></head><body><main>
-<script>window.sendPrompt=t=>{navigator.clipboard&&navigator.clipboard.writeText(t);const c=document.getElementById('copied');
-c.style.opacity=1;setTimeout(()=>c.style.opacity=0,2200)}</script>
+<script>window.sendPrompt=t=>{const c=document.getElementById('copied'),show=m=>{c.textContent=m;c.style.opacity=1;setTimeout(()=>c.style.opacity=0,3500)};
+const fail=()=>show('Could not copy automatically. Your question: '+t);
+navigator.clipboard?navigator.clipboard.writeText(t).then(()=>show('Question copied. Paste it into your AI assistant to ask about this line.'),fail):fail()}</script>
 <style>
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .seg{display:inline-flex;background:var(--bg-neutral);border-radius:var(--radius);padding:3px;gap:2px}
@@ -42,33 +43,36 @@ svg text{paint-order:stroke;stroke:var(--surface-1);stroke-width:3px;stroke-line
 <script>
 const CFG={"company":"Alphabet","ticker":"GOOG","title":"GOOG Q3 2026 income statement","sub":"Jul 1 to Sep 30, 2026 · USD · GAAP","flow":"income","legend":[["Revenue","rev"],["Expense","cost"],["Profit","profit"]],"base":[{"id":"rev","c":1,"t":"rev","l":"Revenue","v":127577.0,"p":102346.0},{"id":"gp","c":2,"t":"profit","l":"Gross profit","v":76158.0,"p":60977.0},{"id":"cogs","c":2,"t":"cost","l":"Cost of revenue","v":51419.0,"p":41369.0},{"id":"oi","c":3,"t":"profit","l":"Operating income","v":40576.0,"p":31228.0},{"id":"opex","c":3,"t":"cost","l":"Operating expenses","v":35582.0,"p":29749.0},{"id":"pti","c":4,"t":"profit","l":"Pretax income","v":32355.0,"p":43987.0},{"id":"other_expense","c":4,"t":"cost","l":"Other expense","v":8221.0,"p":null,"full":"Other income (expense), net","note":"A year ago this line was $12.76B of income."},{"id":"ni","c":5,"t":"profit","l":"Net income","v":26468.0,"p":34979.0,"note":"Includes $298M of preferred dividends; $26.17B went to common shareholders."},{"id":"tax","c":5,"t":"cost","l":"Income tax","v":5887.0,"p":9008.0},{"id":"r_d","c":5,"t":"cost","l":"R&D","v":20640.0,"p":15151.0,"full":"Research and development"},{"id":"sales_and_marketin","c":5,"t":"cost","l":"Sales and marketing","v":8804.0,"p":7205.0},{"id":"g_a","c":5,"t":"cost","l":"G&A","v":6138.0,"p":7393.0,"full":"General and administrative"}],"links":[["rev","gp",76158.0],["rev","cogs",51419.0],["gp","oi",40576.0],["gp","opex",35582.0],["oi","pti",32355.0],["oi","other_expense",8221.0],["pti","ni",26468.0],["pti","tax",5887.0],["opex","r_d",20640.0],["opex","sales_and_marketin",8804.0],["opex","g_a",6138.0]],"hub":"rev","views":{"prod":{"label":"Product","nodes":[{"id":"search_and_other","l":"Search and other","v":63350.0,"p":56567.0,"full":"Google Search and other"},{"id":"google_cloud","l":"Google Cloud","v":30709.0,"p":15157.0},{"id":"subscriptions_and_","l":"Subscriptions and devices","v":14290.0,"p":12870.0,"full":"Google subscriptions, platforms, and devices"},{"id":"youtube_ads","l":"YouTube ads","v":11207.0,"p":10261.0},{"id":"google_network","l":"Google Network","v":7455.0,"p":7354.0},{"id":"other_bets","l":"Other Bets","v":372.0,"p":344.0},{"id":"hedging_gains","l":"Hedging gains","v":194.0,"p":-207.0,"note":"Gains from currency hedges, reported apart from product revenue."}]},"biz":{"label":"Business","nodes":[{"id":"google_services","l":"Google Services","v":96302.0,"p":87052.0},{"id":"google_cloud2","l":"Google Cloud","v":30709.0,"p":15157.0},{"id":"other_bets2","l":"Other Bets","v":372.0,"p":344.0},{"id":"hedging_gains2","l":"Hedging gains","v":194.0,"p":-207.0}]},"geo":{"label":"Geography","nodes":[{"id":"united_states","l":"United States","v":67681.0,"p":48758.0},{"id":"emea","l":"EMEA","v":32695.0,"p":29911.0,"full":"Europe, Middle East and Africa"},{"id":"apac","l":"APAC","v":19906.0,"p":17819.0,"full":"Asia-Pacific"},{"id":"other_americas","l":"Other Americas","v":7101.0,"p":6065.0},{"id":"hedging_gains3","l":"Hedging gains","v":194.0,"p":-207.0}],"note":"By customer location; hedging gains are reported separately."}},"yoy":true,"source":"Alphabet Q3 2026 earnings release"};
 const COL={rev:'#2a78d6',profit:'#1baf7a',cost:'#eb6834',other:'#888780',loss:'#e34948'};
-const VW=760,NW=10,TOP=72,BASEH=470,LH=15,MINGAP=14,MINH=2;
+const VW=760,NW=10,TOP=72,BASEH=470,LH=15,MINGAP=14,MINH=2,SIDEW=160;
 const VK=Object.keys(CFG.views||{});
 const HUB=CFG.hub?CFG.base.find(n=>n.id===CFG.hub):null;
 const SCALE=CFG.scale||{v:HUB.v,l:HUB.l};
-const K=BASEH*0.72/SCALE.v;
+let K=BASEH*0.72/SCALE.v;
 const UNIT=CFG.unit||'usd_m';
 const S={view:VK[0]||null,yoy:CFG.yoy!==false};
 let NODES=[],LINKS=[],M={},XS=[],NC=1,H=BASEH,VH=600,WRAP=100;
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
-const tw=(s,z)=>String(s).length*z*0.56;
-const fmt=v=>{const a=Math.abs(v),sg=v<0?'-':'';if(UNIT==='pct')return sg+a.toFixed(a<10?2:1)+'%';return sg+(a>=1e6?'$'+(a/1e6).toFixed(2)+'T':a>=1000?'$'+(a/1000).toFixed(2)+'B':'$'+a.toFixed(1)+'M')};
+// CJK and emoji glyphs are about twice as wide as Latin ones.
+const tw=(s,z)=>[...String(s)].reduce((a,c)=>a+(c.codePointAt(0)>0x2e7f?1:0.56),0)*z;
+const CUR=CFG.cur||'$';
+const fmt=v=>{const a=Math.abs(v),sg=v<0?'-':'';if(UNIT==='pct')return sg+a.toFixed(a<10?2:1)+'%';return sg+CUR+(a>=1e6?(a/1e6).toFixed(2)+'T':a>=1000?(a/1000).toFixed(2)+'B':a>=1?a.toFixed(1)+'M':(a*1000).toFixed(0)+'K')};
 const okP=n=>n.p!=null&&n.p>0;
 const yoyStr=n=>{if(!okP(n))return'n/m';const r=(n.v/n.p-1)*100;return Math.abs(r)<0.05?'0.0%':(r>0?'+':'')+r.toFixed(1)+'%'};
 const good=n=>n.t==='rev'||n.t==='profit';
 const yoyCol=n=>!okP(n)||!good(n)?'var(--text-secondary)':n.v>=n.p?'var(--text-success)':'var(--text-danger)';
 function src(){if(!S.view)return[];const v=CFG.views[S.view];return v.same?CFG.views[v.same].nodes:v.nodes}
 function side(n){return n.sd||(n.c===0?'left':(n.c===NC-1||!n.out.length)?'right':'above')}
-function wrap(s,max){
+function wrap(s,max,hard){
   if(tw(s,12.5)<=max)return[s];
-  const w=s.split(' ');let a=[],cur='';
+  const w=[];s.split(' ').forEach(x=>{if(!hard)return w.push(x);let r='';[...x].forEach(c=>{if(r&&tw(r+c,12.5)>max){w.push(r);r=''}r+=c});w.push(r)});
+  let a=[],cur='';
   w.forEach(x=>{const t=cur?cur+' '+x:x;if(tw(t,12.5)>max&&cur){a.push(cur);cur=x}else cur=t});
   if(cur)a.push(cur);return a;
 }
 function lines(n){
   const L=[{s:fmt(n.v),f:COL[n.t],z:13,w:500}];
   if(S.yoy)L.push({s:yoyStr(n),f:yoyCol(n),z:12,w:400});
-  const names=side(n)==='above'?wrap(n.l,WRAP):[n.l];
+  const ab=side(n)==='above',names=wrap(n.l,ab?WRAP:SIDEW,!ab);
   names.forEach(s=>L.push({s,f:'var(--text-primary)',z:12.5,w:400}));
   return L;
 }
@@ -86,14 +90,19 @@ function build(){
   NC=Math.max(...NODES.map(n=>n.c))+1;
   M={};NODES.forEach((n,i)=>{n.i=i;n.in=[];n.out=[];M[n.id]=n});
   const negSum=neg.reduce((a,n)=>a-n.v,0);
-  NODES.forEach(n=>{const dv=n.id===CFG.hub?n.v+negSum:n.v;n.dv=dv;n.tiny=dv*K<MINH;n.h=Math.max(MINH,dv*K)});
+  NODES.forEach(n=>{n.dv=n.id===CFG.hub?n.v+negSum:n.v});
+  // Scale to the tallest column, not just the hub: when investing/financing flows or an operating loss
+  // dwarf the hub, scaling to the hub made charts thousands of pixels tall.
+  const colTot=[...Array(NC)].map((_,c)=>NODES.filter(n=>n.c===c).reduce((a,n)=>a+n.dv,0));
+  K=BASEH*0.72/Math.max(SCALE.v,...colTot);
+  NODES.forEach(n=>{n.tiny=n.dv*K<MINH;n.h=Math.max(MINH,n.dv*K)});
   if(HUB&&negSum)M[CFG.hub].auto=`Drawn before ${fmt(negSum)} of negative items, which branch off to the right.`;
   LINKS=pos.map(n=>({s:M[n.id],t:M[CFG.hub],v:n.v}))
     .concat(CFG.links.map(([a,b,v])=>({s:M[a],t:M[b],v})))
     .concat(neg.map(n=>({s:M[CFG.hub],t:M[n.id],v:-n.v})));
   LINKS.forEach((l,i)=>{l.i=i;l.w=Math.max(1,l.v*K);l.s.out.push(l);l.t.in.push(l)});
   NODES.forEach(n=>{n.out.sort((a,b)=>a.t.i-b.t.i);let o=0;n.out.forEach(l=>{l.so=o;o+=l.w})});
-  const lw=n=>Math.max(...[fmt(n.v),S.yoy?yoyStr(n):'',n.l].map((s,k)=>tw(s,k===0?13:12.5)));
+  const lw=n=>Math.max(...lines(n).map(q=>tw(q.s,q.z)));
   const c0=NODES.filter(n=>n.c===0),cl=NODES.filter(n=>n.c===NC-1);
   const left=Math.max(110,(c0.length?Math.max(...c0.map(lw)):0)+14);
   const right=Math.min(VW-140,VW-Math.max(...cl.map(lw))-NW-14);
@@ -170,19 +179,19 @@ function hilite(r){
 }
 function showTip(e,h){tip.innerHTML=h;tip.style.opacity=1;const r=wrapEl.getBoundingClientRect();let x=e.clientX-r.left+14;if(x>r.width-250)x=e.clientX-r.left-250;tip.style.left=x+'px';tip.style.top=(e.clientY-r.top+14)+'px'}
 function nodeTip(n){
-  let h=`<div style="font-weight:500;color:var(--text-primary)">${esc(n.full||n.l)}</div><div style="color:var(--text-primary)">${fmt(n.v)} · ${(n.v/SCALE.v*100).toFixed(1)}% of ${esc(SCALE.l.toLowerCase())}</div>`;
-  if(CFG.yoy!==false&&n.p!=null)h+=`<div style="color:var(--text-secondary)">${esc(CFG.prevLabel||'Year ago')} ${fmt(n.p)} · ${esc(CFG.cmp||'Y/Y')} ${yoyStr(n)}</div>`;
+  let h=`<div style="font-weight:500;color:var(--text-primary)">${esc(n.full||n.l)}</div><div style="color:var(--text-primary)">${esc(fmt(n.v))} · ${(n.v/SCALE.v*100).toFixed(1)}% of ${esc(SCALE.l.toLowerCase())}</div>`;
+  if(CFG.yoy!==false&&n.p!=null)h+=`<div style="color:var(--text-secondary)">${esc(CFG.prevLabel||'Year ago')} ${esc(fmt(n.p))} · ${esc(CFG.cmp||'Y/Y')} ${yoyStr(n)}</div>`;
   [n.note,n.auto,n.tiny?'Too small to draw to scale, so shown at a minimum width.':''].forEach(t=>{if(t)h+=`<div style="color:var(--text-secondary)">${esc(t)}</div>`});
   return h+'<div style="color:var(--text-muted)">Click to ask about this line</div>';
 }
 sk.addEventListener('mousemove',e=>{
   const t=e.target;
   if(t.classList.contains('nd')){const n=M[t.dataset.n];hilite(related(n.id));showTip(e,nodeTip(n))}
-  else if(t.classList.contains('lk')){const l=LINKS[+t.dataset.l];hilite({set:new Set([l.s.id,l.t.id]),ls:new Set([l.i])});showTip(e,`<div style="font-weight:500;color:var(--text-primary)">${esc(l.s.l)} → ${esc(l.t.l)}</div><div style="color:var(--text-primary)">${fmt(l.v)}</div><div style="color:var(--text-secondary)">${(l.v/SCALE.v*100).toFixed(1)}% of ${esc(SCALE.l.toLowerCase())} · ${(l.v/l.s.v*100).toFixed(1)}% of ${esc(l.s.l.toLowerCase())}</div>`)}
+  else if(t.classList.contains('lk')){const l=LINKS[+t.dataset.l];hilite({set:new Set([l.s.id,l.t.id]),ls:new Set([l.i])});showTip(e,`<div style="font-weight:500;color:var(--text-primary)">${esc(l.s.l)} → ${esc(l.t.l)}</div><div style="color:var(--text-primary)">${esc(fmt(l.v))}</div><div style="color:var(--text-secondary)">${(l.v/SCALE.v*100).toFixed(1)}% of ${esc(SCALE.l.toLowerCase())} · ${(l.v/l.s.v*100).toFixed(1)}% of ${esc(l.s.l.toLowerCase())}</div>`)}
   else{hilite(null);tip.style.opacity=0}
 });
 sk.addEventListener('mouseleave',()=>{hilite(null);tip.style.opacity=0});
-sk.addEventListener('click',e=>{const t=e.target;if(t.classList.contains('nd')){const n=M[t.dataset.n];sendPrompt(`Explain ${CFG.company}'s ${CFG.title.replace(CFG.ticker+' ','')} ${n.full||n.l} line (${fmt(n.v)}${S.yoy&&okP(n)?', '+yoyStr(n)+' '+(CFG.cmp||'Y/Y'):''}). What drove it and what should I watch?`)}});
+sk.addEventListener('click',e=>{const t=e.target;if(t.classList.contains('nd')){const n=M[t.dataset.n];sendPrompt(`Explain ${CFG.company}'s ${CFG.title.replace(CFG.ticker+' ','')} ${n.full||n.l} line (${esc(fmt(n.v))}${S.yoy&&okP(n)?', '+yoyStr(n)+' '+(CFG.cmp||'Y/Y'):''}). What drove it and what should I watch?`)}});
 const LEG=CFG.legend||[['Revenue','rev'],['Expense','cost'],['Profit','profit']];
 document.getElementById('legend').innerHTML=LEG.map(([l,t])=>`<span class="lg"><span class="dot" style="background:${COL[t]}"></span>${esc(l)}</span>`).join('');
 document.getElementById('cmpl').textContent=CFG.cmp||'Y/Y';
@@ -196,4 +205,4 @@ document.getElementById('yoy').addEventListener('click',()=>{S.yoy=!S.yoy;setSw(
 setSw();document.getElementById('note').textContent=(S.view&&CFG.views[S.view].note)||'';render();
 </script>
 <p style="font-size:12px;color:var(--text-muted)">Source: Alphabet Q3 2026 earnings release</p></main>
-<div id="copied">Question copied. Paste it into your AI assistant to ask about this line.</div></body></html>
+<div id="copied" role="status" aria-live="polite"></div></body></html>
