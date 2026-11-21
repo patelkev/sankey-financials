@@ -1,0 +1,6 @@
+{"flow":"cashflow","company":"Burnco Therapeutics","ticker":"BRN","period":"FY2026","dates":"Jan 1 to Dec 31, 2026","basis":"GAAP",
+ "source":"Synthetic example: a growth-stage company with negative operating cash flow",
+ "operating":[{"l":"Net loss","v":-420,"p":-310},{"l":"Stock comp","v":90,"p":70},{"l":"Depreciation","v":25,"p":18},{"l":"Working capital","v":-15,"p":-20}],
+ "cfo":[-320,-242],"capex":[40,55],
+ "other":[{"l":"Equity issued","v":380,"p":500},{"l":"Debt issued","v":150,"p":0},{"l":"Sale of investments","v":120,"p":-60},{"l":"Lease payments","v":-10,"p":-8}],
+ "change_in_cash":[280,135]}

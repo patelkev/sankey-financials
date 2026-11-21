@@ -323,14 +323,49 @@ def income(spec):
 
 
 # ---------------------------------------------------------------- cash flow
+def cashflow_burn(g, spec, cfo, cfo_p, capex, capex_p, other, chg, chg_p):
+    """Negative operating cash flow (growth companies, biotech). The business spends cash, so the chart
+    reads: where the money to spend came from (financing, sales of investments, the cash balance) ->
+    one pool -> what it was spent on (the operating burn, capex, buybacks and so on)."""
+    burn = -cfo
+    parts = ', '.join(f"{d['l']} {money(float(d['v']))}" for d in spec['operating'])
+    pr = (f' A year ago operating cash flow was {money(cfo_p)}.' if cfo_p is not None and cfo_p >= 0 else '')
+    inflows = [d for d in other if float(d['v']) > 0]
+    uses = [d for d in other if float(d['v']) < 0]
+    srcs = []
+    for d in inflows:
+        l, v, p = item(d); v, p, note = flip(v, p, ('outflow', 'inflow'))
+        srcs.append((g.node(0, 'rev', l, v, p, d.get('full'), d.get('note') or note), v))
+    if chg < 0:
+        srcs.append((g.node(0, 'loss', 'Drawn from cash', -chg, -chg_p if chg_p is not None and chg_p < 0 else None,
+                            note='Spending beyond the cash raised, paid from the existing cash balance.', key='draw'), -chg))
+    pool = sum(v for _, v in srcs)
+    P = g.node(1, 'profit', 'Cash available to spend', pool, None, key='pool',
+               note='Everything that funded the quarter: money raised, investments sold and cash drawn down.')
+    for nid, v in srcs:
+        g.link(nid, P, v)
+    B = g.node(2, 'cost', 'Cash used in operations', burn, -cfo_p if cfo_p is not None and cfo_p < 0 else None,
+               note=f'Operating cash flow was {money(cfo)}: {parts}.{pr}', key='burn')
+    g.link(P, B, burn)
+    if capex > 0:
+        g.link(P, g.node(2, 'cost', 'Capital expenditures', capex, capex_p, key='capex'), capex)
+    for d in uses:
+        l, v, p = item(d); v, p, note = flip(v, p, ('outflow', 'inflow'))
+        g.link(P, g.node(2, 'cost', l, v, p, d.get('full'), d.get('note') or note), v)
+    if chg > 0:
+        g.link(P, g.node(2, 'profit', 'Added to cash', chg, chg_p if chg_p and chg_p > 0 else None, key='addcash'), chg)
+    return g, {'hub': None, 'scale': {'v': pool, 'l': 'cash available'}, 'views': False,
+               'subtitle_extra': f'Operating cash flow {money(cfo)}', 'no_ops': True}
+
+
 def cashflow(spec):
     g = G()
     ops = grouped(spec['operating'])
     cfo, cfo_p = pair(spec['cfo'])
     check('Operating items vs cash from operations', sum(float(d['v']) for d in ops), cfo)
     check_prior('Operating items vs cash from operations', psum(spec['operating']), cfo_p)
-    if cfo <= 0:
-        raise SpecError('Negative operating cash flow is not supported yet.')
+    if cfo == 0:
+        raise SpecError('Operating cash flow is exactly zero, so there is nothing to draw. Describe it in text.')
     capex, capex_p = pair(spec['capex'])
     if capex < 0 or (capex_p or 0) < 0:
         raise SpecError(f'capex is {money(capex)}. Enter capital expenditures as a positive number, although the '
@@ -342,6 +377,8 @@ def cashflow(spec):
     check_prior('Change in cash', None if None in (cfo_p, capex_p, op) else cfo_p - capex_p + op, chg_p)
     # Draw the change in cash implied by the lines, so a $1M rounding gap in the filing can't unbalance the pool.
     chg = cfo - capex + sum(float(d['v']) for d in other)
+    if cfo < 0:
+        return cashflow_burn(g, spec, cfo, cfo_p, capex, capex_p, other, chg, chg_p)
 
     H = g.node(1, 'rev', 'Operating cash flow', cfo, cfo_p, key='cfo')
     fcf = cfo - capex
@@ -691,7 +728,7 @@ def make(spec):
     if meta.get('scale'): cfg['scale'] = meta['scale']
     if flow == 'income' and spec.get('views'):
         cfg['views'] = views_out(spec, used)
-    elif flow == 'cashflow':
+    elif flow == 'cashflow' and not meta.get('no_ops'):
         ops = grouped(spec['operating'])
         cfg['views'] = {'ops': {'label': 'Operating', 'nodes': [
             dict({'id': slug(d['l'], used), 'l': d['l'], 'v': float(d['v']),

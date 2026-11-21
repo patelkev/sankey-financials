@@ -76,7 +76,11 @@ Check: `cfo - capex + sum(other) = change_in_cash`. Negative operating items bra
 inflows and any cash drawdown feed a "Cash to deploy" box. `capex` is a positive number even though
 the filing shows it in parentheses. When capex exceeds operating cash flow, the capex box is fed by all
 of operating cash flow plus the pool, and the negative free cash flow goes in the subtitle.
-Negative operating cash flow is refused.
+**Negative operating cash flow** (growth companies, biotech) is drawn differently: there is no
+operating-cash-flow hub. The money that funded the year (inflows from `other`, plus "Drawn from cash"
+if cash fell) flows into "Cash available to spend", which then flows out to "Cash used in
+operations", capex, other uses and "Added to cash". The operating items appear in the tooltip of the
+"Cash used in operations" box, and the subtitle shows the negative figure.
 
 ## balance
 
