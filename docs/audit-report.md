@@ -4,13 +4,13 @@ Branch `claude/audit-break-it-79eefb`, November 20, 2026. Nothing has been pushe
 
 ## Summary
 
-I tried to break the skill with 78 hand-built specs, plus the 10 specs from the first pass. They cover all
+I tried to break the skill with 81 hand-built specs, plus the 10 specs from the first pass. They cover all
 five chart types, many industries and points in time, and bad or hostile input. I ran every spec through
 the full pipeline (`make.py`, `test.js`, `build.py --standalone`, `browser_check.py`) and looked at the
 rendered charts, not just the exit codes. I also probed dark mode, phone width, keyboard use, printing
 and the clipboard.
 
-**What I found:** 19 bugs, 9 limitations and 8 UX nits. The worst problems are the ones where the
+**What I found:** 20 bugs, 9 limitations and 8 UX nits (one nit fixed). The worst problems are the ones where the
 skill **draws a wrong chart without any warning**:
 
 1. **Prior-year figures were never checked.** Only the current-period numbers were reconciled. A
@@ -24,8 +24,8 @@ skill **draws a wrong chart without any warning**:
 5. **A label or title containing HTML ran as code** in the generated page. Copying text from a
    hostile web page into a spec would be enough to trigger it.
 
-**What I fixed:** 14 commits on the branch prototype fixes for all 19 bugs and for the 7 known gaps.
-`./run_tests.sh` prints ALL PASSED. There are 19 new regression examples (8 of them are bad specs that
+**What I fixed:** 15 commits on the branch prototype fixes for all 20 bugs and for the 7 known gaps.
+`./run_tests.sh` prints ALL PASSED. There are 23 new regression examples (9 of them are bad specs that
 must be refused, and each must be refused with the expected message). Each fix is its own commit, so
 you can take or leave each one (list in section 3).
 
@@ -169,6 +169,7 @@ comes first. **Status** gives the commit with the prototype fix.
 | G17 | Capex entered negative, as filed, gives a misleading error | bug, loud | c02 | fixed `4ce82e8` |
 | G18 | Tracebacks or invalid JSON for missing fields, `"1,200"`, NaN; bad `same` reference | bug, loud | i06, i22–i25, i30 | fixed `0665020` |
 | G19 | Misleading "Gross loss" message for zero or negative revenue | bug, loud | i07, i09, i28 | fixed `0665020` |
+| G20 | Rounding: make.py accepted gaps up to $1M between parts and totals, but the drawing and test.js couldn't absorb them, so ordinary filing rounding failed | bug | matrix/b10_rounding, i37_view_rounding, c14_ops_rounding | fixed `ae6cc67` |
 | L1 | Pretax loss despite operating profit (big impairment or debt loss) | limitation | i11 | not fixed, recommended next |
 | L2 | Negative operating cash flow (growth companies, biotech) | limitation | c06 | not fixed, recommended next |
 | L3 | Net loss from tax above pretax income (valuation allowance) | limitation | i10 | not fixed |
@@ -275,6 +276,21 @@ counts in the revenue check but not in operating income. The segment boxes stay 
 shows them, and the subtitle says "Segments before $6.29B of intersegment eliminations". Regression:
 `synth_segments_eliminations.json`.
 
+**Review fixes (`ae6cc67`).** A final review found three more problems. Two of them were in my own
+fixes:
+- *The `currency` field reopened code injection.* An unknown code was used as the currency symbol,
+  and amounts reach the tooltip HTML unescaped. *Fix:* `currency` must now be a three-letter code, and
+  formatted amounts are escaped. Regression: `synth_bad_currency`.
+- *The tolerance looked only at the hub.* A cash flow with small operating cash flow but large
+  financing lines got a tolerance below $1M, and normal rounding was refused. *Fix:* it now uses the
+  largest number anywhere in the spec. Regression: `synth_cash_rounding_small_hub`.
+- *G20 (a pre-existing bug).* make.py accepted a gap of up to $1M between the parts and the reported
+  total. But the chart can't draw a gap: test.js only allows 0.5. So a segment split that was off by
+  $0.6M from rounding passed make.py and then failed. *Fix:* the gap is added to the largest line,
+  with a note. This applies to view items, operating cash flow items and liabilities. The cash flow
+  draws the change in cash that its lines add up to. Regressions: `synth_balance_rounding`,
+  `synth_income_view_rounding`.
+
 **G7: after-tax lines (`4482839`).** *Fix:* a new `after_tax` list, signed as filed. The chart now
 goes from "Consolidated net income" to "Net income to shareholders" (`net_income_label` can rename it).
 The minority share and losses branch off; gains join. Regression: `synth_income_after_tax.json`.
@@ -320,6 +336,7 @@ The minority share and losses branch off; gains join. Regression: `synth_income_
 5. **Negative FCF.** The red "Free cash flow shortfall" box is replaced by one honest capex box, with
    the negative FCF in the subtitle. Do you want the red box kept as well?
 6. **Phone users.** Is a phone layout worth building? Today a phone gets an unreadable chart.
-7. **Tolerance.** $1M, shrinking with the figures for companies below about $200M. Some companies
-   that report in $ millions and have about $50M of revenue may now get rounding refusals. Is that
-   acceptable?
+7. **Tolerance.** The tolerance is $1M. It shrinks when the largest number in the spec is below
+   about $200M. A company that is that small but reports in $ millions could now get a rounding
+   refusal. The clean alternative is an explicit `units` field (`thousands` or `millions`) that sets
+   the tolerance. Do you want it?

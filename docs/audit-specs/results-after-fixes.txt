@@ -7,6 +7,7 @@ b06_manual_cmp                     make:ok test:ok browser:ok
 b07_equity_zero                    make:ok test:ok browser:ok  
 b08_bank_trillions                 make:ok test:ok browser:ok  
 b09_deficit_mcd                    make:ok test:ok browser:ok  
+b10_rounding                       make:ok test:ok browser:ok  
 c01_baseline                       make:ok test:ok browser:ok  
 c02_capex_signed_as_filed          make:REFUSED: SPEC ERROR: capex is -$300.0M. Enter capital expenditures as a positive number, although the filing shows them in parentheses.
 c03_capex_zero                     make:ok test:ok browser:ok  
@@ -20,6 +21,7 @@ c10_negfcf_drawdown                make:ok test:ok browser:ok
 c11_fx_tiny                        make:REFUSED: SPEC ERROR: Change in cash, prior period: the prior figures add to 242.0 but the reported prior total is 240.0 (off by 2.0). Fix the prior figures (or set unkno
 c12_saas_deferred_sbc              make:ok test:ok browser:ok  
 c13_netloss_positive_cfo           make:ok test:ok browser:ok  
+c14_ops_rounding                   make:ok test:ok browser:ok  
 h01_one_holding                    make:ok test:ok browser:ok  
 h02_500_holdings_minw03            make:ok test:ok browser:ok  WARN  [layout] main/no-cmp: chart is 5930px tall; consider grouping small items
 h03_500_holdings_minw0             make:ok test:ok browser:ok  WARN  [layout] main/no-cmp: chart is 18052px tall; consider grouping small items
@@ -68,6 +70,7 @@ i33b_qoq                           make:ok test:ok browser:ok
 i34_ipo_no_priors                  make:ok test:ok browser:ok  
 i35_53week                         make:ok test:ok browser:ok  
 i36_equity_method_after_tax        make:ok test:ok browser:ok  
+i37_view_rounding                  make:ok test:ok browser:ok  
 s01_baseline                       make:ok test:ok browser:ok  
 s02_zero_rev_segment               make:ok test:ok browser:ok  WARN  [yoy] new_venture_loss change 400%, double-check the prior figure
 s03_segment_oi_zero                make:ok test:ok browser:ok  
