@@ -1,0 +1,12 @@
+{"flow":"income","company":"Lucid Group","ticker":"LCID","period":"Q3 2026","dates":"Jul 1 to Sep 30, 2026","basis":"GAAP",
+ "source":"Lucid Q3 2026 earnings release, condensed consolidated statements of operations; $ thousands converted to $ millions",
+ "revenue":[350.319,336.580],"cogs":[608.624,670.197],
+ "opex":[{"l":"Research and development","v":311.821,"p":325.305},{"l":"Selling, general and administrative","v":286.191,"p":283.097},
+         {"l":"Workforce reduction charges","v":1.270,"p":0}],
+ "operating_income":[-857.587,-942.019],
+ "nonop":[{"l":"Change in fair value of warrant liability","v":0,"p":0.444},
+          {"l":"Change in fair value of related-party equity securities","v":-1.226,"p":0.916},
+          {"l":"Change in fair value of preferred stock derivatives","v":115.176,"p":-36.375},
+          {"l":"Interest income","v":11.420,"p":34.643},{"l":"Interest expense","v":-69.871,"p":-25.571},
+          {"l":"Other expense, net","v":-29.063,"p":-10.829}],
+ "tax":[-0.292,-0.363],"net_income":[-830.859,-978.428]}

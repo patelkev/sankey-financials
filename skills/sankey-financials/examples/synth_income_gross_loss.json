@@ -1,0 +1,7 @@
+{"flow":"income","company":"Rampco Motors","ticker":"RMP","period":"Q3 2026","dates":"Jul 1 to Sep 30, 2026","basis":"GAAP",
+ "source":"Synthetic example: a manufacturer whose cost of revenue exceeds revenue while it ramps production",
+ "views":{"Product":{"items":[{"l":"Vehicles","v":300,"p":120},{"l":"Services","v":80,"p":60}]}},
+ "revenue":[380,180],"cogs":[470,300],
+ "opex":[{"l":"R&D","v":210,"p":190},{"l":"SG&A","v":160,"p":140}],
+ "nonop":[{"l":"Interest income","v":30,"p":45},{"l":"Interest expense","v":-20,"p":-10}],
+ "operating_income":[-460,-450],"tax":[2,1],"net_income":[-452,-416]}

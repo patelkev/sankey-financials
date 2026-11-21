@@ -171,6 +171,40 @@ def views_out(spec, used):
 
 
 # ---------------------------------------------------------------- income
+def gross_loss(g, spec, R, rev, cogs, cogs_p, gp, oi, oi_p, opex, ox, ox_p, nonop, tax, tax_p):
+    """Cost of revenue above revenue (early EV makers, ramping manufacturers). Revenue covers only part of
+    the cost of revenue, so a red "Operating loss" box supplies the rest and also pays operating expenses."""
+    if oi >= 0:
+        raise SpecError('Operating gains inside a gross loss that turn the operating result positive: group them '
+                        'into an opex line instead.')
+    if any(float(d['v']) < 0 for d in opex):
+        raise SpecError('Operating gains inside a loss-making quarter: group them into an opex line instead.')
+    ni, ni_p = pair(spec['net_income'])
+    at = spec.get('after_tax', [])
+    nonop_sum, nps, atp = sum(float(d['v']) for d in nonop), psum(spec.get('nonop', [])), psum(at)
+    check('Net income', oi + nonop_sum - tax + sum(float(d['v']) for d in at), ni)
+    check_prior('Net income', None if None in (oi_p, nps, tax_p, atp) else oi_p + nps - tax_p + atp, ni_p)
+    loss, lp = -oi, (-oi_p if oi_p is not None and oi_p < 0 else None)
+    cons = oi + nonop_sum - tax  # consolidated result; net_income is lower or higher after after_tax lines (minority share)
+    word = 'net loss' if cons < 0 else 'net income'
+    note = (f'Cost of revenue exceeded revenue by {money(-gp)} (a gross loss), and operating expenses added {money(ox)}.'
+            f' After other items and tax, the consolidated {word} was {money(abs(cons))}'
+            + (f', and {money(abs(ni))} {"loss" if ni < 0 else "income"} attributable to shareholders.' if at else
+               (f' ({money(-ni_p)} a year ago).' if ni_p is not None and ni_p < 0 else '.')))
+    OL = g.node(1, 'loss', 'Operating loss', loss, lp, note=note, key='oploss')
+    C = g.node(2, 'cost', 'Cost of revenue', cogs, cogs_p, key='cogs')
+    g.link(R, C, rev); g.link(OL, C, -gp)
+    if ox > 0:
+        OX = g.node(2, 'cost', 'Operating expenses', ox, ox_p, key='opex')
+        g.link(OL, OX, ox)
+        for d in opex:
+            if float(d['v']) > 0:
+                l, v, p = item(d)
+                g.link(OX, g.node(3, 'cost', l, v, p, d.get('full'), d.get('note')), v)
+    return g, {'subtitle_extra': f'Gross loss {money(-gp)}' + (f' · Net loss {money(-cons)}' if cons < 0 else f' · Net income {money(cons)}')
+               + (f', {money(-ni)} to shareholders' if at and ni < 0 else '')}
+
+
 def income(spec):
     g = G()
     rev, rev_p = pair(spec['revenue'])
@@ -192,8 +226,6 @@ def income(spec):
     if rev <= 0:
         raise SpecError(f'Revenue is {money(rev)}. The income chart starts from revenue, so it needs revenue above zero '
                         '(a pre-revenue company is better described in text, or shown as a cash flow).')
-    if gp <= 0:
-        raise SpecError('Gross loss (cost of revenue above revenue) is not supported yet.')
     ox = sum(float(d['v']) for d in opex)
     # priors come from the raw lines: grouped() drops lines that are zero now but were not a year ago
     ox_p = psum(spec['opex']) if opex else None
@@ -203,6 +235,8 @@ def income(spec):
     check_prior('Operating income', oi_p, pair(spec['operating_income'])[1])
 
     R = g.node(1, 'rev', spec.get('revenue_label', 'Revenue'), rev, rev_p, key='rev')
+    if gp <= 0:
+        return gross_loss(g, spec, R, rev, cogs, cogs_p, gp, oi, oi_p, opex, ox, ox_p, nonop, tax, tax_p)
     GP = R if nocogs else g.node(2, 'profit', 'Gross profit', gp, gp_p, key='gp')
     pos_ox = [d for d in opex if float(d['v']) > 0]
     gains_ox = [d for d in opex if float(d['v']) < 0]

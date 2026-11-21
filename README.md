@@ -40,6 +40,7 @@ Open the live, interactive charts (hover, switch tabs, toggle Y/Y):
 [Alphabet segments](https://patelkev.github.io/sankey-financials/gallery/goog_segments.html) ·
 [Rivian cash flow, negative operating cash](https://patelkev.github.io/sankey-financials/gallery/rivn_cash.html) ·
 [Optimum pretax loss](https://patelkev.github.io/sankey-financials/gallery/optu_income_pretax_loss.html) ·
+[Lucid gross loss](https://patelkev.github.io/sankey-financials/gallery/lcid_income_gross_loss.html) ·
 [all source files](gallery/).
 
 ## Features
@@ -133,7 +134,7 @@ A minimal income spec looks like this (amounts in $ millions, `[current, prior]`
 
 ## Limits
 
-`make.py` refuses cases it cannot draw honestly and says why: gross loss, tax above pretax income, and a total operating loss in the segment view. Describe those in text instead.
+`make.py` refuses cases it cannot draw honestly and says why: tax above pretax income, and a total operating loss in the segment view. Describe those in text instead.
 
 Mappings are judgment calls in some places (for example, assigning ETF holdings to sectors, or combining shares and swaps on the same company). The agent should say when it makes one, and derived lines are labeled "Derived" in their tooltips.
 
