@@ -58,7 +58,9 @@ is allowed and drawn as a gray branch off revenue.
 Checks: views vs revenue, operating income, net income (each within $1M).
 Handled automatically: gains entering mid-chart, an "Interest and other" group when there are 2+
 non-operating expenses, tax benefits, and **operating losses** (a red "Operating loss" box feeds
-operating expenses; the net loss goes in the subtitle).
+operating expenses; the net loss goes in the subtitle) and **a pretax loss despite an operating
+profit** (a red "Pretax loss" box joins operating income and any non-operating income to pay for the
+non-operating charges; the net loss after tax goes in the subtitle and the tooltip).
 
 ## cashflow
 

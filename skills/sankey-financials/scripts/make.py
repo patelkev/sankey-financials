@@ -252,8 +252,49 @@ def income(spec):
     nonop_sum_p = psum(spec.get('nonop', []))
     pti = oi + nonop_sum
     pti_p = None if oi_p is None or nonop_sum_p is None else oi_p + nonop_sum_p
-    if pti <= 0:
-        raise SpecError('Pretax loss despite an operating profit is not supported yet.')
+    def tail():
+        if gain_ids:
+            AGO = g.node(4, 'cost', 'Gross operating expenses', pos_sum, None, key='gox',
+                         note='Operating expenses before the gains shown entering this box.')
+            g.link(OX, AGO, ox)
+            for nid, v in gain_ids:
+                g.link(nid, AGO, v)
+            src = AGO
+        else:
+            src = OX
+        for d in pos_ox:
+            l, v, p = item(d)
+            g.link(src, g.node(5, 'cost', l, v, p, d.get('full'), d.get('note')), v)
+
+    if pti <= 0:  # ---- pretax loss despite an operating profit: non-operating charges exceed operating income
+        L = -pti
+        lp = -pti_p if pti_p is not None and pti_p < 0 else None
+        at = spec.get('after_tax', [])
+        ni, ni_p = pair(spec['net_income'])
+        check('Net income', pti - tax + sum(float(d['v']) for d in at), ni)
+        atp = psum(at)
+        check_prior('Net income', None if None in (pti_p, tax_p, atp) else pti_p - tax_p + atp, ni_p)
+        note = (f'Non-operating charges of {money(sum(-float(d["v"]) for d in nonop_exp))} exceeded operating income of '
+                f'{money(oi)} by {money(L)}.')
+        if ni is not None:
+            note += f' After tax, the net loss was {money(-ni)}' + (f' ({money(-ni_p)} a year ago).' if ni_p is not None and ni_p < 0 else '.')
+        PL = g.node(3, 'loss', 'Pretax loss', L, lp, note=note, key='ptl')
+        srcs = [(OI, oi), (PL, L)] + inc_ids
+        E = sum(v for _, v in srcs)
+        if len(nonop_exp) == 1:
+            d = nonop_exp[0]; l, v, p = item(d); v, p, note2 = flip(v, p, ('expense', 'income'))
+            tgt = g.node(4, 'cost', l, v, p, d.get('full'), d.get('note') or note2)
+            for s, v in srcs: g.link(s, tgt, v)
+        else:
+            tot = sum(-float(d['v']) for d in nonop_exp)
+            tp = None if any(d.get('p') is None or float(d['p']) >= 0 for d in nonop_exp) else sum(-float(d['p']) for d in nonop_exp)
+            AG = g.node(4, 'cost', 'Interest and other', tot, tp if tp and tp > 0 else None, key='io')
+            for s, v in srcs: g.link(s, AG, v)
+            for d in nonop_exp:
+                l, v, p = item(d); v, p, note2 = flip(v, p, ('expense', 'income'))
+                g.link(AG, g.node(5, 'cost', l, v, p, d.get('full'), d.get('note') or note2), v)
+        tail()
+        return g, {'subtitle_extra': f'Net loss {money(-ni)}'}
     PTI = g.node(4, 'profit', 'Pretax income', pti, pti_p, key='pti')
     g.link(OI, PTI, oi - sum(abs(float(d['v'])) for d in nonop_exp))
     for nid, v in inc_ids:
@@ -307,18 +348,7 @@ def income(spec):
     if len(nonop_exp) > 1:
         for AG, l, v, p, full, note in later:
             g.link(AG, g.node(5, 'cost', l, v, p, full, note), v)
-    if gain_ids:
-        AGO = g.node(4, 'cost', 'Gross operating expenses', pos_sum, None, key='gox',
-                     note='Operating expenses before the gains shown entering this box.')
-        g.link(OX, AGO, ox)
-        for nid, v in gain_ids:
-            g.link(nid, AGO, v)
-        src = AGO
-    else:
-        src = OX
-    for d in pos_ox:
-        l, v, p = item(d)
-        g.link(src, g.node(5, 'cost', l, v, p, d.get('full'), d.get('note')), v)
+    tail()
     return g, {}
 
 

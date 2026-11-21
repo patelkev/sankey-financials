@@ -1,0 +1,7 @@
+{"flow":"income","company":"Leverco","ticker":"LEV","period":"Q3 2026","dates":"Jul 1 to Sep 30, 2026","basis":"GAAP",
+ "source":"Synthetic example: operating profit, but a debt extinguishment loss and interest push pretax income below zero",
+ "views":{"Product":{"items":[{"l":"Products","v":700,"p":650},{"l":"Services","v":300,"p":250}]}},
+ "revenue":[1000,900],"cogs":[600,560],
+ "opex":[{"l":"R&D","v":150,"p":140},{"l":"SG&A","v":170,"p":160}],
+ "nonop":[{"l":"Interest expense","v":-60,"p":-55},{"l":"Loss on debt extinguishment","v":-90,"p":0},{"l":"Interest income","v":5,"p":4}],
+ "operating_income":[80,40],"tax":[10,-5],"net_income":[-75,-6]}

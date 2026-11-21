@@ -72,8 +72,8 @@ quarter, GAAP**, with Product, Business and Geography tabs where the filing supp
   tooltips, and click-to-ask.
 - "n/m" when the prior value was zero, negative or of the opposite kind.
 - Flows under about 0.3% of the total are drawn at a 2px minimum, and their tooltip says so.
-- Not supported (make.py refuses with a message): gross loss, zero revenue, pretax loss despite an
-  operating profit, tax above pretax income, total operating loss in the
+- Not supported (make.py refuses with a message): gross loss, zero revenue,
+  tax above pretax income, total operating loss in the
   segment view, short or negative fund weights.
 - make.py checks the prior column as well as the current one, and needs the reported totals
   (`operating_income`, `net_income`, `total_assets`, segment `revenue`); a balance sheet also needs

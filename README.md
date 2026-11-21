@@ -132,7 +132,7 @@ A minimal income spec looks like this (amounts in $ millions, `[current, prior]`
 
 ## Limits
 
-`make.py` refuses cases it cannot draw honestly and says why: gross loss, a pretax loss despite an operating profit, and a total operating loss in the segment view. Describe those in text instead.
+`make.py` refuses cases it cannot draw honestly and says why: gross loss, tax above pretax income, and a total operating loss in the segment view. Describe those in text instead.
 
 Mappings are judgment calls in some places (for example, assigning ETF holdings to sectors, or combining shares and swaps on the same company). The agent should say when it makes one, and derived lines are labeled "Derived" in their tooltips.
 
