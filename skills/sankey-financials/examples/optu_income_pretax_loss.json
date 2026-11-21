@@ -1,0 +1,15 @@
+{"flow":"income","company":"Optimum Communications","ticker":"OPTU","period":"Q2 2026","dates":"Apr 1 to Jun 30, 2026","basis":"GAAP",
+ "source":"Optimum Communications Q2 2026 earnings release (EX-99.1), consolidated operating results; $ thousands converted to $ millions",
+ "views":{"Product":{"items":[
+  {"l":"Broadband","v":840.919,"p":885.139},{"l":"Video","v":587.830,"p":660.540},{"l":"Telephony","v":56.296,"p":64.633},
+  {"l":"Other residential","v":52.553,"p":37.621,"note":"Derived: residential revenue less broadband, video and telephony."},
+  {"l":"Business services and wholesale","v":366.286,"p":361.788},{"l":"News and advertising","v":99.978,"p":118.771},{"l":"Other","v":19.841,"p":18.711}]}},
+ "revenue":[2023.703,2147.203],
+ "cogs":[587.654,662.690],
+ "opex":[{"l":"Other operating expenses","v":655.956,"p":696.867},{"l":"Restructuring, impairments and other","v":206.968,"p":66.826},{"l":"Depreciation and amortization","v":407.076,"p":409.697}],
+ "operating_income":[166.049,311.123],
+ "nonop":[{"l":"Interest expense, net","v":-475.576,"p":-444.659},{"l":"Loss on investments","v":-10.958,"p":0},
+  {"l":"Interest rate swaps","v":0,"p":0.430},{"l":"Debt extinguishment and financing costs","v":0,"p":-1.693},{"l":"Other expense, net","v":-0.315,"p":-0.834}],
+ "tax":[-38.671,-47.647],
+ "after_tax":[{"l":"Noncontrolling interests","v":-9.632,"p":-8.265}],
+ "net_income":[-291.761,-96.251]}

@@ -276,8 +276,13 @@ def income(spec):
         check_prior('Net income', None if None in (pti_p, tax_p, atp) else pti_p - tax_p + atp, ni_p)
         note = (f'Non-operating charges of {money(sum(-float(d["v"]) for d in nonop_exp))} exceeded operating income of '
                 f'{money(oi)} by {money(L)}.')
-        if ni is not None:
-            note += f' After tax, the net loss was {money(-ni)}' + (f' ({money(-ni_p)} a year ago).' if ni_p is not None and ni_p < 0 else '.')
+        cons = pti - tax  # consolidated net result; net_income may be lower still after after_tax lines (minority share)
+        word = 'net loss' if cons < 0 else 'net income'
+        note += f' After tax, the consolidated {word} was {money(abs(cons))}'
+        if at:
+            note += f', and {money(abs(ni))} {"loss" if ni < 0 else "income"} attributable to shareholders.'
+        else:
+            note += (f' ({money(-ni_p)} a year ago).' if ni_p is not None and ni_p < 0 else '.')
         PL = g.node(3, 'loss', 'Pretax loss', L, lp, note=note, key='ptl')
         srcs = [(OI, oi), (PL, L)] + inc_ids
         E = sum(v for _, v in srcs)
@@ -294,7 +299,8 @@ def income(spec):
                 l, v, p = item(d); v, p, note2 = flip(v, p, ('expense', 'income'))
                 g.link(AG, g.node(5, 'cost', l, v, p, d.get('full'), d.get('note') or note2), v)
         tail()
-        return g, {'subtitle_extra': f'Net loss {money(-ni)}'}
+        return g, {'subtitle_extra': (f'Net loss {money(-(pti - tax))}' if pti - tax < 0 else f'Net income {money(pti - tax)}')
+                   + (f', {money(-ni)} to shareholders' if at and ni < 0 else '')}
     PTI = g.node(4, 'profit', 'Pretax income', pti, pti_p, key='pti')
     g.link(OI, PTI, oi - sum(abs(float(d['v'])) for d in nonop_exp))
     for nid, v in inc_ids:

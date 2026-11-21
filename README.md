@@ -39,6 +39,7 @@ Open the live, interactive charts (hover, switch tabs, toggle Y/Y):
 [DRAM ETF holdings](https://patelkev.github.io/sankey-financials/gallery/dram_holdings.html) ·
 [Alphabet segments](https://patelkev.github.io/sankey-financials/gallery/goog_segments.html) ·
 [Rivian cash flow, negative operating cash](https://patelkev.github.io/sankey-financials/gallery/rivn_cash.html) ·
+[Optimum pretax loss](https://patelkev.github.io/sankey-financials/gallery/optu_income_pretax_loss.html) ·
 [all source files](gallery/).
 
 ## Features
