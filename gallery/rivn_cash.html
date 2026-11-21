@@ -1,0 +1,208 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>RIVN 9M 2026 cash flow</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--surface-1:#fcfcfb;--surface-2:#fff;--text-primary:#0b0b0b;--text-secondary:#52514e;--text-muted:#898781;
+--text-success:#0c7a0c;--text-danger:#c53030;--text-accent:#2a78d6;--bg-neutral:#f0efec;--border-strong:rgba(11,11,11,.18);
+--border-stronger:rgba(11,11,11,.4);--radius:8px}
+@media (prefers-color-scheme:dark){:root{--surface-1:#151515;--surface-2:#202020;--text-primary:#f0efec;--text-secondary:#c3c2b7;
+--text-muted:#898781;--text-success:#3fb950;--text-danger:#f47067;--text-accent:#3987e5;--bg-neutral:#262624;
+--border-strong:rgba(255,255,255,.18);--border-stronger:rgba(255,255,255,.4)}}
+body{margin:0;background:var(--surface-1);color:var(--text-primary);font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif}
+main{max-width:900px;margin:24px auto;padding:0 16px}
+button{font:inherit;cursor:pointer}
+#copied{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--surface-2);border:1px solid var(--border-strong);
+border-radius:8px;padding:8px 14px;font-size:13px;opacity:0;transition:opacity .2s}
+</style></head><body><main>
+<script>window.sendPrompt=t=>{const c=document.getElementById('copied'),show=m=>{c.textContent=m;c.style.opacity=1;setTimeout(()=>c.style.opacity=0,3500)};
+const fail=()=>show('Could not copy automatically. Your question: '+t);
+navigator.clipboard?navigator.clipboard.writeText(t).then(()=>show('Question copied. Paste it into your AI assistant to ask about this line.'),fail):fail()}</script>
+<style>
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.seg{display:inline-flex;background:var(--bg-neutral);border-radius:var(--radius);padding:3px;gap:2px}
+.seg button{border:none;background:transparent;font-size:13px;padding:5px 12px;border-radius:6px;color:var(--text-secondary)}
+.seg button.on{background:var(--surface-2);color:var(--text-accent);font-weight:500}
+.lg{display:inline-flex;align-items:center;gap:5px;font-size:13px;color:var(--text-secondary)}
+.dot{width:9px;height:9px;border-radius:50%}
+.sw{border:none;background:transparent;padding:0;display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--text-secondary)}
+.trk{width:34px;height:20px;border-radius:10px;position:relative;transition:background .15s}
+.knb{position:absolute;top:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .15s}
+#tip{position:absolute;pointer-events:none;background:var(--surface-2);border:0.5px solid var(--border-strong);border-radius:8px;padding:8px 10px;font-size:12px;line-height:1.5;opacity:0;transition:opacity .1s;max-width:240px;z-index:2}
+svg text{paint-order:stroke;stroke:var(--surface-1);stroke-width:3px;stroke-linejoin:round}
+</style>
+<h2 class="sr-only">Interactive Sankey diagram: RIVN 9M 2026 cash flow, Jan 1 to Sep 30, 2026 (nine months) · USD · GAAP · Operating cash flow -$1.95B.</h2>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;padding:.5rem 0 .25rem">
+  <div class="seg" id="views"></div>
+  <span id="legend" style="display:inline-flex;gap:14px;flex-wrap:wrap"></span>
+  <button class="sw" id="yoy" role="switch" aria-checked="true" style="margin-left:auto"><span id="cmpl">Y/Y</span><span class="trk" id="trk"><span class="knb" id="knb"></span></span></button>
+</div>
+<div id="note" style="font-size:12px;color:var(--text-secondary);min-height:18px"></div>
+<div id="wrap" style="position:relative">
+<svg id="sk" viewBox="0 0 760 600" width="100%" role="img" aria-label="Financial Sankey diagram"></svg>
+<div id="tip"></div>
+</div>
+<script>
+const CFG={"company":"Rivian Automotive","ticker":"RIVN","title":"RIVN 9M 2026 cash flow","sub":"Jan 1 to Sep 30, 2026 (nine months) · USD · GAAP · Operating cash flow -$1.95B","flow":"cashflow","legend":[["Sources","rev"],["Uses","cost"],["Kept or free","profit"]],"base":[{"id":"short_term_investm","c":0,"t":"rev","l":"Short-term investments, net","v":450.0,"p":null,"note":"Maturities and sales less purchases of short-term investments."},{"id":"stock_issued","c":0,"t":"rev","l":"Stock issued","v":2617.0,"p":750.0},{"id":"stock_based_comp_p","c":0,"t":"rev","l":"Stock-based comp proceeds","v":40.0,"p":34.0},{"id":"draw","c":0,"t":"loss","l":"Drawn from cash","v":70.0,"p":853.0,"note":"Spending beyond the cash raised, paid from the existing cash balance."},{"id":"pool","c":1,"t":"profit","l":"Cash available to spend","v":3177.0,"p":null,"note":"Everything that funded the quarter: money raised, investments sold and cash drawn down."},{"id":"burn","c":2,"t":"cost","l":"Cash used in operations","v":1948.0,"p":98.0,"note":"Operating cash flow was -$1.95B: Net loss -$2.16B, Depreciation and amortization $682.0M, Stock-based compensation $634.0M, Gain on strategic investments -$506.0M, Other non-cash $89.0M, Accounts receivable -$44.0M, Inventory -$372.0M, Other assets $144.0M, Payables and accruals $268.0M, Deferred revenues -$637.0M, Other liabilities -$46.0M."},{"id":"capex","c":2,"t":"cost","l":"Capital expenditures","v":1100.0,"p":1247.0},{"id":"mind_robotics_deco","c":2,"t":"cost","l":"Mind Robotics deconsolidation","v":114.0,"p":0.0},{"id":"other_financing","c":2,"t":"cost","l":"Other financing","v":11.0,"p":37.0},{"id":"fx_effect","c":2,"t":"cost","l":"FX effect","v":4.0,"p":null,"note":"A year ago this line was $5.0M of inflow."}],"links":[["short_term_investm","pool",450.0],["stock_issued","pool",2617.0],["stock_based_comp_p","pool",40.0],["draw","pool",70.0],["pool","burn",1948.0],["pool","capex",1100.0],["pool","mind_robotics_deco",114.0],["pool","other_financing",11.0],["pool","fx_effect",4.0]],"scale":{"v":3177.0,"l":"cash available"},"yoy":true,"source":"Rivian Q3 2026 earnings release, condensed statements of cash flows (nine months ended Sep 30)"};
+const COL={rev:'#2a78d6',profit:'#1baf7a',cost:'#eb6834',other:'#888780',loss:'#e34948'};
+const VW=760,NW=10,TOP=72,BASEH=470,LH=15,MINGAP=14,MINH=2,SIDEW=160;
+const VK=Object.keys(CFG.views||{});
+const HUB=CFG.hub?CFG.base.find(n=>n.id===CFG.hub):null;
+const SCALE=CFG.scale||{v:HUB.v,l:HUB.l};
+let K=BASEH*0.72/SCALE.v;
+const UNIT=CFG.unit||'usd_m';
+const S={view:VK[0]||null,yoy:CFG.yoy!==false};
+let NODES=[],LINKS=[],M={},XS=[],NC=1,H=BASEH,VH=600,WRAP=100;
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+// CJK and emoji glyphs are about twice as wide as Latin ones.
+const tw=(s,z)=>[...String(s)].reduce((a,c)=>a+(c.codePointAt(0)>0x2e7f?1:0.56),0)*z;
+const CUR=CFG.cur||'$';
+const fmt=v=>{const a=Math.abs(v),sg=v<0?'-':'';if(UNIT==='pct')return sg+a.toFixed(a<10?2:1)+'%';return sg+CUR+(a>=1e6?(a/1e6).toFixed(2)+'T':a>=1000?(a/1000).toFixed(2)+'B':a>=1?a.toFixed(1)+'M':(a*1000).toFixed(0)+'K')};
+const okP=n=>n.p!=null&&n.p>0;
+const yoyStr=n=>{if(!okP(n))return'n/m';const r=(n.v/n.p-1)*100;return Math.abs(r)<0.05?'0.0%':(r>0?'+':'')+r.toFixed(1)+'%'};
+const good=n=>n.t==='rev'||n.t==='profit';
+const yoyCol=n=>!okP(n)||!good(n)?'var(--text-secondary)':n.v>=n.p?'var(--text-success)':'var(--text-danger)';
+function src(){if(!S.view)return[];const v=CFG.views[S.view];return v.same?CFG.views[v.same].nodes:v.nodes}
+function side(n){return n.sd||(n.c===0?'left':(n.c===NC-1||!n.out.length)?'right':'above')}
+function wrap(s,max,hard){
+  if(tw(s,12.5)<=max)return[s];
+  const w=[];s.split(' ').forEach(x=>{if(!hard)return w.push(x);let r='';[...x].forEach(c=>{if(r&&tw(r+c,12.5)>max){w.push(r);r=''}r+=c});w.push(r)});
+  let a=[],cur='';
+  w.forEach(x=>{const t=cur?cur+' '+x:x;if(tw(t,12.5)>max&&cur){a.push(cur);cur=x}else cur=t});
+  if(cur)a.push(cur);return a;
+}
+function lines(n){
+  const L=[{s:fmt(n.v),f:COL[n.t],z:13,w:500}];
+  if(S.yoy)L.push({s:yoyStr(n),f:yoyCol(n),z:12,w:400});
+  const ab=side(n)==='above',names=wrap(n.l,ab?WRAP:SIDEW,!ab);
+  names.forEach(s=>L.push({s,f:'var(--text-primary)',z:12.5,w:400}));
+  return L;
+}
+const labH=n=>lines(n).length*LH;
+const topExt=n=>side(n)==='above'?labH(n)+8:Math.max(0,(labH(n)-n.h)/2)+4;
+const botExt=n=>side(n)==='above'?0:Math.max(0,(labH(n)-n.h)/2)+4;
+function build(){
+  const s=src(),pos=s.filter(n=>n.v>0),neg=s.filter(n=>n.v<0);
+  NODES=pos.map(n=>({t:'rev',...n,c:0})).concat(CFG.base.map(n=>({...n})));
+  if(HUB&&neg.length){
+    const hc=HUB.c;
+    neg.forEach(n=>NODES.push({...n,c:hc+1,t:'other',v:-n.v,p:n.p!=null&&n.p<0?-n.p:null,neg:true,
+      note:(n.note?n.note+' ':'')+`Reduces ${HUB.l.toLowerCase()} by ${fmt(-n.v)}.`}));
+  }
+  NC=Math.max(...NODES.map(n=>n.c))+1;
+  M={};NODES.forEach((n,i)=>{n.i=i;n.in=[];n.out=[];M[n.id]=n});
+  const negSum=neg.reduce((a,n)=>a-n.v,0);
+  NODES.forEach(n=>{n.dv=n.id===CFG.hub?n.v+negSum:n.v});
+  // Scale to the tallest column, not just the hub: when investing/financing flows or an operating loss
+  // dwarf the hub, scaling to the hub made charts thousands of pixels tall.
+  const colTot=[...Array(NC)].map((_,c)=>NODES.filter(n=>n.c===c).reduce((a,n)=>a+n.dv,0));
+  K=BASEH*0.72/Math.max(SCALE.v,...colTot);
+  NODES.forEach(n=>{n.tiny=n.dv*K<MINH;n.h=Math.max(MINH,n.dv*K)});
+  if(HUB&&negSum)M[CFG.hub].auto=`Drawn before ${fmt(negSum)} of negative items, which branch off to the right.`;
+  LINKS=pos.map(n=>({s:M[n.id],t:M[CFG.hub],v:n.v}))
+    .concat(CFG.links.map(([a,b,v])=>({s:M[a],t:M[b],v})))
+    .concat(neg.map(n=>({s:M[CFG.hub],t:M[n.id],v:-n.v})));
+  LINKS.forEach((l,i)=>{l.i=i;l.w=Math.max(1,l.v*K);l.s.out.push(l);l.t.in.push(l)});
+  NODES.forEach(n=>{n.out.sort((a,b)=>a.t.i-b.t.i);let o=0;n.out.forEach(l=>{l.so=o;o+=l.w})});
+  const lw=n=>Math.max(...lines(n).map(q=>tw(q.s,q.z)));
+  const c0=NODES.filter(n=>n.c===0),cl=NODES.filter(n=>n.c===NC-1);
+  const left=Math.max(110,(c0.length?Math.max(...c0.map(lw)):0)+14);
+  const right=Math.min(VW-140,VW-Math.max(...cl.map(lw))-NW-14);
+  XS=Array.from({length:NC},(_,c)=>NC===1?left:Math.round(left+c*(right-left)/(NC-1)));
+  WRAP=NC>1?(right-left)/(NC-1)-12:200;
+}
+const gap=(a,b)=>Math.max(MINGAP,botExt(a)+topExt(b));
+function cols(){return[...Array(NC)].map((_,c)=>NODES.filter(n=>n.c===c))}
+function resolve(col){
+  let p=null;
+  col.forEach(n=>{const lo=p?p.y+p.h+gap(p,n):TOP+topExt(n);n.y=Math.max(n.ideal,lo);p=n});
+}
+function layout(){
+  const C=cols(),start=TOP+Math.max(...C.filter(c=>c.length).map(c=>topExt(c[0])));
+  let from=0;
+  if(HUB){
+    const hub=M[CFG.hub];hub.y=start;
+    if(hub.c===1){let o=0;C[0].forEach(n=>{n.ideal=hub.y+o;o+=n.h});resolve(C[0]);from=1}
+  }
+  for(let c=from;c<NC;c++){
+    C[c].forEach(n=>{n.ideal=HUB&&n.id===CFG.hub?M[CFG.hub].y:n.in.length?Math.min(...n.in.map(l=>l.s.y+l.so)):-Infinity});
+    resolve(C[c]);
+  }
+  NODES.forEach(n=>{n.in.sort((a,b)=>a.s.y-b.s.y||a.s.i-b.s.i);let t=0;n.in.forEach(l=>{l.to=t;t+=l.w})});
+  H=Math.max(...NODES.map(n=>n.y+n.h+botExt(n)))-TOP;VH=TOP+H+24;
+  return C;
+}
+function lbox(n){
+  const L=lines(n),tot=L.length*LH,sd=side(n),w=Math.max(...L.map(q=>tw(q.s,q.z)));let x0,y0;
+  if(sd==='left'){x0=XS[0]-7-w;y0=n.y+n.h/2-tot/2}
+  else if(sd==='right'){x0=XS[n.c]+NW+7;y0=n.y+n.h/2-tot/2}
+  else{x0=XS[n.c]+NW/2-w/2;y0=n.y-6-tot}
+  return{x0,x1:x0+w,y0,y1:y0+tot};
+}
+const hit=(a,b)=>a.x0<b.x1&&b.x0<a.x1&&a.y0<b.y1&&b.y0<a.y1;
+function fixLeaves(){
+  let moved=false;
+  NODES.filter(n=>n.c>0&&n.c<NC-1&&!n.out.length&&!n.sd).forEach(n=>{
+    const b=lbox(n);b.x1+=4;
+    const clash=NODES.some(m=>m!==n&&m.c>n.c&&(hit(b,{x0:XS[m.c],x1:XS[m.c]+NW,y0:m.y-4,y1:m.y+m.h+4})||hit(b,lbox(m))));
+    if(clash){n.sd='above';moved=true}
+  });
+  return moved;
+}
+function label(n){
+  const L=lines(n),tot=L.length*LH,sd=side(n);let x,a,y0;
+  if(sd==='left'){x=XS[0]-7;a='end';y0=n.y+n.h/2-tot/2+11}
+  else if(sd==='right'){x=XS[n.c]+NW+7;a='start';y0=n.y+n.h/2-tot/2+11}
+  else{x=XS[n.c]+NW/2;a='middle';y0=n.y-6-tot+11}
+  return `<g class="lb" data-n="${n.id}" style="pointer-events:none">`+L.map((q,k)=>`<text x="${x}" y="${(y0+k*LH).toFixed(1)}" text-anchor="${a}" style="fill:${q.f};font-size:${q.z}px;font-weight:${q.w}">${esc(q.s)}</text>`).join('')+'</g>';
+}
+function render(){
+  build();layout();if(fixLeaves())layout();let g='<defs>',p='',nd='',lb='';
+  LINKS.forEach(l=>{
+    const x0=XS[l.s.c]+NW,x1=XS[l.t.c],xm=(x0+x1)/2,a=l.s.y+l.so,b=a+l.w,c=l.t.y+l.to,d=c+l.w;
+    g+=`<linearGradient id="lg${l.i}" gradientUnits="userSpaceOnUse" x1="${x0}" x2="${x1}"><stop offset="0" stop-color="${COL[l.s.t]}"/><stop offset="1" stop-color="${COL[l.t.t]}"/></linearGradient>`;
+    p+=`<path class="lk" data-l="${l.i}" d="M${x0},${a}C${xm},${a} ${xm},${c} ${x1},${c}L${x1},${d}C${xm},${d} ${xm},${b} ${x0},${b}Z" fill="url(#lg${l.i})" style="opacity:.26;transition:opacity .12s;cursor:pointer"/>`;
+  });
+  NODES.forEach(n=>{nd+=`<rect class="nd" data-n="${n.id}" x="${XS[n.c]}" y="${n.y.toFixed(1)}" width="${NW}" height="${n.h.toFixed(1)}" rx="1.5" fill="${COL[n.t]}" style="cursor:pointer;transition:opacity .12s"/>`;lb+=label(n)});
+  const t=`<text x="${VW/2}" y="30" text-anchor="middle" style="fill:var(--text-primary);font-size:17px;font-weight:500">${esc(CFG.title)}</text><text x="${VW/2}" y="50" text-anchor="middle" style="fill:var(--text-secondary);font-size:12px">${esc(CFG.sub)}</text>`;
+  const sk=document.getElementById('sk');sk.setAttribute('viewBox',`0 0 ${VW} ${Math.ceil(VH)}`);
+  sk.innerHTML=g+'</defs>'+t+p+nd+lb;
+}
+function related(id){
+  const set=new Set([id]),ls=new Set();
+  const up=n=>n.in.forEach(l=>{ls.add(l.i);if(!set.has(l.s.id)){set.add(l.s.id);up(l.s)}});
+  const dn=n=>n.out.forEach(l=>{ls.add(l.i);if(!set.has(l.t.id)){set.add(l.t.id);dn(l.t)}});
+  up(M[id]);dn(M[id]);return{set,ls};
+}
+const sk=document.getElementById('sk'),tip=document.getElementById('tip'),wrapEl=document.getElementById('wrap');
+function hilite(r){
+  sk.querySelectorAll('.lk').forEach(e=>e.style.opacity=!r?.26:r.ls.has(+e.dataset.l)?.5:.06);
+  sk.querySelectorAll('.nd,.lb').forEach(e=>e.style.opacity=!r||r.set.has(e.dataset.n)?1:.25);
+}
+function showTip(e,h){tip.innerHTML=h;tip.style.opacity=1;const r=wrapEl.getBoundingClientRect();let x=e.clientX-r.left+14;if(x>r.width-250)x=e.clientX-r.left-250;tip.style.left=x+'px';tip.style.top=(e.clientY-r.top+14)+'px'}
+function nodeTip(n){
+  let h=`<div style="font-weight:500;color:var(--text-primary)">${esc(n.full||n.l)}</div><div style="color:var(--text-primary)">${esc(fmt(n.v))} · ${(n.v/SCALE.v*100).toFixed(1)}% of ${esc(SCALE.l.toLowerCase())}</div>`;
+  if(CFG.yoy!==false&&n.p!=null)h+=`<div style="color:var(--text-secondary)">${esc(CFG.prevLabel||'Year ago')} ${esc(fmt(n.p))} · ${esc(CFG.cmp||'Y/Y')} ${yoyStr(n)}</div>`;
+  [n.note,n.auto,n.tiny?'Too small to draw to scale, so shown at a minimum width.':''].forEach(t=>{if(t)h+=`<div style="color:var(--text-secondary)">${esc(t)}</div>`});
+  return h+'<div style="color:var(--text-muted)">Click to ask about this line</div>';
+}
+sk.addEventListener('mousemove',e=>{
+  const t=e.target;
+  if(t.classList.contains('nd')){const n=M[t.dataset.n];hilite(related(n.id));showTip(e,nodeTip(n))}
+  else if(t.classList.contains('lk')){const l=LINKS[+t.dataset.l];hilite({set:new Set([l.s.id,l.t.id]),ls:new Set([l.i])});showTip(e,`<div style="font-weight:500;color:var(--text-primary)">${esc(l.s.l)} → ${esc(l.t.l)}</div><div style="color:var(--text-primary)">${esc(fmt(l.v))}</div><div style="color:var(--text-secondary)">${(l.v/SCALE.v*100).toFixed(1)}% of ${esc(SCALE.l.toLowerCase())} · ${(l.v/l.s.v*100).toFixed(1)}% of ${esc(l.s.l.toLowerCase())}</div>`)}
+  else{hilite(null);tip.style.opacity=0}
+});
+sk.addEventListener('mouseleave',()=>{hilite(null);tip.style.opacity=0});
+sk.addEventListener('click',e=>{const t=e.target;if(t.classList.contains('nd')){const n=M[t.dataset.n];sendPrompt(`Explain ${CFG.company}'s ${CFG.title.replace(CFG.ticker+' ','')} ${n.full||n.l} line (${esc(fmt(n.v))}${S.yoy&&okP(n)?', '+yoyStr(n)+' '+(CFG.cmp||'Y/Y'):''}). What drove it and what should I watch?`)}});
+const LEG=CFG.legend||[['Revenue','rev'],['Expense','cost'],['Profit','profit']];
+document.getElementById('legend').innerHTML=LEG.map(([l,t])=>`<span class="lg"><span class="dot" style="background:${COL[t]}"></span>${esc(l)}</span>`).join('');
+document.getElementById('cmpl').textContent=CFG.cmp||'Y/Y';
+if(CFG.yoy===false)document.getElementById('yoy').style.display='none';
+const vb=document.getElementById('views');
+vb.innerHTML=VK.map((k,i)=>`<button data-v="${k}"${i?'':' class="on"'}>${esc(CFG.views[k].label)}</button>`).join('');
+if(VK.length<2)vb.style.display='none';
+vb.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;vb.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));S.view=b.dataset.v;document.getElementById('note').textContent=(S.view&&CFG.views[S.view].note)||'';render()});
+function setSw(){document.getElementById('yoy').setAttribute('aria-checked',S.yoy);document.getElementById('trk').style.background=S.yoy?'#2a78d6':'var(--border-stronger)';document.getElementById('knb').style.left=S.yoy?'16px':'2px'}
+document.getElementById('yoy').addEventListener('click',()=>{S.yoy=!S.yoy;setSw();render()});
+setSw();document.getElementById('note').textContent=(S.view&&CFG.views[S.view].note)||'';render();
+</script>
+<p style="font-size:12px;color:var(--text-muted)">Source: Rivian Q3 2026 earnings release, condensed statements of cash flows (nine months ended Sep 30)</p></main>
+<div id="copied" role="status" aria-live="polite"></div></body></html>

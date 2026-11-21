@@ -38,6 +38,7 @@ Open the live, interactive charts (hover, switch tabs, toggle Y/Y):
 [QQQ holdings](https://patelkev.github.io/sankey-financials/gallery/qqq_holdings.html) ·
 [DRAM ETF holdings](https://patelkev.github.io/sankey-financials/gallery/dram_holdings.html) ·
 [Alphabet segments](https://patelkev.github.io/sankey-financials/gallery/goog_segments.html) ·
+[Rivian cash flow, negative operating cash](https://patelkev.github.io/sankey-financials/gallery/rivn_cash.html) ·
 [all source files](gallery/).
 
 ## Features
